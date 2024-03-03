@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prod_especs', function (Blueprint $table) {
+        Schema::create('metodo_pagos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nombre', 25);
-            $table->string('valor_defecto', 25);
-            $table->unsignedBigInteger('id_prod');
+            $table->string('num_tarjeta', 16);
+            $table->string('nombre_tarjeta', 50);
+            $table->date('fecha_vencimiento');
+            $table->string('cvv', 3);
+            $table->unsignedBigInteger('id_usuario');
 
-            $table->foreign('id_prod')->references('id')->on('productos');
+            $table->foreign('id_usuario')->references('id')->on('users');
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prod_especs');
+        Schema::dropIfExists('metodo_pagos');
     }
 };
