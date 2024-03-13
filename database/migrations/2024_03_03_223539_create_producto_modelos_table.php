@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('desc_prod', 300);
             $table->text('array_cat');
             $table->integer('precio');
+            $table->integer('stock');
             $table->unsignedBigInteger('id_producto');
             $table->unsignedBigInteger('id_categoria');
             $table->unsignedBigInteger('id_marca');

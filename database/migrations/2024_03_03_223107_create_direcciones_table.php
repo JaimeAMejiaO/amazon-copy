@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('direcciones', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->text('pais');
             $table->string('nombre_completo', 50);
             $table->string('num_tel', 30);
             $table->string('especificacion_dir', 50);
