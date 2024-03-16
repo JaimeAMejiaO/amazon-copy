@@ -16,10 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->text('img_principal');
             $table->text('img');
-            $table->unsignedBigInteger('id_prod');
             $table->unsignedBigInteger('id_prod_mod');
 
-            $table->foreign('id_prod')->references('id')->on('productos');
             $table->foreign('id_prod_mod')->references('id')->on('producto_modelos');
         });
     }

@@ -17,12 +17,10 @@ return new class extends Migration
             $table->date('fecha_pedido');
             $table->integer('costo_pedido');
             $table->unsignedBigInteger('id_usuario');
-            $table->unsignedBigInteger('id_prod');
-            $table->unsignedBigInteger('id_prod_mod');
+            $table->unsignedBigInteger('id_carro');
 
             $table->foreign('id_usuario')->references('id')->on('users');
-            $table->foreign('id_prod')->references('id')->on('productos');
-            $table->foreign('id_prod_mod')->references('id')->on('producto_modelos');        
+            $table->foreign('id_carro')->references('id')->on('carro_compras');
         });
     }
 

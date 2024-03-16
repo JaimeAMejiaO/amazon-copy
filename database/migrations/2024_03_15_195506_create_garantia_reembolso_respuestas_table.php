@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('productos', function (Blueprint $table) {
+        Schema::create('garantia_reembolso_respuestas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nombre', 50);
-            $table->unsignedBigInteger('id_categoria');
-            $table->unsignedBigInteger('id_marca');
+            $table->string('respuesta', 30);
+            $table->text('sustentacion');
+            $table->integer('monto');
             $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('id_gar_reem');
 
             $table->foreign('id_usuario')->references('id')->on('users');
-            $table->foreign('id_categoria')->references('id')->on('cat_productos');
-            $table->foreign('id_marca')->references('id')->on('marcas');
+            $table->foreign('id_gar_reem')->references('id')->on('garantia_reembolsos');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('productos');
+        Schema::dropIfExists('garantia_reembolso_respuestas');
     }
 };
