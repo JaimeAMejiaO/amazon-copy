@@ -17,15 +17,12 @@ return new class extends Migration
             $table->string('nombre', 50);
             $table->string('apell', 50);
             $table->string('email', 100);
-            $table->string('num_doc', 20)->nullable(); //Campo dentro de configuracion de usuario
             $table->date('fecha_nac')->nullable(); //Campo dentro de configuracion de usuario
             $table->string('password');
-            $table->unsignedBigInteger('id_tipo_doc')->nullable(); //Campo dentro de configuracion de usuario
             $table->unsignedBigInteger('id_rol')->nullable(); //Campo dentro de configuracion de admin
             $table->integer('fondos')->nullable(); //Campo dentro de configuracion de metodos de pago
             $table->rememberToken();
 
-            $table->foreign('id_tipo_doc')->references('id')->on('tipo_docs');
             $table->foreign('id_rol')->references('id')->on('rol_usuarios');
         });
     }
