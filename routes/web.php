@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\MetodoPagos;
 use App\Livewire\Principal;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/principal', Principal::class)->name('principal');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/principal', Principal::class)->name('principal');
+
+Route::get('/metodo-pagos', MetodoPagos::class)->name('metodo-pagos');
