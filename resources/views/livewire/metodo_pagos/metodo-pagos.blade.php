@@ -9,7 +9,9 @@
                         <p>Nombre de tarjeta: {{ $metodoPago->nombre_tarjeta }}</p>
                         <p>Fecha de vencimiento: {{ $metodoPago->fecha_vencimiento }}</p>
                         <p>Fecha de vencimiento: {{ $metodoPago->cvv }}</p>
-                        <a href="#">Editar</a>
+                        <x-primary-button data-bs-toggle="modal" data-bs-target="#editar_tarjeta">
+                            {{ 'Edit' }}
+                        </x-primary-button>
                         <form action="{{ route('metodo-pago.destroy', $metodoPago->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
@@ -21,10 +23,10 @@
         @else
             <p>No hay métodos de pago creados.</p>
         @endif
-
         <x-primary-button data-bs-toggle="modal" data-bs-target="#crear_tarjeta">
             {{ 'Create' }}
         </x-primary-button>
     </div>
+    @include('livewire.metodo_pagos.metodo_pago_editar')
     @include('livewire.metodo_pagos.metodo_pago_crear')
 </div>
