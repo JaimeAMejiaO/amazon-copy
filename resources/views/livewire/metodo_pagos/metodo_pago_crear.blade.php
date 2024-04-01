@@ -1,4 +1,4 @@
-<x-modal title="crear" type="store" id="crear_tarjeta" function="store">
+<x-modal title="Crear metodo de pago" type="store" id="crear_tarjeta" function="store">
     <div class="form-group">
         <label for="num_tarjeta">Numero de tarjeta</label>
         <input type="text" class="form-control" id="num_tarjeta" wire:model="num_tarjeta">
