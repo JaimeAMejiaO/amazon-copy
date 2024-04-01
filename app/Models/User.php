@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(MetodoPago::class, 'id_usuario');
     }
+
+    public function direccion():HasMany
+    {
+        return $this->hasMany(Direccion::class, 'id_usuario');
+    }
 }
