@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('apell', 50);
             $table->string('email', 100);
-            $table->string('celular', 13)->nullable();
+            $table->string('celular', 13)->nullable(); //Campo dentro de configuracion de usuario
             $table->date('fecha_nac')->nullable(); //Campo dentro de configuracion de usuario
             $table->string('password');
             $table->unsignedBigInteger('id_rol')->nullable(); //Campo dentro de configuracion de admin

@@ -26,7 +26,7 @@ class MetodoPagos extends Component
         return view('livewire.metodo_pagos.metodo-pagos');
     }
 
-    public function store()
+        public function store()
     {
         $this->validate([
             'num_tarjeta' => 'required',
@@ -43,6 +43,31 @@ class MetodoPagos extends Component
             'id_usuario' => Auth::user()->id,
         ]);
 
+        $this->resetUI();
+    }
+
+    public function update()
+    {
+        $this->validate([
+            'num_tarjeta' => 'required',
+            'nombre_tarjeta' => 'required',
+            'fecha_vencimiento' => 'required|before_or_equal:today',
+            'cvv' => 'required',
+        ]);
+
+        MetodoPago::find($this->metodo_pago_id)->update([
+            'num_tarjeta' => $this->num_tarjeta,
+            'nombre_tarjeta' => $this->nombre_tarjeta,
+            'fecha_vencimiento' => $this->fecha_vencimiento,
+            'cvv' => $this->cvv,
+        ]);
+
+        $this->resetUI();
+    }
+
+    public function delete()
+    {
+        MetodoPago::find($this->metodo_pago_id)->delete();
         $this->resetUI();
     }
 
