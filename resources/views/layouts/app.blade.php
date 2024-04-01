@@ -20,9 +20,9 @@
     <div id="app">
        
         @include('layouts.header')
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="pt-4">
+            {{ $slot }}
+        </div>
     </div>
 </body>
 </html>
