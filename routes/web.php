@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Direcciones;
 use App\Livewire\MetodoPagos;
 use App\Livewire\Principal;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/principal', Principal::class)->name('principal');
 
 Route::get('/metodo-pagos', MetodoPagos::class)->name('metodo-pagos');
+
+Route::get('/direcciones', Direcciones::class)->name('direcciones');
