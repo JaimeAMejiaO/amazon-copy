@@ -1,18 +1,24 @@
-<x-modal title="Crear metodo de pago" type="store" id="crear_tarjeta" function="store">
-    <div class="form-group">
-        <label for="num_tarjeta">Numero de tarjeta</label>
-        <input type="text" class="form-control" id="num_tarjeta" wire:model="num_tarjeta">
+<x-modal title="Agregar Tarjeta" type="store" id="crear_tarjeta">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Numero Tarjeta" aria-label="Numero Tarjeta"
+            aria-describedby="basic-addon1">
     </div>
-    <div class="form-group">
-        <label for="nombre_tarjeta">Nombre de tarjeta</label>
-        <input type="text" class="form-control" id="nombre_tarjeta" wire:model="nombre_tarjeta">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Nombre Tarjeta" aria-label="Nombre Tarjeta"
+            aria-describedby="basic-addon1">
     </div>
-    <div class="form-group">
-        <label for="fecha_vencimiento">Fecha de vencimiento</label>
-        <input type="text" class="form-control" id="fecha_vencimiento" wire:model="fecha_vencimiento">
+
+
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Fecha tarjeta</span>
+        <input type="text" class="form-control" placeholder="Mes" aria-label="Mes">
+        <span class="input-group-text">/</span>
+        <input type="text" class="form-control" placeholder="Año" aria-label="Año">
     </div>
-    <div class="form-group">
-        <label for="cvv">CVV</label>
-        <input type="text" class="form-control" id="cvv" wire:model="cvv">
+
+    <div class="">
+        <input type="text" class="d-flex justify-content-center text-center" placeholder="CVV" aria-label="CVV"
+            aria-describedby="basic-addon1">
     </div>
 </x-modal>
