@@ -6,25 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Direccion extends Model
+class GarantiaReembolso extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'id',
-        'nombre_completo',
-        'num_tel',
-        'direccion',
-        'especificacion_dir',
-        'departamento',
-        'ciudad',
-        'barrio',
-        'cod_postal',
+        'tipo_peticion',
+        'motivo',
+        'img',
         'id_usuario',
+        'id_pedido',
     ];
 
-    public function user(): BelongsTo
+    public function user() :BelongsTo
     {
         return $this->belongsTo(User::class, 'id_usuario');
+    }
+
+    public function pedido() :BelongsTo
+    {
+        return $this->belongsTo(Pedido::class, 'id_pedido');
     }
 }

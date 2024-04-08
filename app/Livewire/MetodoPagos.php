@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class MetodoPagos extends Component
 {
+    public $metodo_pago_id;
     public $num_tarjeta;
     public $nombre_tarjeta;
     public $fecha_vencimiento;
@@ -17,16 +18,16 @@ class MetodoPagos extends Component
 
     public function mount()
     {
-        $this-> usuario_actual = Auth::user();
+        $this->usuario_actual = Auth::user();
     }
 
     public function render()
     {
-        $this-> metodos_pago = MetodoPago::where('id_usuario', $this->usuario_actual->id)->get();
+        $this->metodos_pago = MetodoPago::where('id_usuario', $this->usuario_actual->id)->get();
         return view('livewire.metodo_pagos.metodo-pagos');
     }
 
-        public function store()
+    public function store()
     {
         $this->validate([
             'num_tarjeta' => 'required',
@@ -65,8 +66,9 @@ class MetodoPagos extends Component
         $this->resetUI();
     }
 
-    public function delete()
+    public function delete($metodoPagoId)
     {
+        $this->metodo_pago_id = $metodoPagoId;
         MetodoPago::find($this->metodo_pago_id)->delete();
         $this->resetUI();
     }
@@ -75,5 +77,4 @@ class MetodoPagos extends Component
     {
         $this->reset(['num_tarjeta', 'nombre_tarjeta', 'fecha_vencimiento', 'cvv']);
     }
-    
 }

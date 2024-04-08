@@ -12,10 +12,10 @@
                         <x-primary-button data-bs-toggle="modal" data-bs-target="#editar_tarjeta">
                             {{ 'Edit' }}
                         </x-primary-button>
-                        <form action="{{ route('metodo-pago.destroy', $metodoPago->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Borrar</button>
+                        <form wire:submit.prevent="delete({{ $metodoPago->id }})">
+                            <x-danger-button type="submit">
+                                {{ 'Delete' }}
+                            </x-danger-button>
                         </form>
                     </li>
                 @endforeach
@@ -27,6 +27,5 @@
             {{ 'Create' }}
         </x-primary-button>
     </div>
-    @include('livewire.metodo_pagos.metodo_pago_editar')
     @include('livewire.metodo_pagos.metodo_pago_crear')
 </div>

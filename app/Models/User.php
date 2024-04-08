@@ -56,4 +56,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Direccion::class, 'id_usuario');
     }
+
+    public function calificacion():HasMany
+    {
+        return $this->hasMany(Calificacion::class, 'id_usuario');
+    }
+
+    public function pedido():HasMany
+    {
+        return $this->hasMany(Pedido::class, 'id_usuario');
+    }
 }
