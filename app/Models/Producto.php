@@ -21,7 +21,7 @@ class Producto extends Model
 
     public function categoria(): BelongsTo
     {
-        return $this->belongsTo(CategoriaProducto::class, 'id_categoria');
+        return $this->belongsTo(CatProductos::class, 'id_categoria');
     }
 
     public function marca(): BelongsTo

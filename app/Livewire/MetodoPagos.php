@@ -68,8 +68,7 @@ class MetodoPagos extends Component
 
     public function delete($metodoPagoId)
     {
-        $this->metodo_pago_id = $metodoPagoId;
-        MetodoPago::find($this->metodo_pago_id)->delete();
+        MetodoPago::find($metodoPagoId)->delete();
         $this->resetUI();
     }
 

@@ -12,11 +12,10 @@
                         <x-primary-button data-bs-toggle="modal" data-bs-target="#editar_tarjeta">
                             {{ 'Edit' }}
                         </x-primary-button>
-                        <form wire:submit.prevent="delete({{ $metodoPago->id }})">
-                            <x-danger-button type="submit">
-                                {{ 'Delete' }}
-                            </x-danger-button>
-                        </form>
+                        <x-danger-button wire:click="delete({{ $metodoPago->id }})"
+                            wire:confirm="¿Está seguro que quiere eliminar este metodo de pago?">
+                            {{ 'Delete' }}
+                        </x-danger-button>
                     </li>
                 @endforeach
             </ul>
