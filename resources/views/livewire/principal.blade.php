@@ -20,7 +20,9 @@
             <div class="col">
                 <div class="card">
                     <h5 class="card-title text-center">La mejor tecnologia para ti</h5>
-                    <img src="{{ asset('img/jordan.png') }}" class="card-img-top" alt="...">
+                    <a href="{{ route('ver-productos') }}">
+                        <img src="{{ asset('img/jordan.png') }}" class="card-img-top" alt="...">
+                    </a>
 
                 </div>
             </div>
