@@ -1,12 +1,12 @@
-<div>
+<div >
 
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color:#131921 ">
         <div class="container d-flex justify-content-center">
-            <img src="{{ asset('img/amazon.webp') }}" alt="..." style = 'width: 6%'>
+            <img src="{{ asset('img/amazon-negro.png') }}" alt="..." style = 'width: 6%;height:50%'>
 
-            <div class="input-group">
+            <div class="input-group" style="background-color:#131921">
 
-                <li class="nav-item dropdown btn btn-outline-dark ms-4 ">
+                <li class="nav-item dropdown btn btn-outline-light ms-4 ">
                     <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Todos
@@ -23,12 +23,12 @@
 
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
+                    <button class="btn btn-outline-light" type="submit">Buscar</button>
                 </form>
 
             </div>
 
-            <li class="nav-item dropdown btn btn-outline-dark ms-4 ">
+            <li class="nav-item dropdown btn btn-outline-light ms-4 ">
                 <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Cuenta y Listas
@@ -42,8 +42,8 @@
                     <li><a class="dropdown-item" href="#">Categoria 3</a></li>
                 </ul>
             </li>
-            <button class="btn btn-outline-dark text-nowrap" type="submit">Devoluciones y Pedidos</button>
-            <button class="btn btn-outline-dark text-nowrap" type="submit">Carrito</button>
+            <button class="btn btn-outline-light text-nowrap" type="submit">Devoluciones y Pedidos</button>
+            <button class="btn btn-outline-light text-nowrap" type="submit">Carrito</button>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -51,7 +51,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
 
@@ -63,18 +63,18 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" style="color:white"  href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" style="color:white"  href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle"style="color:white" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
