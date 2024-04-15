@@ -10,6 +10,8 @@ class MetodoPago extends Model
 {
     use HasFactory;
 
+    protected $table = 'metodo_pagos';
+
     protected $fillable = [
         'id',
         'num_tarjeta',
