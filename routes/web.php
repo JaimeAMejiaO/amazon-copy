@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\CarroCompras;
+use App\Livewire\Categorias;
 use App\Livewire\Direcciones;
 use App\Livewire\MetodoPagos;
 use App\Livewire\Principal;
@@ -34,3 +35,5 @@ Route::get('/direcciones', Direcciones::class)->name('direcciones');
 Route::get('/ver-productos', VerProductos::class)->name('ver-productos');
 
 Route::get('/carro-compras', CarroCompras::class)->name('carro-compras');
+
+Route::get('/categorias', Categorias::class)->name('categorias');

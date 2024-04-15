@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         @include('layouts.header')
-        <div class="pt-4">
+        <div class="">
             {{ $slot }}
         </div>
     </div>

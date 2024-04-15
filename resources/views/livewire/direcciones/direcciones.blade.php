@@ -7,7 +7,7 @@
                     data-bs-target="#crear_direccion">
                     <div class="text-center">
                         <i class="fa-solid fa-plus fa-10x"></i>
-                        <h5 class="card-title text-center">Agregar Categoria</h5>
+                        <h5 class="card-title text-center">Agregar Direccion</h5>
                         <br>
                         <br>
                     </div>
