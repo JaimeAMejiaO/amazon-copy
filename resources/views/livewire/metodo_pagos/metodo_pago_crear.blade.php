@@ -1,18 +1,67 @@
-<x-modal title="Crear metodo de pago" type="store" id="crear_tarjeta" function="store">
-    <div class="form-group">
-        <label for="num_tarjeta">Numero de tarjeta</label>
-        <input type="text" class="form-control" id="num_tarjeta" wire:model="num_tarjeta">
+<x-modal title="{{$titulo_modal}}" type="{{$tipo_modal}}" id="crear_tarjeta">
+    <div class="input-group mb-lg-3">
+        <input wire:model.blur="num_tarjeta" id="num_tarjeta" name="num_tarjeta" type="text" class="form-control"
+            placeholder="Numero Tarjeta" aria-label="Numero Tarjeta" aria-describedby="basic-addon1" required>
+        @error('num_tarjeta')
+            <span class="text-danger">
+                {{ $message }}
+            </span>
+        @enderror
     </div>
-    <div class="form-group">
-        <label for="nombre_tarjeta">Nombre de tarjeta</label>
-        <input type="text" class="form-control" id="nombre_tarjeta" wire:model="nombre_tarjeta">
+
+    <div class="input-group mb-3">
+        <input wire:model.blur="nombre_tarjeta" id="nombre_tarjeta" name="nombre_tarjeta" type="text"
+            class="form-control" placeholder="Nombre Tarjeta" aria-label="Nombre Tarjeta"
+            aria-describedby="basic-addon1" required>
+        @error('nombre_tarjeta')
+            <span class="text-danger">
+                {{ $message }}
+            </span>
+        @enderror
     </div>
-    <div class="form-group">
-        <label for="fecha_vencimiento">Fecha de vencimiento</label>
-        <input type="text" class="form-control" id="fecha_vencimiento" wire:model="fecha_vencimiento">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Fecha tarjeta</span>
+        <div class="col-2" style="margin-left: 10%;">
+            <select wire:model.live="mes_actual" class="form-select" aria-label="Default select example" required>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+        </div>
+        <span class="input-group-text">/</span>
+        <div class="col-2" style="">
+            <select wire:model.live="anio_actual" class="form-select" aria-label="Default select example">
+                @for ($i = $anio_actual; $i <= $anio_actual + 20; $i++)
+                    <option value="{{ $i }}">{{ $i }}</option>
+                @endfor
+            </select>
+        </div>
+        @error('fecha_vencimiento')
+                <span class="text-danger">
+                    {{ $message }}
+                </span>
+            @enderror
     </div>
-    <div class="form-group">
-        <label for="cvv">CVV</label>
-        <input type="text" class="form-control" id="cvv" wire:model="cvv">
+
+    <div class="">
+        <input wire:model.blur="cvv" id="cvv" name="cvv" type="text"
+            class="d-flex justify-content-center text-center" placeholder="CVV" aria-label="CVV"
+            aria-describedby="basic-addon1">
+        @error('cvv')
+            <span class="text-danger">
+                {{ $message }}
+            </span>
+        @enderror
     </div>
+
 </x-modal>

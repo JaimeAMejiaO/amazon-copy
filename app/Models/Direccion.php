@@ -11,6 +11,7 @@ class Direccion extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'nombre_completo',
         'num_tel',
         'direccion',

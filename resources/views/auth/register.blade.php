@@ -1,16 +1,19 @@
-<div>
+<div class="d-flex justify-content-center align-items-center" style="height:100%;">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header" style="text-align:center;">
+                        <h2>Registro</h2>
+                    </div>
 
-                    <div class="card-body">
+                    <div class="card-body" style="text-align:center;">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -31,8 +34,8 @@
 
                                 <div class="col-md-6">
                                     <input id="apell" type="text"
-                                        class="form-control @error('apell') is-invalid @enderror" name="apell" required
-                                        autocomplete="family-name" autofocus>
+                                        class="form-control @error('apell') is-invalid @enderror" name="apell"
+                                        required autocomplete="family-name" autofocus>
 
                                     @error('apell')
                                         <span class="invalid-feedback" role="alert">
@@ -48,8 +51,8 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror" name="email" required
-                                        autocomplete="email">
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        required autocomplete="email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -85,21 +88,31 @@
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
+                            <div class="form-check d-flex justify-content-center" style="text-align:center;">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                    {{ old('remember') ? 'checked' : '' }}>
 
-                            <div class="mb-12 align-items-right">
+                                <label class="form-check-label" for="remember">
+                                    {{ __('Aceptar terminos y condiciones ') }}
+                                </label>
+
+                            </div>
+
+
+                            <div class="mb-12 align-items-right" style="text-align:center;">
                                 <a class="btn btn-link" href="{{ route('login') }}">
                                     {{ __('¿Ya se registró? Inicie sesión') }}
                                 </a>
                             </div>
-
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                            
+                            <div class="" style="text-align:center">
+                                <div class="col-md-4 offset-md-4" style="text-align:center">
+                                    <button type="submit" class="btn btn-warning">
                                         {{ __('Registrarse') }}
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </form> 
                     </div>
                 </div>
             </div>

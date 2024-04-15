@@ -1,49 +1,40 @@
 <div>
 
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color:#131921 ">
         <div class="container d-flex justify-content-center">
-            <img src="{{ asset('img/amazon.webp') }}" alt="..." style = 'width: 6%'>
+            <a href="{{ route('principal') }}" style="">
+                <img src="{{ asset('img/amazon-negro.png') }}" alt="..." style = 'width: 30%;'>
+            </a>
+            <div class="input-group" style="background-color:#131921">
 
-            <div class="input-group">
-
-                <li class="nav-item dropdown btn btn-outline-dark ms-4 ">
+                <li class="nav-item dropdown btn btn-outline-light ms-4 ">
                     <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Todos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Categoria 1</a></li>
-                        <li><a class="dropdown-item" href="#">Categoria 2</a></li>
+                        <li><a class="dropdown-item" href="#">Zapatos</a></li>
+                        <li><a class="dropdown-item" href="#">Camisetas</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Categoria 3</a></li>
+                        <li><a class="dropdown-item" href="#">Juguetes</a></li>
+                        
+                        </li>
+                        <li><a class="dropdown-item" href="#">Peluches</a></li>
                     </ul>
                 </li>
 
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
+                    <button class="btn btn-outline-light" type="submit">Buscar</button>
                 </form>
 
             </div>
 
-            <li class="nav-item dropdown btn btn-outline-dark ms-4 ">
-                <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Cuenta y Listas
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Categoria 1</a></li>
-                    <li><a class="dropdown-item" href="#">Categoria 2</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Categoria 3</a></li>
-                </ul>
-            </li>
-            <button class="btn btn-outline-dark text-nowrap" type="submit">Devoluciones y Pedidos</button>
-            <button class="btn btn-outline-dark text-nowrap" type="submit">Carrito</button>
+
+            <button class="btn btn-outline-light text-nowrap" type="submit">Devoluciones y Pedidos</button>
+            <button class="btn btn-outline-light text-nowrap" type="submit">Carrito</button>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -63,30 +54,37 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" style="color:white" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" style="color:white"
+                                    href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle"style="color:white" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
+                                <a class="dropdown-item" href="{{ route('metodo-pagos') }}">
+                                    {{ __('Metodos de Pago') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('direcciones') }}">
+                                    {{ __('Direcciones') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('categorias') }}">
+                                    {{ __('categorias') }}
+                                </a>
+                                </a>
                                 <a class="dropdown-item" href="#">
                                     {{ __('Editar Usuario') }}
-                                </a>
-
-                                <a class="dropdown-item" href="{{ route('metodo-pagos')}}">
-                                    {{ __('Metodos de pago') }}
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"

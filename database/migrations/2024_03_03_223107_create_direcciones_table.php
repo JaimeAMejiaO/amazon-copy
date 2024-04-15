@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nombre_completo', 50);
             $table->string('num_tel', 30);
             $table->string('direccion', 50);
-            $table->string('especificacion_dir', 50);
+            $table->string('especificacion_dir', 50)->nullable();
             $table->text('departamento');
             $table->text('ciudad');
             $table->text('barrio');
