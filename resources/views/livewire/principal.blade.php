@@ -28,18 +28,18 @@
                         hombre
                     </h4>
                     <div class="" style="">
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
                     </div>
 
                     <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                         style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
                     <div class="" style="">
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #74C0FC;margin-left:5%"></i>
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #B197FC;margin-left:-1%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #74C0FC;margin-left:5%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #B197FC;margin-left:0%"></i>
                     </div>
                     <div style="margin-top:4%">
                         <p style="font-size: 170%;font-weight:bold;margin-left:5%">$130.000</p>
@@ -57,17 +57,17 @@
                         style="font-size: 120%;font-weight:bold;margin:5%">Jordan Hombres Air 10 Retro 
                     </h4>
                     <div class="" style="">
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
                     </div>
 
                     <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                         style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
                     <div class="" style="">
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
                     </div>
                     <div style="margin-top:4%" class="">
                         <p style="font-size: 170%;font-weight:bold;margin-left:5%">$180.000</p>
@@ -85,19 +85,19 @@
                         style="font-size: 120%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para hombre
                     </h4>
                     <div class="" style="">
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
                     </div>
 
                     <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                         style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
                     <div class="" style="">
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #74C0FC;margin-left:-1%"></i>
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #17fd1b;margin-left:-1%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #74C0FC;"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;"></i>
                     </div>
                     <div style="margin-top:4%">
                         <p style="font-size: 170%;font-weight:bold;margin-left:5%">$190.000</p>
@@ -115,18 +115,18 @@
                         style="font-size: 120%;font-weight:bold;margin:5%">Jordan Hombres Air 8 Retro Zapatos De Basquetbol
                     </h4>
                     <div class="" style="">
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
                     </div>
 
                     <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                         style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
                     <div class="" style="">
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #c80e0e;margin-left:5%"></i>
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #17fd1b;margin-left:-1%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #c80e0e;margin-left:5%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;"></i>
                     </div>
                     <div style="margin-top:4%">
                         <p style="font-size: 170%;font-weight:bold;margin-left:5%">$210.000</p>
@@ -144,17 +144,17 @@
                         style="font-size: 120%;font-weight:bold;margin:5%">Zapatos Air Jordan 7 Retro para hombre
                     </h4>
                     <div class="" style="">
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
                     </div>
 
                     <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                         style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
                     <div class="" style="">
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
                     </div>
                     <div style="margin-top:4%">
                         <p style="font-size: 170%;font-weight:bold;margin-left:5%">$100.000</p>
@@ -173,17 +173,17 @@
                     </h4>
                     <div class="" style="">
                         
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
                     </div>
 
                     <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                         style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
                     <div class="" style="">
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #c80e0e;margin-left:5%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #c80e0e;margin-left:5%"></i>
                     </div>
                     <div style="margin-top:4%">
                         <p style="font-size: 170%;font-weight:bold;margin-left:5%">$135.000</p>
@@ -201,17 +201,17 @@
                         style="font-size: 120%;font-weight:bold;margin:5%">Nike Hombres Air Jordan 5 Retro Se
                     </h4>
                     <div class="" style="">
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
                     </div>
 
                     <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                         style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
                     <div class="" style="">
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #B197FC;margin-left:5%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #B197FC;margin-left:5%"></i>
                     </div>
                     <div style="margin-top:4%">
                         <p style="font-size: 170%;font-weight:bold;margin-left:5%">$220.000</p>
@@ -229,22 +229,22 @@
                         style="font-size: 120%;font-weight:bold;margin:5%">Nike Jordan Air 4 Retro unisex para adultos
                     </h4>
                     <div class="" style="">
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
                     </div>
 
                     <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                         style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
                     <div class="" style="">
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #74C0FC;margin-left:-1%"></i>
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #B197FC;margin-left:-1%"></i>
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #c80e0e;margin-left:-1%"></i>
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #17fd1b;margin-left:-1%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #74C0FC;"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #B197FC;"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #c80e0e;"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;"></i>
                     </div>
                     <div style="margin-top:4%">
                         <p style="font-size: 170%;font-weight:bold;margin-left:5%">$130.000</p>
@@ -262,18 +262,18 @@
                         style="font-size: 120%;font-weight:bold;margin:5%">Jordan Big Kid 3 Retro Fear 
                     </h4>
                     <div class="" style="">
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-brands fa-hashnode fa-sm" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
                     </div>
 
                     <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                         style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
                     <div class="" style="">
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-solid fa-burst fa-2xl" style="color: #74C0FC;margin-left:-1%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #FFD43B;margin-left:5%"></i>
+                        <i class="fa-solid fa-circle fa-2xl" style="color: #74C0FC;"></i>
                     </div>
                     <div style="margin-top:4%">
                         <p style="font-size: 170%;font-weight:bold;margin-left:5%">$199.000</p>

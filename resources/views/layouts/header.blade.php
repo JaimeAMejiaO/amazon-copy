@@ -32,20 +32,7 @@
 
             </div>
 
-            <li class="nav-item dropdown btn btn-outline-light ms-4 ">
-                <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Cuenta y Listas
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Categoria 1</a></li>
-                    <li><a class="dropdown-item" href="#">Categoria 2</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Categoria 3</a></li>
-                </ul>
-            </li>
+
             <button class="btn btn-outline-light text-nowrap" type="submit">Devoluciones y Pedidos</button>
             <button class="btn btn-outline-light text-nowrap" type="submit">Carrito</button>
 

@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="col" style="margin-top:2%;">
+        <div class="col-3" style="margin-top:2%;">
             <h1 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 240%;font-weight:bold;text-align:center">AIR JORDAN 11</h1>
 
@@ -55,11 +55,11 @@
                 style="font-size: 200%;font-weight:bold;margin-left: 5%;">NIKE</h2>
 
             <div style="margin-top:5%">
-                <i class="fa-brands fa-hashnode fa-2xl" style="color: #FFD43B;margin-left:4%"></i>
-                <i class="fa-brands fa-hashnode fa-2xl" style="color: #FFD43B;margin-left:-0.5%"></i>
-                <i class="fa-brands fa-hashnode fa-2xl" style="color: #FFD43B;margin-left:-0.5%"></i>
-                <i class="fa-brands fa-hashnode fa-2xl" style="color: #787878;margin-left:-0.5%"></i>
-                <i class="fa-brands fa-hashnode fa-2xl" style="color: #787878;margin-left:-0.5%"></i>
+                <i class="fa-solid fa-star fa-2xl" style="color: #FFD43B;margin-left:4%"></i>
+                <i class="fa-solid fa-star fa-2xl" style="color: #FFD43B;margin-left:-0.5%"></i>
+                <i class="fa-solid fa-star fa-2xl" style="color: #FFD43B;margin-left:-0.5%"></i>
+                <i class="fa-solid fa-star fa-2xl" style="color: #787878;margin-left:-0.5%"></i>
+                <i class="fa-solid fa-star fa-2xl" style="color: #787878;margin-left:-0.5%"></i>
             </div>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 200%;font-weight:bold;margin-left: 20px;margin-top:2%">120.000$</h3>
@@ -67,10 +67,10 @@
                 style="font-size: 150%;font-weight:bold;margin-left: 5%;">CATEGORIA</h3>
             <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 100%;font-weight:bold;margin-left: 10%;">COLORES:</p>
-            <div style="margin-left: 10%;">
-                <i class="fa-solid fa-mound fa-2xl" style="color: #FFD43B;"></i>
-                <i class="fa-solid fa-mound fa-2xl" style="color: #f50505;"></i>
-                <i class="fa-solid fa-mound fa-2xl" style="color: #05f52d;"></i>
+            <div style="margin-left: 10%;margin-bottom: 2%;">
+                <i class="fa-solid fa-circle fa-2xl" style="color: #FFD43B;"></i>
+                <i class="fa-solid fa-circle fa-2xl" style="color: #f50505;"></i>
+                <i class="fa-solid fa-circle fa-2xl" style="color: #05f52d;"></i>
                 
             </div>
             <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
@@ -89,7 +89,7 @@
             </div>
 
         </div>
-        <div class="card mb-3" style="width: 18rem; border-radius: 8px;border: 2px solid black;margin-top:2%;">
+        <div class="card mb-3" style="width: 18rem; border-radius: 8px;border: 2px solid black;margin-top:2%;margin-right:10%">
             <div class="card-body">
 
                 <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
@@ -139,6 +139,12 @@
 
             <h3 class="card-title" style="text-align:center;">DESCRIPCION</h3>
             <p class="card-title" style="text-align:center">Disfruta de un look con estilo y siempre a la
+                moda. Las Air
+                Jordan 1 Low te ofrecen una parte de la historia y el legado Jordan con una comodidad que dura
+                todo el
+                día. Elige los colores y sal a la calle con el icónico perfil diseñado con una combinación de
+                materiales
+                de alta calidad y una unidad Air encapsulada en el talón e un look con estilo y siempre a la
                 moda. Las Air
                 Jordan 1 Low te ofrecen una parte de la historia y el legado Jordan con una comodidad que dura
                 todo el
@@ -267,11 +273,11 @@
                         </div>
 
                         <div style="">
-                                <i class="fa-brands fa-hashnode fa-xl" style="color: #FFD43B;margin-left:1%"></i>
-                                <i class="fa-brands fa-hashnode fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                                <i class="fa-brands fa-hashnode fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                                <i class="fa-brands fa-hashnode fa-xl" style="color: #787878;margin-left:-1%"></i>
-                                <i class="fa-brands fa-hashnode fa-xl" style="color: #787878;margin-left:-1%"></i>
+                                <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:1%"></i>
+                                <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                                <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                                <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                                <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
                             </div>
                     </div>
 
