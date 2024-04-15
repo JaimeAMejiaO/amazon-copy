@@ -1,6 +1,6 @@
-<div>
-    <div class="d-flex">
-        <div class="card col-9" style="margin-left: 50px;margin-right: 10px;border-radius: 8px;border: 2px solid black;">
+<div style="">
+    <div class="d-flex" style="margin-top:5%;">
+        <div class="card col-9" style="margin-left: 4%;margin-right: 10px;border-radius: 8px;border: 2px solid black;background-color:#F2F2F2">
             <h1 style="text-align:center">CARRITO</h1>
             <div style="border-radius: 8px;border: 2px solid black;margin: 20px;margin-bottom: 80px; ">
                 <div class="d-flex" style="">
@@ -17,14 +17,18 @@
                                 height="150" style=" border-radius: 8px;border: 2px solid black;margin-bottom: 10px">
                         </div>
                         <div class="col-11" style="">
-                            <div class="" style="background-color:white">
-                                <h2>AIR JORDAN 11</h2>
+                            <div class="" style="background-color:#F2F2F2">
+                            <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                style="font-size: 200%;font-weight:bold;text-align:center">AIR JORDAN 11</h2>
+                                
 
                             </div>
                             <div class="" style="margin-top: 50px;">
                                 <div class="d-flex" style="">
                                     <div class="col-3"style="margin-top: 5px;">
-                                        <h4 class="">CANTIDAD</h4>
+                                    
+                                        <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                style="font-size: 150%;font-weight:bold;text-align:center">CANTIDAD</h2>
                                     </div>
                                     <div class="col-2">
                                         <select class="form-select" aria-label="Default select example">
@@ -51,7 +55,8 @@
                         </div>
 
                         <div class="col-6" style=" margin-top: 50px;">
-                        <h1>120.000$</h1>
+                        <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                style="font-size: 200%;font-weight:bold;text-align:center">120.000$</h2>
                         </div>
                     </div>
 
@@ -67,12 +72,14 @@
 
 
 
-        <div class="col-3" style="width: 18rem; border-radius: 8px;border: 2px solid black;">
+        <div class="col-3" style="width: 18rem; border-radius: 8px;border: 2px solid black;background-color:#F2F2F2">
             <div class="card-body">
                 <br>
                 <br>
-                <h2 class="card-title" style="text-align:center">1 PRODUCTO</h2>
-                <h2 class="card-title" style="text-align:center">120.000$</h2>
+                <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                style="font-size: 200%;font-weight:bold;text-align:center">1 PRODUCTO</h2>
+                <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                style="font-size: 200%;font-weight:bold;text-align:center">120.000$</h2>
                 <br>
                 <br>
 
