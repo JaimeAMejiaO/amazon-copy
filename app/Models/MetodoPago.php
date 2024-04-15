@@ -11,6 +11,7 @@ class MetodoPago extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'num_tarjeta',
         'nombre_tarjeta',
         'fecha_vencimiento',
