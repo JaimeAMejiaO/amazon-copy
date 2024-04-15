@@ -7,18 +7,18 @@
         </div>
         <div class="mb-3 text-center">
             <label for="exampleInputEmail1" class="form-label text-center" style="">Caracteristicas
-                Categorias</label>
+             Categorias</label>
         </div>
         <div class="d-flex col">
             <div class="row mb-3">
                 <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <button class=" btn btn-outline-danger text-nowrap  " type="submit">-</button>
+                <button class=" btn btn-outline-danger text-nowrap  " type="submit">-</button>
             </div>
- <div class="row     mb-3">
+            <div class="row     mb-3">
                 <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <button class="col btn btn-outline-danger text-nowrap  " type="submit">-</button>
+                <button class="col btn btn-outline-danger text-nowrap  " type="submit">-</button>
             </div>
-            
+
 
         </div>
 
