@@ -15,6 +15,7 @@ class MetodoPagos extends Component
     public $cvv;
     public $usuario_actual;
     public $metodos_pago;
+    public $anio_actual;
 
     public function mount()
     {
@@ -23,6 +24,7 @@ class MetodoPagos extends Component
 
     public function render()
     {
+        $this->anio_actual = date('Y');
         $this->metodos_pago = MetodoPago::where('id_usuario', $this->usuario_actual->id)->get();
         return view('livewire.metodo_pagos.metodo-pagos');
     }
