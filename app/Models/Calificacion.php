@@ -10,6 +10,8 @@ class Calificacion extends Model
 {
     use HasFactory;
 
+    protected $table = 'calificaciones';
+
     protected $fillable = [
         'id',
         'rating_cal',

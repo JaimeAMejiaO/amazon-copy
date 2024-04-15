@@ -11,6 +11,7 @@ class CalificacionSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+
     public function run(): void
     {
         $calificacion = new Calificacion();
