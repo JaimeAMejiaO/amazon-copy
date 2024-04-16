@@ -84,6 +84,8 @@ class MetodoPagos extends Component
 
     public function update()
     {
+        $this->fecha_vencimiento = $this->anio_actual . '-' . $this->mes_actual . '-01';
+
         $this->validate([
             'num_tarjeta' => 'required',
             'nombre_tarjeta' => 'required',
@@ -110,6 +112,6 @@ class MetodoPagos extends Component
 
     public function resetUI()
     {
-        $this->reset(['num_tarjeta', 'nombre_tarjeta', 'fecha_vencimiento', 'cvv']);
+        $this->reset(['metodo_pago_id', 'num_tarjeta', 'nombre_tarjeta', 'fecha_vencimiento', 'cvv']);
     }
 }
