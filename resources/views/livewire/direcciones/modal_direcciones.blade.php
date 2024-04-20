@@ -16,11 +16,19 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Departamento</label>
-            <input type="email" class="form-control" id="exampleInputEmail1">
+            <select>
+                @foreach ($departamentos as $departamento)
+                    <option value="{{ $departamento }}">{{ $departamento }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Ciudad/Municipio</label>
-            <input type="email" class="form-control" id="exampleInputEmail1">
+            <select>
+                @foreach ($municipios as $municipio)
+                    <option value="{{ $municipio }}">{{ $municipio }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Barrio</label>

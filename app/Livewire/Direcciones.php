@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Direccion;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -13,8 +14,8 @@ class Direcciones extends Component
     public $num_tel;
     public $direccion;
     public $especificacion_dir;
-    public $departamento;
-    public $ciudad;
+    public $departamentos = [];
+    public $municipios = [];
     public $barrio;
     public $cod_postal;
     public $direcciones;
@@ -25,6 +26,22 @@ class Direcciones extends Component
     public function mount()
     {
         $this->usuario_actual = Auth::user();
+
+        $client = new Client();
+        $url = "https://www.datos.gov.co/resource/xdk5-pm3f.json";
+
+        $response = $client->request('GET', $url);
+
+        $responseData = json_decode($response->getBody()->getContents());
+
+        foreach ($responseData as $data) {
+            $this->departamentos[] = $data->departamento;
+            $this->municipios[] = $data->municipio;
+        }
+
+        // Eliminar duplicados
+        $this->departamentos = array_unique($this->departamentos);
+        $this->municipios = array_unique($this->municipios);
     }
 
     public function render()
@@ -44,8 +61,8 @@ class Direcciones extends Component
             $this->num_tel = $direccion->num_tel;
             $this->direccion = $direccion->direccion;
             $this->especificacion_dir = $direccion->especificacion_dir;
-            $this->departamento = $direccion->departamento;
-            $this->ciudad = $direccion->ciudad;
+            $this->departamentos = $direccion->departamento;
+            $this->municipios = $direccion->ciudad;
             $this->barrio = $direccion->barrio;
             $this->cod_postal = $direccion->cod_postal;
         } elseif ($opc == 2) {
