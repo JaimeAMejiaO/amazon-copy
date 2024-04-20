@@ -24,16 +24,16 @@
 
                             <p class="text-center">Nombre: {{ $direccion->nombre_completo }}</p>
                             <p class="text-center">Dirección: {{ $direccion->direccion }}</p>
-                            <p class="text-center">Teléfono: {{ $direccion->telefono }}</p>
+                            <p class="text-center">Teléfono: {{ $direccion->num_tel }}</p>
                             @if ($direccion->especificacion_dir)
-                                <p class="text-center">Especificación: {{ $direccion->especificacion_dir }}</p>
+                                <p class="text-center">Especificación de dirección: {{ $direccion->especificacion_dir }}</p>
                             @endif
                             <p class="text-center">{{ $direccion->departamento }}, {{ $direccion->ciudad }}
                                 @if ($direccion->barrio)
                                     , {{ $direccion->barrio }}
                                 @endif
                             </p>
-                            <p class="text-center">{{ $direccion->codigo_postal }}</p>
+                            <p class="text-center">Código Postal: {{ $direccion->cod_postal }}</p>
                             <div>
                                 <x-primary-button wire:click="abrir_modal_direccion({{$direccion->id}} , 1)">
                                     {{ 'Edit' }}

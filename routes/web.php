@@ -3,6 +3,7 @@
 use App\Livewire\CarroCompras;
 use App\Livewire\Categorias;
 use App\Livewire\Direcciones;
+use App\Livewire\Marcas;
 use App\Livewire\MetodoPagos;
 use App\Livewire\Principal;
 use App\Livewire\VerProductos;
@@ -37,3 +38,5 @@ Route::get('/ver-productos', VerProductos::class)->name('ver-productos');
 Route::get('/carro-compras', CarroCompras::class)->name('carro-compras');
 
 Route::get('/categorias', Categorias::class)->name('categorias');
+
+Route::get('/marcas', Marcas::class)->name('marcas');
