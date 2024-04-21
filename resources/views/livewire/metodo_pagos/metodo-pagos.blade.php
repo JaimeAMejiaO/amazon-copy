@@ -8,6 +8,16 @@
             </div>
 
             <div class="row row-cols-1 row-cols-md-3 g-4 m-4">
+                <div class="col" style="">
+                    <button class="btn btn-outline-dark " style="width:100%;height:100%" wire:click="abrir_modal_metodo(0 , 2)" class="btn btn-warning">
+                        <div class="text-center">
+                            <i class="fa-solid fa-plus fa-10x"></i>
+                            <h5 class="card-title text-center">Agregar Direccion</h5>
+                            <br>
+                            <br>
+                        </div>
+                    </button>
+                </div>
                 @foreach ($metodos_pago as $metodoPago)
                     <div class="col">
                         <div class="card">
@@ -19,14 +29,14 @@
                             </div>
                             <div class="card-footer text-muted d-flex justify-content-end align-items-center">
                                 <div>
-                                    <x-primary-button wire:click="abrir_modal_metodo({{ $metodoPago->id }}, 1)"
-                                        class="btn btn-success">
+                                    <button wire:click="abrir_modal_metodo({{ $metodoPago->id }}, 1)"
+                                        class="btn btn-warning">
                                         Editar
-                                    </x-primary-button>
-                                    <x-danger-button wire:click="delete({{ $metodoPago->id }})"
+                                    </button>
+                                    <button class="btn btn-dark" wire:click="delete({{ $metodoPago->id }})"
                                         wire:confirm="¿Está seguro que quiere eliminar este método de pago?">
                                         Eliminar
-                                    </x-danger-button>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -37,9 +47,6 @@
             <p>No hay métodos de pago creados.</p>
         @endif
 
-        <x-primary-button wire:click="abrir_modal_metodo(0 , 2)" class="btn btn-warning">
-            {{ 'Create' }}
-        </x-primary-button>
     </div>
     @include('livewire.metodo_pagos.metodo_pago_crear')
 

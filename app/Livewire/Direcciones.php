@@ -15,9 +15,9 @@ class Direcciones extends Component
     public $direccion;
     public $especificacion_dir;
     public $departamentos = [];
-    public $departamento_seleccionado;
+    public $departamento_seleccionado="Antioquia";
     public $municipios = [];
-    public $municipio_seleccionado;
+    public $municipio_seleccionado="Medellín";
     public $barrio;
     public $cod_postal;
     public $direcciones = [];
@@ -114,7 +114,7 @@ class Direcciones extends Component
             'ciudad' => $this->municipio_seleccionado,
             'barrio' => $this->barrio,
             'cod_postal' => $this->cod_postal,
-            'id_usuario' => $this->usuario_actual->id,
+            'id_usuario' => Auth::user()->id,
         ]);
 
         $this->dispatch('cerrar_modal_direccion');
