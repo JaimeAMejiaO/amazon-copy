@@ -52,7 +52,6 @@ class MetodoPagos extends Component
 
     public function store()
     {
-
         $this->fecha_vencimiento = $this->anio_actual . '-' . $this->mes_actual . '-01';
 
         $rules = [
