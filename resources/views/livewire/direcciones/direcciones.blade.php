@@ -17,68 +17,59 @@
 
                 {{-- este es un caso especial y tiene tamaño diferente a las otras tarjetas --}}
             </div>
-            <div class="col ">
-                <div class="card" style="margin-left:14px ">
-                    <p class="text-center">CASA JULIAN CARTAGO</p>
-                    <p class="text-center">Carrera 4 #18-32 Barrio el Llano </p>
-                    <p class="text-center">Tercer piso timbre que dice Julian </p>
-                    <p class="text-center">Cartago Valle, 70721 </p>
-                    <p class="text-center">3012222016</p>
-                    <div>
-                        <button class="btn btn-outline-success text-nowrap " type="submit" data-bs-toggle="modal"
-                            data-bs-target="#crear_direccion">Editar</button>
-                        <button class="btn btn-outline-danger text-nowrap  " type="submit">Eliminar</button>
-                    </div>
+            @if ($direcciones->count() > 0)
+                <div class="col ">
+                    @foreach ($direcciones as $direccion)
+                        <div class="card" style="margin-left:14px ">
 
+                            <p class="text-center">Nombre: {{ $direccion->nombre_completo }}</p>
+                            <p class="text-center">Dirección: {{ $direccion->direccion }}</p>
+                            <p class="text-center">Teléfono: {{ $direccion->num_tel }}</p>
+                            @if ($direccion->especificacion_dir)
+                                <p class="text-center">Especificación de dirección: {{ $direccion->especificacion_dir }}</p>
+                            @endif
+                            <p class="text-center">{{ $direccion->departamento }}, {{ $direccion->ciudad }}
+                                @if ($direccion->barrio)
+                                    , {{ $direccion->barrio }}
+                                @endif
+                            </p>
+                            <p class="text-center">Código Postal: {{ $direccion->cod_postal }}</p>
+                            <div>
+                                <x-primary-button wire:click="abrir_modal_direccion({{$direccion->id}} , 1)">
+                                    {{ 'Edit' }}
+                                </x-primary-button>
+                                <x-danger-button wire:click="delete({{ $direccion->id }})"
+                                    wire:confirm="¿Está seguro que quiere eliminar esta direccion?">
+                                    {{ 'Delete' }}
+                                </x-danger-button>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
+            @else
+                <p>No hay métodos de pago creados.</p>
+            @endif
 
-            </div>
+            <x-primary-button wire:click="abrir_modal_direccion(0 , 2)">
+                {{ 'Create' }}
+            </x-primary-button>
+
             {{-- /////////////////////////////////////////// --}}
-            <div class="col">
-                <div class="card">
-                    <p class="text-center">CASA JULIAN CARTAGO</p>
-                    <p class="text-center">Carrera 4 #18-32 Barrio el Llano </p>
-                    <p class="text-center">Tercer piso timbre que dice Julian </p>
-                    <p class="text-center">Cartago Valle, 70721 </p>
-                    <p class="text-center">3012222016</p>
-                    <div>
-                        <button class="btn btn-outline-success text-nowrap " type="submit" data-bs-toggle="modal"
-                            data-bs-target="#crear_direccion">Editar</button>
-                        <button class="btn btn-outline-danger text-nowrap  " type="submit">Eliminar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <p class="text-center">CASA JULIAN CARTAGO</p>
-                    <p class="text-center">Carrera 4 #18-32 Barrio el Llano </p>
-                    <p class="text-center">Tercer piso timbre que dice Julian </p>
-                    <p class="text-center">Cartago Valle, 70721 </p>
-                    <p class="text-center">3012222016</p>
-                    <div>
-                        <button class="btn btn-outline-success text-nowrap " type="submit" data-bs-toggle="modal"
-                            data-bs-target="#crear_direccion">Editar</button>
-                        <button class="btn btn-outline-danger text-nowrap  " type="submit">Eliminar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <p class="text-center">CASA JULIAN CARTAGO</p>
-                    <p class="text-center">Carrera 4 #18-32 Barrio el Llano </p>
-                    <p class="text-center">Tercer piso timbre que dice Julian </p>
-                    <p class="text-center">Cartago Valle, 70721 </p>
-                    <p class="text-center">3012222016</p>
-                    <div>
-                        <button class="btn btn-outline-success text-nowrap " type="submit" data-bs-toggle="modal"
-                            data-bs-target="#crear_direccion">Editar</button>
-                        <button class="btn btn-outline-danger text-nowrap  " type="submit">Eliminar</button>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </div>
 
     @include('livewire.direcciones.modal_direcciones')
+
+    <script>
+        document.addEventListener('livewire:initialized', function () {
+            const modal_crear = new bootstrap.Modal('#direccion_modal');
+
+            @this.on('abrir_modal_direccion', msg => {
+                modal_crear.show();
+            });
+            @this.on('cerrar_modal_direccion', msg => {
+                modal_crear.hide();
+            });
+        });    
+    </script>
 </div>
