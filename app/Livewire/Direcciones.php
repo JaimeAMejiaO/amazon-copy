@@ -15,9 +15,9 @@ class Direcciones extends Component
     public $direccion;
     public $especificacion_dir;
     public $departamentos = [];
-    public $departamento_seleccionado="Antioquia";
+    public $departamento_seleccionado = "Antioquia";
     public $municipios = [];
-    public $municipio_seleccionado="Medellín";
+    public $municipio_seleccionado = "Medellín";
     public $barrio;
     public $cod_postal;
     public $direcciones = [];
@@ -48,9 +48,7 @@ class Direcciones extends Component
 
     public function render()
     {
-        if ($this->usuario_actual) {
-            $this->direcciones = Direccion::where('id_usuario', $this->usuario_actual->id)->get();
-        }
+        $this->direcciones = Direccion::where('id_usuario', $this->usuario_actual->id)->get();
         return view('livewire.direcciones.direcciones');
     }
 
@@ -167,7 +165,6 @@ class Direcciones extends Component
             'municipio_seleccionado',
             'barrio',
             'cod_postal',
-            'usuario_actual',
             'titulo_modal',
             'tipo_modal',
         ]);

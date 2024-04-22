@@ -24,42 +24,42 @@
                 </div>
 
                 <!-- Iteración sobre las direcciones -->
-                @foreach ($direcciones as $direccion)
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $direccion->nombre_completo }}</h5>
-                                <p class="card-text"><strong>Dirección:</strong> {{ $direccion->direccion }}</p>
-                                <p class="card-text"><strong>Teléfono:</strong> {{ $direccion->num_tel }}</p>
-                                @if ($direccion->especificacion_dir)
-                                    <p class="card-text"><strong>Especificación:</strong>
-                                        {{ $direccion->especificacion_dir }}</p>
-                                @endif
-                                <p class="card-text"><strong>Ubicación:</strong> {{ $direccion->departamento }},
-                                    {{ $direccion->ciudad }}</p>
-                                @if ($direccion->barrio)
-                                    <p class="card-text"><strong>Barrio:</strong> {{ $direccion->barrio }}</p>
-                                @endif
-                                <p class="card-text"><strong>Código Postal:</strong> {{ $direccion->cod_postal }}</p>
-                            </div>
-                            <div class="card-footer text-muted d-flex justify-content-end align-items-center">
-                                <div >
-                                    <button wire:click="abrir_modal_direccion({{ $direccion->id }}, 1)"
-                                        class="btn btn-warning">
-                                        Editar
-                                    </button>
-                                    <button class="btn btn-dark" wire:click="delete({{ $direccion->id }})"
-                                        wire:confirm="¿Está seguro que quiere eliminar esta dirección?">
-                                        Eliminar
-                                    </button>
+                @if ($direcciones)
+                    @foreach ($direcciones as $direccion)
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $direccion->nombre_completo }}</h5>
+                                    <p class="card-text"><strong>Dirección:</strong> {{ $direccion->direccion }}</p>
+                                    <p class="card-text"><strong>Teléfono:</strong> {{ $direccion->num_tel }}</p>
+                                    @if ($direccion->especificacion_dir)
+                                        <p class="card-text"><strong>Especificación:</strong>
+                                            {{ $direccion->especificacion_dir }}</p>
+                                    @endif
+                                    <p class="card-text"><strong>Ubicación:</strong> {{ $direccion->departamento }},
+                                        {{ $direccion->ciudad }}</p>
+                                    @if ($direccion->barrio)
+                                        <p class="card-text"><strong>Barrio:</strong> {{ $direccion->barrio }}</p>
+                                    @endif
+                                    <p class="card-text"><strong>Código Postal:</strong> {{ $direccion->cod_postal }}
+                                    </p>
+                                </div>
+                                <div class="card-footer text-muted d-flex justify-content-end align-items-center">
+                                    <div>
+                                        <button wire:click="abrir_modal_direccion({{ $direccion->id }}, 1)"
+                                            class="btn btn-warning">
+                                            Editar
+                                        </button>
+                                        <button class="btn btn-dark" wire:click="delete({{ $direccion->id }})"
+                                            wire:confirm="¿Está seguro que quiere eliminar esta dirección?">
+                                            Eliminar
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-
-                <!-- Mensaje si no hay direcciones -->
-                @if ($direcciones->isEmpty())
+                    @endforeach
+                @else
                     <div class="col">
                         <div class="card h-100">
                             <div class="card-body text-center">
