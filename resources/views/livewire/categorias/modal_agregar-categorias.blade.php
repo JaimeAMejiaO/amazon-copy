@@ -1,10 +1,12 @@
 <x-modal title="Categorias" type="store" id="crear_categorias">
     {{-- El titulo tiene que ser variable ya que va a ser el mismo modal para edita y crear --}}
     <form>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Titulo Categoria</label>
-            <input type="name" class="form-control" id="titulo_categoria" aria-describedby="emailHelp">
-        </div>
+        <select class="form-select" aria-label="Default select example" wire:click.blur="departamento_seleccionado">
+            <option selected>Seleccionar Categoria</option>
+            @foreach ($departamentos_cat as $departamento)
+                <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+            @endforeach
+        </select>
         <div class="mb-3 text-center">
             <label for="exampleInputEmail1" class="form-label text-center" style="">Caracteristicas
                 Categorias</label>
