@@ -25,7 +25,7 @@ class CatProductos extends Model
         return $this->hasMany(Producto::class, 'id_categoria');
     }
 
-    public function departamentos(): BelongsTo
+    public function departamento(): BelongsTo
     {
         return $this->belongsTo(DepartamentoCat::class, 'id_depto');
     }
