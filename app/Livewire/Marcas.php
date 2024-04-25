@@ -16,11 +16,11 @@ class Marcas extends Component
     public function mount()
     {
         $this->usuario_actual = Auth::user();
+        $this->marcas = Marca::get();
     }
 
     public function render()
     {
-        $this->marcas = Marca::get();
         return view('livewire.marcas');
     }
 
@@ -32,18 +32,32 @@ class Marcas extends Component
         Marca::create([
             'nombre' => $this->nombre_marca,
         ]);
-
+        $this->marcas = Marca::get();
         $this->resetUI();
     }
 
-    public function update(){
+    public function boton_editar($marca_id)
+    {        
+        $marca = $this->marcas->where('id', $marca_id)->first();
+        $this->nombre_marca = $marca->nombre;
+        $marca->editar = 1;
+    }
+
+    public function update($marca_id){
         $this->validate([
             'nombre_marca' => 'required|max:25',
         ]);
-        Marca::find($this->marca_id)->update([
+        Marca::find($marca_id)->update([
             'nombre' => $this->nombre_marca,
         ]);
+        $this->dispatch('Cualquiermensaje');
+        $this->marcas = Marca::get();
+        $this->resetUI();
+    }
 
+    public function cancelar_editar()
+    {
+        $this->marcas = Marca::get();
         $this->resetUI();
     }
 
