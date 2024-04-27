@@ -96,11 +96,18 @@ class Categorias extends Component
             }
         }
 
-        $this->validate([
+        $rules = [
             'nombre_cat' => 'required|max:25',
             'array_cat' => 'required',
             'departamento_seleccionado' => 'not_in:0',
-        ]);
+        ];
+        $messages = [
+            'nombre_cat.required' => 'El campo nombre de categoría es obligatorio.',
+            'nombre_cat.max' => 'El campo nombre de categoría no puede tener más de 25 caracteres.',
+            'array_cat.required' => 'Debe seleccionar al menos una característica.',
+            'departamento_seleccionado.not_in' => 'Debe seleccionar un departamento.',
+        ];
+        $this->validate($rules, $messages);
 
         CatProductos::create([
             'nombre' => $this->nombre_cat,
@@ -126,11 +133,18 @@ class Categorias extends Component
             }
         }
 
-        $this->validate([
+        $rules = [
             'nombre_cat' => 'required|max:25',
             'array_cat' => 'required',
             'departamento_seleccionado' => 'not_in:0',
-        ]);
+        ];
+        $messages = [
+            'nombre_cat.required' => 'El campo nombre de categoría es obligatorio.',
+            'nombre_cat.max' => 'El campo nombre de categoría no puede tener más de 25 caracteres.',
+            'array_cat.required' => 'Debe seleccionar al menos una característica.',
+            'departamento_seleccionado.not_in' => 'Debe seleccionar un departamento.',
+        ];
+        $this->validate($rules, $messages);
 
         CatProductos::find($this->id_categoria)->update([
             'nombre' => $this->nombre_cat,
