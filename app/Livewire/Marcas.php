@@ -3,12 +3,21 @@
 namespace App\Livewire;
 
 use App\Models\Marca;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Marcas extends Component
 {
     public $marca_id; 
-    public $nombre;
+    public $nombre_marca;
+    public $usuario_actual;
+    public $marcas;
+
+    public function mount()
+    {
+        $this->usuario_actual = Auth::user();
+        $this->marcas = Marca::get();
+    }
 
     public function render()
     {
@@ -17,23 +26,38 @@ class Marcas extends Component
 
     public function store(){
         $this->validate([
-            'nombre' => 'required|max:25',
-        ]);
-        Marca::create([
-            'nombre' => $this->nombre,
+            'nombre_marca' => 'required|max:25',
         ]);
 
+        Marca::create([
+            'nombre' => $this->nombre_marca,
+        ]);
+        $this->marcas = Marca::get();
         $this->resetUI();
     }
 
-    public function update(){
-        $this->validate([
-            'nombre' => 'required|max:25',
-        ]);
-        Marca::find($this->marca_id)->update([
-            'nombre' => $this->nombre,
-        ]);
+    public function boton_editar($marca_id)
+    {        
+        $marca = $this->marcas->where('id', $marca_id)->first();
+        $this->nombre_marca = $marca->nombre;
+        $marca->editar = 1;
+    }
 
+    public function update($marca_id){
+        $this->validate([
+            'nombre_marca' => 'required|max:25',
+        ]);
+        Marca::find($marca_id)->update([
+            'nombre' => $this->nombre_marca,
+        ]);
+        $this->dispatch('Cualquiermensaje');
+        $this->marcas = Marca::get();
+        $this->resetUI();
+    }
+
+    public function cancelar_editar()
+    {
+        $this->marcas = Marca::get();
         $this->resetUI();
     }
 
@@ -45,6 +69,6 @@ class Marcas extends Component
 
     public function resetUI()
     {
-        $this->reset(['marca_id', 'nombre']);
+        $this->reset('marca_id', 'nombre_marca');
     }
 }

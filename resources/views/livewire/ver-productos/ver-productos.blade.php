@@ -64,14 +64,16 @@
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 200%;font-weight:bold;margin-left: 20px;margin-top:2%">120.000$</h3>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 150%;font-weight:bold;margin-left: 5%;">CATEGORIA</h3>
+                style="font-size: 150%;font-weight:bold;margin-left: 5%;">CATEGORIA: Zapatos</h3>
+            <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                style="font-size: 150%;font-weight:bold;margin-left: 5%;">CARACTERISTICAS</h3>
             <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 100%;font-weight:bold;margin-left: 10%;">COLORES:</p>
             <div style="margin-left: 10%;margin-bottom: 2%;">
                 <i class="fa-solid fa-circle fa-2xl" style="color: #FFD43B;"></i>
                 <i class="fa-solid fa-circle fa-2xl" style="color: #f50505;"></i>
                 <i class="fa-solid fa-circle fa-2xl" style="color: #05f52d;"></i>
-                
+
             </div>
             <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 100%;font-weight:bold;margin-left: 10%;">TALLAS:</p>
@@ -89,7 +91,8 @@
             </div>
 
         </div>
-        <div class="card mb-3" style="width: 18rem; border-radius: 8px;border: 2px solid black;margin-top:2%;margin-right:10%">
+        <div class="card mb-3"
+            style="width: 18rem; border-radius: 8px;border: 2px solid black;margin-top:2%;margin-right:10%">
             <div class="card-body">
 
                 <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
@@ -158,7 +161,8 @@
         <br>
 
         <h1 style="text-align:center">PREGUNTAS</h1>
-        <div class="card" style="margin-left: 80px;margin-right: 80px;border-radius: 8px;border: 2px solid black;background-color:#F2F2F2">
+        <div class="card"
+            style="margin-left: 80px;margin-right: 80px;border-radius: 8px;border: 2px solid black;background-color:#F2F2F2">
             <div style="border-radius: 8px;border: 2px solid black;margin: 20px;">
                 <div class="card-body; d-flex">
                     <div class="col-2" style="text-align:center;margin-top: 20px;">
@@ -267,18 +271,20 @@
                 <div class="card-body;">
                     <div class="d-flex" style="text-align:center;margin-top: 20px;">
                         <div class="col-2" style="">
-                            <p style="border-radius: 8px;border: 2px solid black; margin-left: 5%;background-color:#FFD43B">JAIME
+                            <p
+                                style="border-radius: 8px;border: 2px solid black; margin-left: 5%;background-color:#FFD43B">
+                                JAIME
                                 ANDRES MEJIA
                             </p>
                         </div>
 
                         <div style="">
-                                <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:1%"></i>
-                                <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                                <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                                <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                                <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                            </div>
+                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:1%"></i>
+                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        </div>
                     </div>
 
                     <p class="col;" style="margin-left: 20px;margin-top: 5px;">Lorem ipsum dolor sit amet,
@@ -296,7 +302,7 @@
                 </div>
 
             </div>
-            
+
         </div>
     </div>
     @include('livewire.ver-productos.modal_ver-productos')
