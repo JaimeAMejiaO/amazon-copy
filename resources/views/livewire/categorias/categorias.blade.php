@@ -28,9 +28,10 @@
                             style="font-size: 210%;font-weight:bold;text-align:center">Nombre categoria:
                             {{ $categoria->nombre }}</h3>
                         <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                            style="font-size: 120%;font-weight:bold;text-align:center">Caracteristicas:
+                            style="font-size: 120%;font-weight:bold;text-align:center;margin-bottom:8%">Caracteristicas:
                             {{ $categoria->array_cat }}</h3>
-                        <div class="d-flex align-items-end h-100" style="">
+                            
+                        <div class="card-footer text-muted d-flex justify-content-end align-items-center" style="">
                             <button wire:click="abrir_modal_categoria({{ $categoria->id }}, 1)" class="btn btn-warning">
                                 Editar
                             </button>

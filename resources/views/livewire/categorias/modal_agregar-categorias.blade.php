@@ -23,23 +23,27 @@
         <div class="mb-3 text-center">
             <label for="caracteristicas" class="form-label text-center" style="">Caracteristicas de la
                 categoria</label>
-            <br>
-            <input class="mt-4 mb-3" wire:model.blur="search"></input>
-            <a class="btn btn-primary">Buscar</a>
+            <div>
+                <input class="mt-4 mb-3" wire:model.blur="search"></input>
+                <a class="btn btn-warning">Buscar</a>
+            </div>
+
             @foreach ($caracteristicas as $array_cat => $caracteristica)
-                <div class="form-check">
+                <div class="form-check form-check-inline">
                     <input wire:click="seleccionarCaracteristica({{ $caracteristica->id }})"
                         {{ $magia_negra[$caracteristica->id] == true ? 'checked' : '' }}
-                        class="form-check-input reiniciar" type="checkbox" id="{{$caracteristica->id}}">
-                    <span class="form-check-label">
+                        class="form-check-input reiniciar" type="checkbox" id="{{ rand() . $caracteristica->id }}">
+                    <label class="form-check-label" for="{{ rand() . $caracteristica->id }}">
                         {{ $caracteristica->nombre }}
-                    </span>
+                    </label>
                 </div>
             @endforeach
             @error('array_cat')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-        {{ $caracteristicas->links('components.pagination-view') }}
+        <div class="d-flex justify-content-center">
+            {{ $caracteristicas->links('components.pagination-view') }}
+        </div>
     </form>
 </x-modal>
