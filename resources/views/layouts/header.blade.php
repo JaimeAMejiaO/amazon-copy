@@ -8,14 +8,12 @@
             <div class="input-group" style="background-color:#131921">
 
                 <li class="nav-item dropdown btn btn-outline-light ms-4 ">
-                    <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
+                    <a class="nav-link  " href="{{ route('departamentos') }}" role="button"
                         aria-expanded="false">
                         Todos
                     </a>
                     <ul class="dropdown-menu">
-                        @foreach ($departamentos_cat as $departamento_cat)
-                            <li><a class="dropdown-item" href="#">{{$departamento_cat->nombre}}</a></li>
-                        @endforeach
+                        
                     </ul>
                 </li>
 
