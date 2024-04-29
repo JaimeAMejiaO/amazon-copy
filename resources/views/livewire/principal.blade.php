@@ -8,7 +8,7 @@
                 </button>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="https://www.amazon.com/-/es/gp/help/customer/display.html?nodeId=508510&ref_=nav_cs_customerservice">Servicio al cliente</a>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="https://www.amazon.com/-/es/gp/browse.html?node=2238192011&ref_=nav_em_hmc_gc_allgc_0_2_27_2">Tarjetas de regalo</a>
-                <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="{{ route('vender_1') }}">Vender</a>
+                <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="{{ route('crear-producto') }}">Vender</a>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="{{ route('departamentos') }}">Departamentos</a>
                 <!-- Aquí pueden ir más botones si los necesitas -->
             </div>
@@ -97,8 +97,8 @@
                 <h4 class="offcanvas-title a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                     style="font-size: 150%;font-weight:bold;margin:5%;">Ayuda y configuracion</h4>
                 <div class="list-group">
-                    <button type="button" class="list-group-item list-group-item-action">Tu cuenta</button>
-                    <button type="button" class="list-group-item list-group-item-action">Carrito</button>
+                    <a type="button" class="list-group-item list-group-item-action"href="{{ route('editar_perfil') }}">Editar Perfil</a>
+                    <button type="button" class="list-group-item list-group-item-action"> Carrito</button>
 
                 </div>
 

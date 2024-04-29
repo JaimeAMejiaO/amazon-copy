@@ -75,8 +75,8 @@
                                     {{ __('categorias') }}
                                 </a>
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    {{ __('Editar Usuario') }}
+                                <a class="dropdown-item" href="{{ route('editar_perfil') }}">
+                                    {{ __('Editar Perfil') }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('marcas') }}">
                                     {{ __('Marcas') }}
