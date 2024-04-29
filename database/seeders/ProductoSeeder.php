@@ -17,7 +17,6 @@ class ProductoSeeder extends Seeder
     {
         $producto = new Producto();
         $producto->id = 1;
-        $producto->nombre = 'iPhone';
         $producto->id_categoria = 2;
         $producto->id_marca = 5;
         $producto->id_usuario = 1;
@@ -25,7 +24,6 @@ class ProductoSeeder extends Seeder
 
         $producto = new Producto();
         $producto->id = 2;
-        $producto->nombre = 'Camisa Oversize';
         $producto->id_categoria = 1;
         $producto->id_marca = 1 ;
         $producto->id_usuario = 1;

@@ -3,6 +3,7 @@
 use App\Livewire\CarroCompras;
 use App\Livewire\Categorias;
 use App\Livewire\Departamentos;
+use App\Livewire\CrearProducto;
 use App\Livewire\Direcciones;
 use App\Livewire\Marcas;
 use App\Livewire\MetodoPagos;
@@ -42,6 +43,16 @@ Route::get('/carro-compras', CarroCompras::class)->name('carro-compras');
 Route::get('/categorias', Categorias::class)->name('categorias');
 
 Route::get('/marcas', Marcas::class)->name('marcas');
+
+Route::get('/crear_producto', CrearProducto::class)->name('crear-producto');
+
+Route::get('/crear_producto', CrearProducto::class)->name('crear-producto');
+
+
+Route::get('/departamentos', Departamentos::class)->name('departamentos');
+
+Route::get('/vender_1', Vender_1::class)->name('vender_1');
+
 
 
 Route::get('/departamentos', Departamentos::class)->name('departamentos');

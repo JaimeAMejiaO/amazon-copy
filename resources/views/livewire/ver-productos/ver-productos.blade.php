@@ -1,6 +1,4 @@
 <div style="background-color:#F2F2F2">
-
-
     <div style=" " class="d-flex">
         <div class="col" style="">
             <div class="d-flex" style="">
@@ -246,18 +244,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
     <div style="">
         <br>
