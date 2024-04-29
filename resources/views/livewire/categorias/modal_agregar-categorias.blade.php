@@ -32,8 +32,8 @@
                 <div class="form-check form-check-inline">
                     <input wire:click="seleccionarCaracteristica({{ $caracteristica->id }})"
                         {{ $magia_negra[$caracteristica->id] == true ? 'checked' : '' }}
-                        class="form-check-input reiniciar" type="checkbox" id="{{ rand() . $caracteristica->id }}">
-                    <label class="form-check-label" for="{{ rand() . $caracteristica->id }}">
+                        class="form-check-input reiniciar" type="checkbox" id="{{rand().$caracteristica->id}}">
+                    <span class="form-check-label">
                         {{ $caracteristica->nombre }}
                     </label>
                 </div>
