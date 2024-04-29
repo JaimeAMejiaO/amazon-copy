@@ -65,7 +65,7 @@ class MetodoPagos extends Component
             'num_tarjeta.max' => 'El campo número de tarjeta no puede ser mayor a 16 numeros.',
             'nombre_tarjeta.required' => 'El campo nombre de tarjeta es obligatorio.',
             'fecha_vencimiento.required' => 'El campo fecha de vencimiento es obligatorio.',
-            'fecha_vencimiento.after_or_equal' => 'La fecha de vencimiento no puede ser mayor a la fecha actual.',
+            'fecha_vencimiento.after_or_equal' => 'La fecha de vencimiento no puede ser menor a la fecha actual.',
             'cvv.required' => 'El campo cvv es obligatorio.',
         ];
         $this->validate($rules, $messages);
@@ -85,13 +85,22 @@ class MetodoPagos extends Component
     {
         $this->fecha_vencimiento = $this->anio_actual . '-' . $this->mes_actual . '-01';
 
-        $this->validate([
-            'num_tarjeta' => 'required',
+        $rules = [
+            'num_tarjeta' => 'required|max:16',
             'nombre_tarjeta' => 'required',
             'fecha_vencimiento' => 'required|after_or_equal:today',
             'cvv' => 'required',
-        ]);
-
+        ];
+        $messages = [
+            'num_tarjeta.required' => 'El campo número de tarjeta es obligatorio.',
+            'num_tarjeta.max' => 'El campo número de tarjeta no puede ser mayor a 16 números.',
+            'nombre_tarjeta.required' => 'El campo nombre de tarjeta es obligatorio.',
+            'fecha_vencimiento.required' => 'El campo fecha de vencimiento es obligatorio.',
+            'fecha_vencimiento.after_or_equal' => 'La fecha de vencimiento no puede ser menor a la fecha actual.',
+            'cvv.required' => 'El campo CVV es obligatorio.',
+        ];
+        $this->validate($rules, $messages);
+        
         MetodoPago::find($this->metodo_pago_id)->update([
             'num_tarjeta' => $this->num_tarjeta,
             'nombre_tarjeta' => $this->nombre_tarjeta,
