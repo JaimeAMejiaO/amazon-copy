@@ -19,9 +19,20 @@
     <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
         <div class="offcanvas-header" style="background-color:#253340;">
             <div class="col-8">
-                
-                <h4 class="offcanvas-title a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                    style="font-size: 140%;font-weight:bold;margin:5%;color:#FFFFFF;"><i class="fa-solid fa-user fa-sm" style="color: #ffffff;margin-right:3%"></i>Hola,Usuario</h4>
+
+                @if (Auth::check())
+                    <h4 class="offcanvas-title a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                        style="font-size: 140%;font-weight:bold;margin:5%;color:#FFFFFF;"><i
+                            class="fa-solid fa-user fa-sm" style="color: #ffffff;margin-right:3%"></i>Hola,
+                        {{ Auth::user()->name }}</h4>
+                @else
+                    <h4 class="offcanvas-title a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                        style="font-size: 140%;font-weight:bold;margin:5%;color:#FFFFFF;"><i
+                            class="fa-solid fa-user fa-sm" style="color: #ffffff;margin-right:3%"></i>Hola,
+                        Invitado</h4>
+                @endif
+
+
             </div>
 
             <div>
@@ -33,10 +44,15 @@
                 <h4 class="offcanvas-title a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                     style="font-size: 150%;font-weight:bold;margin:5%;">Contenido y Dispositivos Digitales</h4>
                 <div class="list-group">
-                    <a type="button" class="list-group-item list-group-item-action" href="https://music.amazon.com/unlimited?ref_=nav_em__dm_hf_0_2_2_2">Amazon Music</a>
-                    <a type="button" class="list-group-item list-group-item-action" href="https://www.amazon.com/kindle-dbs/storefront?storeType=browse&node=154606011">E-readers Kindle y
+                    <a type="button" class="list-group-item list-group-item-action"
+                        href="https://music.amazon.com/unlimited?ref_=nav_em__dm_hf_0_2_2_2">Amazon Music</a>
+                    <a type="button" class="list-group-item list-group-item-action"
+                        href="https://www.amazon.com/kindle-dbs/storefront?storeType=browse&node=154606011">E-readers
+                        Kindle y
                         Libros</a>
-                    <a type="button" class="list-group-item list-group-item-action" href="https://www.amazon.com/-/es/gp/browse.html?node=2350149011&ref_=nav_em__adr_app_0_2_4_2">Amazon AppStore</a>
+                    <a type="button" class="list-group-item list-group-item-action"
+                        href="https://www.amazon.com/-/es/gp/browse.html?node=2350149011&ref_=nav_em__adr_app_0_2_4_2">Amazon
+                        AppStore</a>
 
                 </div>
             </div>
@@ -45,11 +61,10 @@
                 <h4 class="offcanvas-title a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                     style="font-size: 150%;font-weight:bold;margin:5%;">Buscar por departamento</h4>
                 <div class="list-group">
-                    <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
-                    <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
-                    <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
-                    <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
-
+                    @foreach ($departamentos_cat as $departamento_cat)
+                        <button type="button"
+                            class="list-group-item list-group-item-action">{{ $departamento_cat->nombre }}</button>
+                    @endforeach
                 </div>
 
             </div>
@@ -58,13 +73,21 @@
                 <h4 class="offcanvas-title a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                     style="font-size: 150%;font-weight:bold;margin:5%;">Programas y funcionalidades</h4>
                 <div class="list-group">
-                    <a type="button" class="list-group-item list-group-item-action" href="https://www.amazon.com/-/es/gp/browse.html?node=2238192011&ref_=nav_em_hmc_gc_allgc_0_2_27_2">Tarjetas de regalo</a>
-                    <a type="button" class="list-group-item list-group-item-action" href="https://www.amazon.com/finds?ref_=nav_em_allpf_foundit_d_0_1_1_30">Comprar por interes</a>
-                    <a type="button" class="list-group-item list-group-item-action" href="https://www.amazon.com/-/es/live?ref_=nav_em_sd_al_dest_0_2_28_2">Amazon Live</a>
-                    <a type="button" class="list-group-item list-group-item-action" href="https://www.amazon.com/-/es/gp/help/customer/display.html?nodeId=201910800&ref_=nav_em_full_store_dir_AG_shipping_0_2_29_2">Tienda Internacional</a>
-                    <a type="button" class="list-group-item list-group-item-action" href="https://www.amazon.com/b?node=70673024011&ref_=asc_surl_amsc&language=es&ref_=nav_em__amsc_hamburger_0_1_1_33">Amazon Second Chance </a>
+                    <a type="button" class="list-group-item list-group-item-action"
+                        href="https://www.amazon.com/-/es/gp/browse.html?node=2238192011&ref_=nav_em_hmc_gc_allgc_0_2_27_2">Tarjetas
+                        de regalo</a>
+                    <a type="button" class="list-group-item list-group-item-action"
+                        href="https://www.amazon.com/finds?ref_=nav_em_allpf_foundit_d_0_1_1_30">Comprar por interes</a>
+                    <a type="button" class="list-group-item list-group-item-action"
+                        href="https://www.amazon.com/-/es/live?ref_=nav_em_sd_al_dest_0_2_28_2">Amazon Live</a>
+                    <a type="button" class="list-group-item list-group-item-action"
+                        href="https://www.amazon.com/-/es/gp/help/customer/display.html?nodeId=201910800&ref_=nav_em_full_store_dir_AG_shipping_0_2_29_2">Tienda
+                        Internacional</a>
+                    <a type="button" class="list-group-item list-group-item-action"
+                        href="https://www.amazon.com/b?node=70673024011&ref_=asc_surl_amsc&language=es&ref_=nav_em__amsc_hamburger_0_1_1_33">Amazon
+                        Second Chance </a>
 
-                    
+
 
                 </div>
 

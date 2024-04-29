@@ -13,15 +13,9 @@
                         Todos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Zapatos</a></li>
-                        <li><a class="dropdown-item" href="#">Camisetas</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Juguetes</a></li>
-                        
-                        </li>
-                        <li><a class="dropdown-item" href="#">Peluches</a></li>
+                        @foreach ($departamentos_cat as $departamento_cat)
+                            <li><a class="dropdown-item" href="#">{{$departamento_cat->nombre}}</a></li>
+                        @endforeach
                     </ul>
                 </li>
 
@@ -86,7 +80,7 @@
                                 <a class="dropdown-item" href="#">
                                     {{ __('Editar Usuario') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('marcas')}}">
+                                <a class="dropdown-item" href="{{ route('marcas') }}">
                                     {{ __('Marcas') }}
                                 </a>
 
