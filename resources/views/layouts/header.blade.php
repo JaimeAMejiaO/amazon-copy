@@ -13,9 +13,7 @@
                         Todos
                     </a>
                     <ul class="dropdown-menu">
-                        @foreach ($departamentos_cat as $departamento_cat)
-                            <li><a class="dropdown-item" href="#">{{$departamento_cat->nombre}}</a></li>
-                        @endforeach
+                            <li><a class="dropdown-item" href="#">Nombre dpto</a></li>
                     </ul>
                 </li>
 
