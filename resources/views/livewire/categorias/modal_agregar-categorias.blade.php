@@ -30,7 +30,7 @@
                 <div class="form-check">
                     <input wire:click="seleccionarCaracteristica({{ $caracteristica->id }})"
                         {{ $magia_negra[$caracteristica->id] == true ? 'checked' : '' }}
-                        class="form-check-input reiniciar" type="checkbox" id="{{$caracteristica->id}}">
+                        class="form-check-input reiniciar" type="checkbox" id="{{rand().$caracteristica->id}}">
                     <span class="form-check-label">
                         {{ $caracteristica->nombre }}
                     </span>
