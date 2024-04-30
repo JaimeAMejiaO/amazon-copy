@@ -47,10 +47,11 @@
 
         <div class="col-3" style="margin-top:2%;">
             <h1 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 240%;font-weight:bold;text-align:center">AIR JORDAN 11</h1>
+                style="font-size: 240%;font-weight:bold;text-align:center">{{ $modelo_actual->nombre }}</h1>
 
             <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 200%;font-weight:bold;margin-left: 5%;">NIKE</h2>
+                style="font-size: 200%;font-weight:bold;margin-left: 5%;"> {{ $modelo_actual->producto->marca->nombre }}
+            </h2>
 
             <div style="margin-top:5%">
                 <i class="fa-solid fa-star fa-2xl" style="color: #FFD43B;margin-left:4%"></i>
@@ -60,18 +61,23 @@
                 <i class="fa-solid fa-star fa-2xl" style="color: #787878;margin-left:-0.5%"></i>
             </div>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 200%;font-weight:bold;margin-left: 20px;margin-top:2%">120.000$</h3>
+                style="font-size: 200%;font-weight:bold;margin-left: 20px;margin-top:2%">$ {{ $modelo_actual->precio }}
+            </h3>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 150%;font-weight:bold;margin-left: 5%;">CATEGORIA: Zapatos</h3>
+                style="font-size: 150%;font-weight:bold;margin-left: 5%;">
+                {{ $modelo_actual->producto->id_categoria->nombre }} </h3>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 150%;font-weight:bold;margin-left: 5%;">CARACTERISTICAS</h3>
-            <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                style="font-size: 150%;font-weight:bold;margin-left: 5%;">Caracteristicas</h3>
+            @foreach ($explode_array_cat as $titulo_caracteristica => $valor_caracteristica)
+                <p></b>{{ $titulo_caracteristica }}:</b> {{ $valor_caracteristica }}</p>
+            @endforeach
+            <!--
+                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 100%;font-weight:bold;margin-left: 10%;">COLORES:</p>
             <div style="margin-left: 10%;margin-bottom: 2%;">
                 <i class="fa-solid fa-circle fa-2xl" style="color: #FFD43B;"></i>
                 <i class="fa-solid fa-circle fa-2xl" style="color: #f50505;"></i>
                 <i class="fa-solid fa-circle fa-2xl" style="color: #05f52d;"></i>
-
             </div>
             <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 100%;font-weight:bold;margin-left: 10%;">TALLAS:</p>
@@ -86,6 +92,12 @@
                     <option value="4">12</option>
                     <option value="4">12.5</option>
                 </select>
+            </div>
+        -->
+            <div>
+                @foreach ($producto_modelos as $producto_modelo)
+                    <p>{{ $producto_modelo->nombre }}</p>
+                @endforeach
             </div>
 
         </div>

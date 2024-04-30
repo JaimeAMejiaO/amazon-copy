@@ -23,7 +23,7 @@ class ProductoModelo extends Model
         'id_producto',
     ];
 
-    public function productos(): BelongsTo
+    public function producto(): BelongsTo
     {
         return $this->belongsTo(Producto::class, 'id_producto');
     }
