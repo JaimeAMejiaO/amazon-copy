@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\CarroCompra;
 use App\Models\Producto;
 use App\Models\ProductoModelo;
 use Livewire\Component;
@@ -10,15 +11,12 @@ class VerProductos extends Component
 {
     public $id_producto;
     public $modelo_actual;
-    public $nombre_nuevo_modelo;
-    public $desc_nuevo_modelo;
-    public $precio_nuevo_modelo;
-    public $stock_nuevo_modelo;
     public $producto_modelos;
     public $array_cat; //Obtener las caracteristicas de la categoria con su información
     public $explode_array_cat; //Divis 
     public $colores = []; //Obtener los colores de los modelos
     public $tallas = []; //Obtener las tallas de los modelos
+    public $cant_seleccionada; //Cantidad seleccionada del producto que se quiere enviar al carro
 
     public function mount()
     {
@@ -31,6 +29,7 @@ class VerProductos extends Component
         $this->modelo_actual = $this->producto_modelos->first();
         $this->array_cat = explode('~', $this->modelo_actual->array_cat);
         $this->explode_array_cat = array();
+        //dd($this->modelo_actual->producto->categoria->nombre);
 
         foreach ($this->array_cat as $cat) {
             //Dividir el elemento en key y value usando ":"
@@ -66,7 +65,7 @@ class VerProductos extends Component
                 $this->tallas[] = $explode_array_cat['Talla'];
             }
         }
-        dd($this->colores, $this->tallas);
+        //dd($this->modelo_actual->stock);
     }
 
     public function render()
@@ -75,30 +74,29 @@ class VerProductos extends Component
         return view('livewire.ver-productos.ver-productos');
     }
 
-    public function store()
+    public function send_to_cart()
     {
+        //dd($this->cant_seleccionada);
+        
         $rules = [
-            'nombre_nuevo_modelo' => 'required',
-            'desc_nuevo_modelo' => 'required',
-            'precio_nuevo_modelo' => 'required',
-            'stock_nuevo_modelo' => 'required',
+            'cant_seleccionada' => 'required',
         ];
 
         $messages = [
-            'nombre_nuevo_modelo.required' => 'El campo nombre es requerido',
-            'desc_nuevo_modelo.required' => 'El campo descripción es requerido',
-            'precio_nuevo_modelo.required' => 'El campo precio es requerido',
-            'stock_nuevo_modelo.required' => 'El campo stock es requerido',
+            'cant_seleccionada.required' => 'La cantidad es requerida',
         ];
 
         $this->validate($rules, $messages);
 
-        ProductoModelo::create([
-            'nombre' => $this->nombre_nuevo_modelo,
-            'desc_prod' => $this->desc_nuevo_modelo,
-            'precio' => $this->precio_nuevo_modelo,
-            'stock' => $this->stock_nuevo_modelo,
-            'id_producto' => $this->id_producto,
+        CarroCompra::create([
+            'cant' => $this->cant_seleccionada,
+            'id_usuario' => auth()->user()->id,
+            'id_prod_mod' => $this->modelo_actual->id,
         ]);
+    }
+
+    public function resetUI()
+    {
+        $this->reset('cant_seleccionada');
     }
 }

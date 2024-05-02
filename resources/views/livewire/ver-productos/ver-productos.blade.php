@@ -65,7 +65,7 @@
             </h3>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 150%;font-weight:bold;margin-left: 5%;">
-                {{ $modelo_actual->producto->id_categoria->nombre }} </h3>
+                {{ $modelo_actual->producto->categoria->nombre }} </h3>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 150%;font-weight:bold;margin-left: 5%;">Caracteristicas</h3>
             @foreach ($explode_array_cat as $titulo_caracteristica => $valor_caracteristica)
@@ -107,18 +107,17 @@
 
                 <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                     style="font-size: 200%;font-weight:bold;margin-left: 20px;margin-top:5%;margin-bottom:15%;text-align:center">
-                    120.000$</h3>
+                    {{ $modelo_actual->precio }}$</h3>
 
                 <div class="d-flex">
                     <div class="col-6"style="margin-top: 5px;">
-                        <h4 class="">CANTIDAD</h4>
+                        <h4 class="">Cantidad disponible: {{ $modelo_actual->stock }} </h4>
                     </div>
                     <div class="col-4">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                        <select wire:model="cant_seleccionada" name="cant_seleccionada" id="cant_seleccionada">
+                            @for ($i = 1; $i <= $modelo_actual->stock; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                         </select>
                     </div>
 
@@ -130,8 +129,8 @@
                     <br>
                     <br>
                     <div>
-                        <button class="btn btn-outline-dark text-nowrap" data-bs-toggle="modal"
-                            data-bs-target="#modal_producto">AGREGAR AL CARRO</button>
+                        <button class="btn btn-outline-dark text-nowrap" wire:click="send_to_cart"
+                            data-bs-toggle="modal" data-bs-target="#modal_producto">AGREGAR AL CARRO</button>
                     </div>
                     <br>
                     <div>
@@ -150,20 +149,8 @@
     <div style="">
         <div style="margin-top:3%;margin-left:15%;margin-right:15%;background-color:#F2F2F2">
 
-            <h3 class="card-title" style="text-align:center;">DESCRIPCION</h3>
-            <p class="card-title" style="text-align:center">Disfruta de un look con estilo y siempre a la
-                moda. Las Air
-                Jordan 1 Low te ofrecen una parte de la historia y el legado Jordan con una comodidad que dura
-                todo el
-                día. Elige los colores y sal a la calle con el icónico perfil diseñado con una combinación de
-                materiales
-                de alta calidad y una unidad Air encapsulada en el talón e un look con estilo y siempre a la
-                moda. Las Air
-                Jordan 1 Low te ofrecen una parte de la historia y el legado Jordan con una comodidad que dura
-                todo el
-                día. Elige los colores y sal a la calle con el icónico perfil diseñado con una combinación de
-                materiales
-                de alta calidad y una unidad Air encapsulada en el talón.</p>
+            <h3 class="card-title" style="text-align:center;">Descripción</h3>
+            <p class="card-title" style="text-align:center"> {{ $modelo_actual->desc_prod }} </p>
 
         </div>
         <br>
