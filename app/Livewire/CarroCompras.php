@@ -11,17 +11,32 @@ class CarroCompras extends Component
     public $cant_productos;
     public $array_productos;
     public $cant_seleccionada;
-    public $precio_total = 0;
+    public $valor_total = 0;
 
     public function render()
     {
-        $this->array_productos = CarroCompra::with('producto_modelo')->get(); //Trae una coleccion todos los productos que agrego el usuario a su carro
-        $this->cant_seleccionada;
-        
-
-        //dd($this->array_productos[0]->producto_modelo[0]->nombre);
-
+        $this->array_productos = CarroCompra::with('producto_modelo')->where('id_usuario', auth()->user()->id)->get(); //Trae una coleccion todos los productos que agrego el usuario a su carro
+        $this->valor_total = 0;
+        foreach ($this->array_productos as $producto) {
+            $this->valor_total += $producto->valor_total;
+        }
         return view('livewire.carro_compras.carro-compras');
+    }
+
+    public function aumentarCantidad($id_producto)
+    {
+        $producto = CarroCompra::find($id_producto);
+        $producto->cant = $producto->cant + 1;
+        $producto->valor_total = $producto->cant * $producto->producto_modelo->precio;
+        $producto->save();
+    }
+
+    public function disminuirCantidad($id_producto)
+    {
+        $producto = CarroCompra::find($id_producto);
+        $producto->cant = $producto->cant - 1;
+        $producto->valor_total = $producto->cant * $producto->producto_modelo->precio;
+        $producto->save();
     }
 
     public function delete($id_producto)

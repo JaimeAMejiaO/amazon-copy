@@ -48,7 +48,7 @@
         <div class="col-3" style="margin-top:2%;">
             <h1 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 240%;font-weight:bold;text-align:center">{{ $modelo_actual->nombre }}</h1>
-
+            <button href="redirect_nuevo_modelo"></button>
             <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 200%;font-weight:bold;margin-left: 5%;"> {{ $modelo_actual->producto->marca->nombre }}
             </h2>
@@ -118,6 +118,11 @@
                             @for ($i = 1; $i <= $modelo_actual->stock; $i++)
                                 <option value="{{ $i }}">{{ $i }}</option>
                             @endfor
+                            @error('cant_seleccionada')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </select>
                     </div>
 

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->integer('cant')->default(0);
+            $table->integer('valor_total')->default(0); 
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_prod_mod');
 

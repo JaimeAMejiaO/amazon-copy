@@ -10,6 +10,7 @@ use Livewire\Component;
 class VerProductos extends Component
 {
     public $id_producto;
+    public $id_producto_modelo;
     public $modelo_actual;
     public $producto_modelos;
     public $array_cat; //Obtener las caracteristicas de la categoria con su información
@@ -18,14 +19,15 @@ class VerProductos extends Component
     public $tallas = []; //Obtener las tallas de los modelos
     public $cant_seleccionada; //Cantidad seleccionada del producto que se quiere enviar al carro
 
-    public function mount()
+    public function mount($id)
     {
         //Obtener el producto padre
         //Producto::where('id', $this->id_producto)->first()->id
         //Obtener el modelo producto que se selecciono
         //ProductoModelo::where('id_producto', $this->id_producto)->first();
-        $this->id_producto = 5;
-        $this->producto_modelos = ProductoModelo::with('producto')->where('id_producto', $this->id_producto)->get();
+        $this->id_producto = $id;
+        $this->id_producto_modelo = ProductoModelo::find($id);
+        $this->producto_modelos = ProductoModelo::with('producto')->where('id_producto', $this->id_producto_modelo->id_producto)->get();
         $this->modelo_actual = $this->producto_modelos->first();
         $this->array_cat = explode('~', $this->modelo_actual->array_cat);
         $this->explode_array_cat = array();
@@ -76,8 +78,6 @@ class VerProductos extends Component
 
     public function send_to_cart()
     {
-        //dd($this->cant_seleccionada);
-
         if (CarroCompra::where('id_prod_mod', $this->modelo_actual->id)->exists()) {
             $carro = CarroCompra::where('id_prod_mod', $this->modelo_actual->id)->first();
             //dd($carro->cant + $this->cant_seleccionada);
@@ -91,12 +91,13 @@ class VerProductos extends Component
             $rules = [
                 'cant_seleccionada' => 'required',
             ];
-
+            
             $messages = [
                 'cant_seleccionada.required' => 'La cantidad es requerida',
             ];
-
+            
             $this->validate($rules, $messages);
+            //dd('entre');
 
             CarroCompra::create([
                 'cant' => $this->cant_seleccionada,

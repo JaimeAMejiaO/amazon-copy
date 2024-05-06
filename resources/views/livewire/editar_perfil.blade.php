@@ -13,10 +13,10 @@
                 <div class="row">
                     <div class="col-auto">
                         <label class="card-title text-center mb-2"
-                            style="font-size: 1.5rem; font-weight: bold;">NOMBRE</label>
+                            style="font-size: 1.5rem; font-weight: bold;">Nombres</label>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Ej.: CARLOS ESTEBAN ">
+                        <input wire:model="name" type="text" class="form-control" placeholder="Ingrese su nombre acá" value="{{ $usuario->name }}" required>
                     </div>
                 </div>
 
@@ -24,33 +24,21 @@
                 <div class="row">
                     <div class="col-auto">
                         <label class="card-title text-center mb-2"
-                            style="font-size: 1.5rem; font-weight: bold;">APELLIDO</label>
+                            style="font-size: 1.5rem; font-weight: bold;">Apellidos</label>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Ej.: RENTERIA MURILLO ">
+                        <input wire:model.blur="apell" type="text" class="form-control" placeholder="Ingrese sus apellidos acá" value="{{ $usuario->apell }}" required>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-auto">
                         <label for="categoria" class="card-title text-center mb-2"
-                            style="font-size: 1.5rem; font-weight: bold;">NUMERO</label>
+                            style="font-size: 1.5rem; font-weight: bold;">Número de telefono</label>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" pattern="\d{13}" title="Debe contener 13 dígitos"
-                            placeholder="Ingrese su número telefónico" required>
-                    </div>
-
-                </div>
-
-
-                <div class="row">
-                    <div class="col-auto">
-                        <label for="categoria" class="card-title text-center mb-2"
-                            style="font-size: 1.5rem; font-weight: bold;">EMAIL</label>
-                    </div>
-                    <div class="col">
-                        <input type="email" class="form-control" placeholder="correo@gmail.com">
+                        <input wire:model.blur="celular" type="text" class="form-control" pattern="\d{13}" title="Debe contener 13 dígitos"
+                            placeholder="Ingrese su celular acá" value="{{ $usuario->celular }}" required>
                     </div>
 
                 </div>
@@ -59,16 +47,28 @@
                 <div class="row">
                     <div class="col-auto">
                         <label for="categoria" class="card-title text-center mb-2"
-                            style="font-size: 1.5rem; font-weight: bold;">FECHA NACIMIENTO</label>
+                            style="font-size: 1.5rem; font-weight: bold;">E-mail</label>
                     </div>
                     <div class="col">
-                        <input type="date" class="form-control">
+                        <input wire:model.blur="email" type="email" class="form-control" placeholder="amazon.copy@amazon.com" value=" {{ $usuario->email }}">
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-auto">
+                        <label for="categoria" class="card-title text-center mb-2"
+                        style="font-size: 1.5rem; font-weight: bold;">Fecha de nacimiento</label>
+                    </div>
+                    <div class="col">
+                        <input wire:model.blur="fecha_nac" type="date" class="form-control">
                     </div>
 
                 </div>
 
                 <div class="text-center">
-                    <button wire:click="store" class="btn btn-warning btn-lg font-weight-bold"
+                    <button wire:click="update" class="btn btn-warning btn-lg font-weight-bold"
                         style="margin-top:10%;margin-bottom:5%">Actualizar</button>
                 </div>
 

@@ -8,7 +8,7 @@
             <div class="input-group" style="background-color:#131921">
 
                 <li class="nav-item dropdown btn btn-outline-light ms-4 ">
-                    <a class="nav-link  " href="{{ route('departamentos') }}" role="button"
+                    <a class="nav-link"  role="button"
                         aria-expanded="false">
                         Todos
                     </a>
