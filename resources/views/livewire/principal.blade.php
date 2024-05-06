@@ -7,9 +7,8 @@
                     <i class="fa-solid fa-bars fa-sm" style="color: #ffffff;"></i> Todo
                 </button>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="https://www.amazon.com/-/es/gp/help/customer/display.html?nodeId=508510&ref_=nav_cs_customerservice">Servicio al cliente</a>
-                <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="https://www.amazon.com/-/es/gp/browse.html?node=2238192011&ref_=nav_em_hmc_gc_allgc_0_2_27_2">Tarjetas de regalo</a>
+                <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="#">Tarjetas de regalo</a>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="{{ route('crear-producto') }}">Vender</a>
-                <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="{{ route('departamentos') }}">Departamentos</a>
                 <!-- Aquí pueden ir más botones si los necesitas -->
             </div>
         </nav>
