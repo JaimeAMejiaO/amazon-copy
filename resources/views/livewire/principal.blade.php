@@ -10,13 +10,9 @@
                     href="https://www.amazon.com/-/es/gp/help/customer/display.html?nodeId=508510&ref_=nav_cs_customerservice">Servicio
                     al cliente</a>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit"
-                    href="https://www.amazon.com/-/es/gp/browse.html?node=2238192011&ref_=nav_em_hmc_gc_allgc_0_2_27_2">Tarjetas
-                    de regalo</a>
+                    href="{{ route('tarjeta-regalo') }}">Tarjetas de regalo</a>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit"
                     href="{{ route('crear-producto') }}">Vender</a>
-                <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="https://www.amazon.com/-/es/gp/help/customer/display.html?nodeId=508510&ref_=nav_cs_customerservice">Servicio al cliente</a>
-                <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="{{ route('tarjeta-regalo') }}">Tarjetas de regalo</a>
-                <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="{{ route('crear-producto') }}">Vender</a>
                 <!-- Aquí pueden ir más botones si los necesitas -->
             </div>
         </nav>
@@ -69,7 +65,7 @@
                     style="font-size: 150%;font-weight:bold;margin:5%;">Buscar por departamento</h4>
                 <div class="list-group">
                     @foreach ($departamentos_cat as $departamento_cat)
-                        <button wire:click="actualizar_vista_productos({{$departamento_cat->id}})" type="button"
+                        <button wire:click="actualizar_vista_productos({{ $departamento_cat->id }})" type="button"
                             class="list-group-item list-group-item-action">{{ $departamento_cat->nombre }}</button>
                     @endforeach
                 </div>
@@ -122,9 +118,26 @@
             @foreach ($all_productos as $producto)
                 <div class="col" style="height:">
                     <div class="card h-100" style="background-color:#F2F2F2">
-                        <a wire:click="redirect_det({{$producto->id}})">
-                            <img src="{{ asset('img/j11.jpeg') }}" class="card-img-top" alt="..."width="120"
-                                height="300">
+                        <a wire:click="redirect_det({{ $producto->id }})">
+                            @if ($producto->id == 1)
+                                <img src="{{ asset('img/15promax.jpg') }}" class="card-img-top" alt="..."
+                                    width="120" height="300">
+                            @elseif ($producto->id == 2)
+                                <img src="{{ asset('img/adidascamisa.webp') }}" class="card-img-top" alt="..."
+                                    width="120" height="300">
+                            @elseif ($producto->id == 3)
+                                <img src="{{ asset('img/j1.jpeg') }}" class="card-img-top" alt="..."
+                                    width="120" height="300">
+                            @elseif ($producto->id == 8)
+                                <img src="{{ asset('img/alien.webp') }}" class="card-img-top" alt="..."
+                                    width="120" height="300">
+                            @elseif ($producto->id == 11)
+                                <img src="{{ asset('img/11.jpeg') }}" class="card-img-top" alt="..."
+                                    width="120" height="300">
+                            @elseif ($producto->id == 10)
+                                <img src="{{ asset('img/acer.jpeg') }}" class="card-img-top" alt="..."
+                                    width="120" height="300">
+                            @endif
                         </a>
                         <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                             style="font-size: 120%;font-weight:bold;margin:5%">{{ $producto->nombre }}
