@@ -17,7 +17,7 @@ class VerProductos extends Component
     public $explode_array_cat; //Divis 
     public $colores = []; //Obtener los colores de los modelos
     public $tallas = []; //Obtener las tallas de los modelos
-    public $cant_seleccionada; //Cantidad seleccionada del producto que se quiere enviar al carro
+    public $cant_seleccionada = 1; //Cantidad seleccionada del producto que se quiere enviar al carro
 
     public function mount($id)
     {
@@ -72,22 +72,22 @@ class VerProductos extends Component
 
     public function render()
     {
-
         return view('livewire.ver-productos.ver-productos');
     }
 
     public function send_to_cart()
     {
-        if (CarroCompra::where('id_prod_mod', $this->modelo_actual->id)->exists()) {
-            $carro = CarroCompra::where('id_prod_mod', $this->modelo_actual->id)->first();
+        if (CarroCompra::where('id_prod_mod', $this->id_producto_modelo->id)->exists()) {
+            $carro = CarroCompra::where('id_prod_mod', $this->id_producto_modelo->id)->first();
             //dd($carro->cant + $this->cant_seleccionada);
-            if ($carro->cant + $this->cant_seleccionada > $this->modelo_actual->stock) {
+            if ($carro->cant + $this->cant_seleccionada > $this->id_producto_modelo->stock) {
                 dump('No hay suficiente stock');
             } else {
                 $carro->cant = $carro->cant + $this->cant_seleccionada;
                 $carro->save();
             }
         } else {
+            //dd('AAAAAAAAAAAAAAAAAAAAAAAAAAAA');
             $rules = [
                 'cant_seleccionada' => 'required',
             ];
@@ -102,9 +102,15 @@ class VerProductos extends Component
             CarroCompra::create([
                 'cant' => $this->cant_seleccionada,
                 'id_usuario' => auth()->user()->id,
-                'id_prod_mod' => $this->modelo_actual->id,
+                'id_prod_mod' => $this->id_producto_modelo->id,
             ]);
         }
+
+    }
+
+    public function redirect_nuevo_modelo()
+    {
+        redirect()->route('crear-modelo-producto', ['id' => $this->id_producto_modelo->id_producto]);
     }
 
     public function resetUI()

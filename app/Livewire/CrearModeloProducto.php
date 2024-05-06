@@ -18,14 +18,14 @@ class CrearModeloProducto extends Component
     public $stock;
     public $producto_principal;
     
-    public function mount()
+    public function mount($id)
     {
+        $this->producto_principal = Producto::where('id', $id)->first();
         //
     }
 
     public function render()
     {
-        $this->producto_principal = Producto::where('id', 1)->first();
         $this->cat_raiz = $this->producto_principal->id_categoria;
         if ($this->cat_raiz != $this->cat_deffer) {
             $this->cat_deffer = $this->cat_raiz;
@@ -75,7 +75,7 @@ class CrearModeloProducto extends Component
                 $caracteristicas_to_array .= '~' . $value['nombre'] . ':' . $value['valor'];
         }
 
-        ProductoModelo::create([
+        $producto = ProductoModelo::create([
             'nombre' => $this->nombre_modelo,
             'desc_prod' => $this->desc_prod,
             'array_cat' => $caracteristicas_to_array,
@@ -84,6 +84,8 @@ class CrearModeloProducto extends Component
             'id_producto' => $this->producto_principal->id,
         ]);
 
+        //dd($producto);
 
+        redirect()->route('ver-productos', ['id' => $producto->id]);
     }
 }

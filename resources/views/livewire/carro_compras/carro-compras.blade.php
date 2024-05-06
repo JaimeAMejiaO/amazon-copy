@@ -15,14 +15,6 @@
                                     <input class="form-check-input" type="checkbox" value=""
                                         id="flexCheckDefault">
                                 </div>
-
-
-                                <div class="text-start" style="margin-top: 5%;margin-left: 5%;">
-                                    <button class="btn btn-warning text-nowrap" type="submit">Editar</button>
-                                    <button class="btn btn-dark text-nowrap" type="submit">Eliminar</button>
-                                </div>
-
-
                             </div>
                             <div class="d-flex col-6" style="text-align:center;margin-top: 20px;">
                                 <div class="col-5" style="">

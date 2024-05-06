@@ -82,9 +82,6 @@
                                 <a class="dropdown-item" href="{{ route('marcas') }}">
                                     {{ __('Marcas') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('crear-modelo-producto') }}">
-                                    {{ __('Crear Modelo') }}
-                                </a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
