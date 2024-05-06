@@ -7,7 +7,7 @@
                     <i class="fa-solid fa-bars fa-sm" style="color: #ffffff;"></i> Todo
                 </button>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="https://www.amazon.com/-/es/gp/help/customer/display.html?nodeId=508510&ref_=nav_cs_customerservice">Servicio al cliente</a>
-                <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="#">Tarjetas de regalo</a>
+                <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="{{ route('tarjeta-regalo') }}">Tarjetas de regalo</a>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="{{ route('crear-producto') }}">Vender</a>
                 <!-- Aquí pueden ir más botones si los necesitas -->
             </div>
