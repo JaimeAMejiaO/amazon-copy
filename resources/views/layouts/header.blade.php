@@ -8,7 +8,7 @@
             <div class="input-group" style="background-color:#131921">
 
                 <li class="nav-item dropdown btn btn-outline-light ms-4 ">
-                    <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
+                    <a class="nav-link  " href="{{ route('departamentos') }}" role="button"
                         aria-expanded="false">
                         Todos
                     </a>
@@ -75,8 +75,8 @@
                                     {{ __('categorias') }}
                                 </a>
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    {{ __('Editar Usuario') }}
+                                <a class="dropdown-item" href="{{ route('editar_perfil') }}">
+                                    {{ __('Editar Perfil') }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('marcas') }}">
                                     {{ __('Marcas') }}

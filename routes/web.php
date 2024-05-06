@@ -2,12 +2,13 @@
 
 use App\Livewire\CarroCompras;
 use App\Livewire\Categorias;
-use App\Livewire\CrearModeloProducto;
 use App\Livewire\CrearProducto;
 use App\Livewire\Direcciones;
+use App\Livewire\EditarPerfil;
 use App\Livewire\Marcas;
 use App\Livewire\MetodoPagos;
 use App\Livewire\Principal;
+use App\Livewire\Vender_1;
 use App\Livewire\VerProductos;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +47,8 @@ Route::get('/marcas', Marcas::class)->name('marcas');
 Route::get('/crear_producto', CrearProducto::class)->name('crear-producto');
 
 Route::get('/crear_modelo_producto', CrearModeloProducto::class)->name('crear-modelo-producto');
+
+
+Route::get('/departamentos', Departamentos::class)->name('departamentos');
+
+Route::get('/editar_perfil', EditarPerfil::class)->name('editar_perfil');
