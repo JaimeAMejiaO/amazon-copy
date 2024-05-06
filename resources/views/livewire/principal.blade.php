@@ -6,6 +6,14 @@
                     data-bs-target="#sidebar">
                     <i class="fa-solid fa-bars fa-sm" style="color: #ffffff;"></i> Todo
                 </button>
+                <a class="btn btn-outline-light text-nowrap ms-1" type="submit"
+                    href="https://www.amazon.com/-/es/gp/help/customer/display.html?nodeId=508510&ref_=nav_cs_customerservice">Servicio
+                    al cliente</a>
+                <a class="btn btn-outline-light text-nowrap ms-1" type="submit"
+                    href="https://www.amazon.com/-/es/gp/browse.html?node=2238192011&ref_=nav_em_hmc_gc_allgc_0_2_27_2">Tarjetas
+                    de regalo</a>
+                <a class="btn btn-outline-light text-nowrap ms-1" type="submit"
+                    href="{{ route('crear-producto') }}">Vender</a>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="https://www.amazon.com/-/es/gp/help/customer/display.html?nodeId=508510&ref_=nav_cs_customerservice">Servicio al cliente</a>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="{{ route('tarjeta-regalo') }}">Tarjetas de regalo</a>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit" href="{{ route('crear-producto') }}">Vender</a>
@@ -61,7 +69,7 @@
                     style="font-size: 150%;font-weight:bold;margin:5%;">Buscar por departamento</h4>
                 <div class="list-group">
                     @foreach ($departamentos_cat as $departamento_cat)
-                        <button type="button"
+                        <button wire:click="actualizar_vista_productos({{$departamento_cat->id}})" type="button"
                             class="list-group-item list-group-item-action">{{ $departamento_cat->nombre }}</button>
                     @endforeach
                 </div>
@@ -96,7 +104,9 @@
                 <h4 class="offcanvas-title a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                     style="font-size: 150%;font-weight:bold;margin:5%;">Ayuda y configuracion</h4>
                 <div class="list-group">
-                    <a type="button" class="list-group-item list-group-item-action"href="{{ route('editar_perfil') }}">Editar Perfil</a>
+                    <a type="button"
+                        class="list-group-item list-group-item-action"href="{{ route('editar_perfil') }}">Editar
+                        Perfil</a>
                     <button type="button" class="list-group-item list-group-item-action"> Carrito</button>
 
                 </div>
@@ -109,273 +119,30 @@
 
     <div>
         <div class="row row-cols-1 row-cols-md-4 g-4 m-4" style=" ">
-            <div class="col" style="height:">
-                <div class="card h-100" style="background-color:#F2F2F2">
-                    <a href="{{ route('ver-productos') }}">
-                        <img src="{{ asset('img/j11.jpeg') }}" class="card-img-top" alt="..."width="120"
-                            height="300">
-                    </a>
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 120%;font-weight:bold;margin:5%">Nike Air Jordan 11" Gratitude 2023 para
-                        hombre
-                    </h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                    </div>
+            @foreach ($all_productos as $producto)
+                <div class="col" style="height:">
+                    <div class="card h-100" style="background-color:#F2F2F2">
+                        <a wire:click="redirect_det({{$producto->id}})">
+                            <img src="{{ asset('img/j11.jpeg') }}" class="card-img-top" alt="..."width="120"
+                                height="300">
+                        </a>
+                        <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                            style="font-size: 120%;font-weight:bold;margin:5%">{{ $producto->nombre }}
+                        </h4>
+                        <div class="" style="">
+                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
+                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        </div>
 
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #74C0FC;margin-left:5%"></i>
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #B197FC;margin-left:0%"></i>
+                        <div style="margin-top:4%">
+                            <p style="font-size: 170%;font-weight:bold;margin-left:5%">$ {{ $producto->precio }}</p>
+                        </div>
                     </div>
-                    <div style="margin-top:4%">
-                        <p style="font-size: 170%;font-weight:bold;margin-left:5%">$130.000</p>
-                    </div>
-
                 </div>
-            </div>
-            <div class="col" style="">
-                <div class="card h-100" style="background-color:#F2F2F2">
-                    <a href="{{ route('ver-productos') }}">
-                        <img src="{{ asset('img/j10.jpeg') }}" class="card-img-top" alt="..."width="120"
-                            height="300">
-                    </a>
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 120%;font-weight:bold;margin:5%">Jordan Hombres Air 10 Retro
-                    </h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                    </div>
-
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
-                    </div>
-                    <div style="margin-top:4%" class="">
-                        <p style="font-size: 170%;font-weight:bold;margin-left:5%">$180.000</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col" style="">
-                <div class="card h-100" style="background-color:#F2F2F2">
-                    <a href="{{ route('ver-productos') }}">
-                        <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="..."width="120"
-                            height="300">
-                    </a>
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 120%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para hombre
-                    </h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                    </div>
-
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #74C0FC;"></i>
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;"></i>
-                    </div>
-                    <div style="margin-top:4%">
-                        <p style="font-size: 170%;font-weight:bold;margin-left:5%">$190.000</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col" style="">
-                <div class="card h-100" style="background-color:#F2F2F2">
-                    <a href="{{ route('ver-productos') }}">
-                        <img src="{{ asset('img/j8.jpeg') }}" class="card-img-top" alt="..."width="120"
-                            height="300">
-                    </a>
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 120%;font-weight:bold;margin:5%">Jordan Hombres Air 8 Retro Zapatos De
-                        Basquetbol
-                    </h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                    </div>
-
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #c80e0e;margin-left:5%"></i>
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;"></i>
-                    </div>
-                    <div style="margin-top:4%">
-                        <p style="font-size: 170%;font-weight:bold;margin-left:5%">$210.000</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col" style="">
-                <div class="card h-100" style="background-color:#F2F2F2">
-                    <a href="{{ route('ver-productos') }}">
-                        <img src="{{ asset('img/j7.jpeg') }}" class="card-img-top" alt="..."width="120"
-                            height="300">
-                    </a>
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 120%;font-weight:bold;margin:5%">Zapatos Air Jordan 7 Retro para hombre
-                    </h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                    </div>
-
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
-                    </div>
-                    <div style="margin-top:4%">
-                        <p style="font-size: 170%;font-weight:bold;margin-left:5%">$100.000</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col" style="">
-                <div class="card h-100" style="background-color:#F2F2F2">
-                    <a href="{{ route('ver-productos') }}">
-                        <img src="{{ asset('img/j6.jpeg') }}" class="card-img-top" alt="..."width="120"
-                            height="300">
-                    </a>
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 120%;font-weight:bold;margin:5%">Jordan 6 Retro Tenis para hombre
-                    </h4>
-                    <div class="" style="">
-
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                    </div>
-
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #c80e0e;margin-left:5%"></i>
-                    </div>
-                    <div style="margin-top:4%">
-                        <p style="font-size: 170%;font-weight:bold;margin-left:5%">$135.000</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col" style="">
-                <div class="card h-100" style="background-color:#F2F2F2">
-                    <a href="{{ route('ver-productos') }}">
-                        <img src="{{ asset('img/j5.jpeg') }}" class="card-img-top" alt="..."width="120"
-                            height="300">
-                    </a>
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 120%;font-weight:bold;margin:5%">Nike Hombres Air Jordan 5 Retro Se
-                    </h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                    </div>
-
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #B197FC;margin-left:5%"></i>
-                    </div>
-                    <div style="margin-top:4%">
-                        <p style="font-size: 170%;font-weight:bold;margin-left:5%">$220.000</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col" style="">
-                <div class="card h-100" style="background-color:#F2F2F2">
-                    <a href="{{ route('ver-productos') }}">
-                        <img src="{{ asset('img/j4.jpeg') }}" class="card-img-top" alt="..."width="120"
-                            height="300">
-                    </a>
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 120%;font-weight:bold;margin:5%">Nike Jordan Air 4 Retro unisex para adultos
-                    </h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                    </div>
-
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;margin-left:5%"></i>
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #FFD43B;"></i>
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #74C0FC;"></i>
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #B197FC;"></i>
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #c80e0e;"></i>
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #17fd1b;"></i>
-                    </div>
-                    <div style="margin-top:4%">
-                        <p style="font-size: 170%;font-weight:bold;margin-left:5%">$130.000</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col" style="">
-                <div class="card h-100" style="background-color:#F2F2F2">
-                    <a href="{{ route('ver-productos') }}">
-                        <img src="{{ asset('img/j3.jpeg') }}" class="card-img-top" alt="..."width="120"
-                            height="300">
-                    </a>
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 120%;font-weight:bold;margin:5%">Jordan Big Kid 3 Retro Fear
-                    </h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                    </div>
-
-                    <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 100%;font-weight:bold;margin:5%">Colores:</h4>
-                    <div class="" style="">
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #FFD43B;margin-left:5%"></i>
-                        <i class="fa-solid fa-circle fa-2xl" style="color: #74C0FC;"></i>
-                    </div>
-                    <div style="margin-top:4%">
-                        <p style="font-size: 170%;font-weight:bold;margin-left:5%">$199.000</p>
-                    </div>
-
-                </div>
-            </div>
-
-
+            @endforeach
         </div>
     </div>
 

@@ -14,6 +14,7 @@ class Pedido extends Model
         'id',
         'fecha_pedido',
         'costo_pedido',
+        'success',
         'id_usuario',
         'id_carro',
     ];

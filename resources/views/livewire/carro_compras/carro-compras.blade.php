@@ -15,14 +15,6 @@
                                     <input class="form-check-input" type="checkbox" value=""
                                         id="flexCheckDefault">
                                 </div>
-
-
-                                <div class="text-start" style="margin-top: 5%;margin-left: 5%;">
-                                    <button class="btn btn-warning text-nowrap" type="submit">Editar</button>
-                                    <button class="btn btn-dark text-nowrap" type="submit">Eliminar</button>
-                                </div>
-
-
                             </div>
                             <div class="d-flex col-6" style="text-align:center;margin-top: 20px;">
                                 <div class="col-5" style="">
@@ -34,11 +26,11 @@
                                     <div class="" style="background-color:#F2F2F2">
                                         <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                                             style="font-size: 200%;font-weight:bold;text-align:center">
-                                            {{ $producto_modelo->producto_modelo[0]->nombre }} </h2>
+                                            {{ $producto_modelo->producto_modelo->nombre }} </h2>
                                         <br>
                                         <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                                             style="font-size: 75%;font-weight:bold;text-align:center">
-                                            {{ $producto_modelo->producto_modelo[0]->desc_prod }} </p>
+                                            {{ $producto_modelo->producto_modelo->desc_prod }} </p>
                                     </div>
                                     <div class="" style="margin-top: 50px;">
                                         <div class="d-flex" style="">
@@ -48,16 +40,11 @@
                                                     style="font-size: 150%;font-weight:bold;text-align:center">Cantidad:
                                                 </h2>
                                             </div>
-                                            <div class="col-2">
-                                                <select wire:model.live="cant_seleccionada"
-                                                    value="Cantidad seleccionada" name="cant_seleccionada"
-                                                    id="cant_seleccionada" id="{{ rand() . $producto_modelo->id }}">
-                                                    <option value="{{ $producto_modelo->cant }}" selected>
-                                                        {{ $producto_modelo->cant }}</option>
-                                                    @for ($i = 1; $i <= $producto_modelo->producto_modelo[0]->stock; $i++)
-                                                        <option value="{{ $i }}">{{ $i }}</option>
-                                                    @endfor
-                                                </select>
+                                            <div class="col-2 d-flex justify-content-between me-4">
+                                                <button wire:click="disminuirCantidad({{$producto_modelo->id}})">-</button>
+                                                <input type="number" class="form-control" id="exampleFormControlInput1"
+                                                    placeholder="1" value="{{$producto_modelo->cant}}" readonly>
+                                                <button wire:click="aumentarCantidad({{$producto_modelo->id}})">+</button>
                                             </div>
                                             <div>
                                                 <button class="btn btn-outline-danger text-nowrap" type="submit"
@@ -68,10 +55,9 @@
                                 </div>
 
                                 <div class="col-6" style=" margin-top: 50px;">
-                                    <h2 wire:model="precio_suma"
-                                        class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                    <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                                         style="font-size: 200%;font-weight:bold;text-align:center">
-                                        {{ $producto_modelo->producto_modelo[0]->precio * $cant_seleccionada }} $</h2>
+                                        {{ $producto_modelo->producto_modelo->precio * $producto_modelo->cant }} $</h2>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +73,7 @@
                 <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                     style="font-size: 200%;font-weight:bold;text-align:center">PRODUCTO</h2>
                 <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                    style="font-size: 200%;font-weight:bold;text-align:center"> {{ $precio_total }} $</h2>
+                    style="font-size: 200%;font-weight:bold;text-align:center">{{$valor_total}}$</h2>
                 <br>
                 <br>
 
@@ -98,8 +84,7 @@
                     <br>
 
                     <div>
-                        <a class="btn btn-outline-dark text-nowrap" href="{{ route('metodo-pagos') }}">PROCEDER CON EL
-                            PAGO</a>
+                        <a class="btn btn-outline-dark text-nowrap" wire:click="hacer_pedido">Proceder al pedido</a>
                     </div>
 
 

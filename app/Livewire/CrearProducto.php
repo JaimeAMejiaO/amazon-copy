@@ -98,7 +98,7 @@ class CrearProducto extends Component
             'id_producto' => $producto->id,
         ]);
 
-
+        redirect()->route('ver-productos', ['id' => $producto->id]);
     }
 
     public function resetUI()

@@ -16,6 +16,7 @@ class CarroCompra extends Model
     protected $fillable = [
         'id',
         'cant',
+        'valor_total',
         'id_usuario',
         'id_prod_mod',
     ];
@@ -25,8 +26,8 @@ class CarroCompra extends Model
         return $this->belongsTo(User::class, 'id_usuario');
     }
 
-    public function producto_modelo() :HasMany
+    public function producto_modelo() :BelongsTo
     {
-        return $this->hasMany(ProductoModelo::class, 'id');
+        return $this->belongsTo(ProductoModelo::class, 'id_prod_mod');
     }
 }

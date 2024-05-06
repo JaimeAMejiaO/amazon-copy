@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->date('fecha_pedido');
             $table->integer('costo_pedido');
+            $table->boolean('success')->default(false);
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_carro');
 

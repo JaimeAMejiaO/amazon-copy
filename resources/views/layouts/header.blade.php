@@ -9,6 +9,10 @@
 
                 <li class="nav-item dropdown btn btn-outline-light ms-4 ">
                     
+                    <a class="nav-link"  role="button"
+                        aria-expanded="false">
+                        Todos
+                    </a>
                     <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Nombre dpto</a></li>
                     </ul>
@@ -77,9 +81,6 @@
                                 </a>
                                 <a class="dropdown-item" href="{{ route('marcas') }}">
                                     {{ __('Marcas') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('crear-modelo-producto') }}">
-                                    {{ __('Crear Modelo') }}
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
