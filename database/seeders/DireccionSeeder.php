@@ -27,7 +27,7 @@ class DireccionSeeder extends Seeder
             'ciudad' => $faker->city,
             'barrio' => $faker->streetName,
             'cod_postal' => $faker->postcode,
-            'id_usuario' => $faker->numberBetween(1, 6),
+            'id_usuario' => $faker->numberBetween(1, 5),
             ]);
         }   
     }
