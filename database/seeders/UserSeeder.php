@@ -47,12 +47,5 @@ class UserSeeder extends Seeder
         $user4->email = 's.potes@utp.edu.co';
         $user4->password = bcrypt('Contrasena123');
         $user4->save();
-        
-        $user5 = new User();
-        $user5->name = 'Bryan';
-        $user5->apell = 'Munoz';
-        $user5->email = 'bryan.munoz@utp.edu.co';
-        $user5->password = bcrypt('Contrasena123');
-        $user5->save();
     }
 }

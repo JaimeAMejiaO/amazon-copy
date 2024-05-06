@@ -23,7 +23,7 @@ class MetodoPagoSeeder extends Seeder
                 'nombre_tarjeta' => $faker->name,
                 'fecha_vencimiento' => $faker->creditCardExpirationDate,
                 'cvv' => $faker->randomNumber(3),
-                'id_usuario' => $faker->numberBetween(1, 6),
+                'id_usuario' => $faker->numberBetween(1, 5),
             ]);
         }
     }

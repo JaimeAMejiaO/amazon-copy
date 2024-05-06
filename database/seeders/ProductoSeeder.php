@@ -15,18 +15,6 @@ class ProductoSeeder extends Seeder
      */
     public function run(): void
     {
-        $producto = new Producto();
-        $producto->id = 1;
-        $producto->id_categoria = 2;
-        $producto->id_marca = 5;
-        $producto->id_usuario = 1;
-        $producto->save();
-
-        $producto = new Producto();
-        $producto->id = 2;
-        $producto->id_categoria = 1;
-        $producto->id_marca = 1 ;
-        $producto->id_usuario = 1;
-        $producto->save();
+        
     }
 }
