@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('carro_compras', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('cant');
+            $table->integer('cant')->default(0);
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_prod_mod');
 
