@@ -51,5 +51,3 @@ Route::get('/crear_producto', CrearProducto::class)->name('crear-producto');
 Route::get('/crear_modelo_producto', CrearModeloProducto::class)->name('crear-modelo-producto');
 
 Route::get('/editar_perfil', EditarPerfil::class)->name('editar_perfil');
-
-Route::get('/crear_pedido', CrearPedido::class)->name('crear_pedido');
