@@ -11,6 +11,8 @@ class CarroCompra extends Model
 {
     use HasFactory;
 
+    protected $table = 'carro_compras';
+
     protected $fillable = [
         'id',
         'cant',
@@ -25,6 +27,6 @@ class CarroCompra extends Model
 
     public function producto_modelo() :HasMany
     {
-        return $this->hasMany(ProductoModelo::class, 'id_prod_mod');
+        return $this->hasMany(ProductoModelo::class, 'id');
     }
 }

@@ -77,22 +77,33 @@ class VerProductos extends Component
     public function send_to_cart()
     {
         //dd($this->cant_seleccionada);
-        
-        $rules = [
-            'cant_seleccionada' => 'required',
-        ];
 
-        $messages = [
-            'cant_seleccionada.required' => 'La cantidad es requerida',
-        ];
+        if (CarroCompra::where('id_prod_mod', $this->modelo_actual->id)->exists()) {
+            $carro = CarroCompra::where('id_prod_mod', $this->modelo_actual->id)->first();
+            //dd($carro->cant + $this->cant_seleccionada);
+            if ($carro->cant + $this->cant_seleccionada > $this->modelo_actual->stock) {
+                dump('No hay suficiente stock');
+            } else {
+                $carro->cant = $carro->cant + $this->cant_seleccionada;
+                $carro->save();
+            }
+        } else {
+            $rules = [
+                'cant_seleccionada' => 'required',
+            ];
 
-        $this->validate($rules, $messages);
+            $messages = [
+                'cant_seleccionada.required' => 'La cantidad es requerida',
+            ];
 
-        CarroCompra::create([
-            'cant' => $this->cant_seleccionada,
-            'id_usuario' => auth()->user()->id,
-            'id_prod_mod' => $this->modelo_actual->id,
-        ]);
+            $this->validate($rules, $messages);
+
+            CarroCompra::create([
+                'cant' => $this->cant_seleccionada,
+                'id_usuario' => auth()->user()->id,
+                'id_prod_mod' => $this->modelo_actual->id,
+            ]);
+        }
     }
 
     public function resetUI()

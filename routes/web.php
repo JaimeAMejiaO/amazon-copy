@@ -2,6 +2,7 @@
 
 use App\Livewire\CarroCompras;
 use App\Livewire\Categorias;
+use App\Livewire\CrearModeloProducto;
 use App\Livewire\CrearProducto;
 use App\Livewire\Direcciones;
 use App\Livewire\Marcas;
@@ -43,3 +44,5 @@ Route::get('/categorias', Categorias::class)->name('categorias');
 Route::get('/marcas', Marcas::class)->name('marcas');
 
 Route::get('/crear_producto', CrearProducto::class)->name('crear-producto');
+
+Route::get('/crear_modelo_producto', CrearModeloProducto::class)->name('crear-modelo-producto');

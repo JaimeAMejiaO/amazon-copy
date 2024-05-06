@@ -37,4 +37,9 @@ class ProductoModelo extends Model
     {
         return $this->hasMany(Calificacion::class, 'id_prod_mod');
     }
+
+    public function carro_compra(): HasMany
+    {
+        return $this->hasMany(CarroCompra::class, 'id_prod_mod');
+    }
 }
