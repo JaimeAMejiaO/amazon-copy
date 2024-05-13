@@ -25,6 +25,8 @@ class VerProductos extends Component
 
     public $talla_seleccionada;
 
+    public $almacenamiento_seleccionado;
+
     public function mount($id)
     {
         //Obtener el producto padre
@@ -81,15 +83,22 @@ class VerProductos extends Component
             $this->talla_seleccionada = $this->tallas[0];
         }
 
-        if (isset($this->explode_array_cat['RAM'])) {
-            $this->ram = explode(',', $this->explode_array_cat['RAM']);
-        }
-
+    
+        $indice = 0;
         if (isset($this->explode_array_cat['Almacenamiento'])) {
-            $this->almacenamiento = explode(',', $this->explode_array_cat['Almacenamiento']);
+            $almacenamiento = explode(',', $this->explode_array_cat['Almacenamiento']);
+            foreach ($almacenamiento as $almace) {
+                if ($indice == 0) {
+                    $this->almacenamiento[$almace] = true;
+                    $this->almacenamiento_seleccionado = $almace;
+                } else {
+                    $this->almacenamiento[$almace] = false;
+                }
+                $indice++;
+
+            }
+            
         }
-
-
         /*Obtener las tallas de los modelos
         if (isset($this->explode_array_cat['Talla'])) {
             $producto_modelos = $this->producto_modelos->where('id', '!=', $this->modelo_actual->id);
@@ -124,6 +133,19 @@ class VerProductos extends Component
         $this->colores[$color_seleccionado] = true;
     }
 
+    public function seleccionar_almacenamiento($almacenamiento_escogido)
+    {
+        if ($this->almacenamiento_seleccionado) {
+
+            $this->almacenamiento[$this->almacenamiento_seleccionado] = false;
+            $this->almacenamiento_seleccionado = $almacenamiento_escogido;
+        } else {
+            $this->almacenamiento_seleccionado = $almacenamiento_escogido;
+        }
+        $this->almacenamiento[$almacenamiento_escogido] = true;
+        
+    }
+
 
     public function send_to_cart()
     {
@@ -145,21 +167,27 @@ class VerProductos extends Component
             //dd($caracteristicas);
 
         }
+        if (isset($this->explode_array_cat['Almacenamiento'])) {
+            foreach ($this->almacenamiento as $almace => $value) {
+                if ($value = true) {
+                    $caracteristicas['Almacenamiento'] = $almace;
+                }
+            }
+        }
 
         if (isset($this->explode_array_cat['RAM'])) {
             $this->ram = explode(',', $this->explode_array_cat['RAM']);
         }
 
-        if (isset($this->explode_array_cat['Almacenamiento'])) {
-            $this->almacenamiento = explode(',', $this->explode_array_cat['Almacenamiento']);
-        }
+        
+
         $caracteristicas_texto = '';
-            foreach ($caracteristicas as $key => $value) {
-                if ($caracteristicas_texto == '')
-                    $caracteristicas_texto .= $key . ':' . $value;
-                else
-                    $caracteristicas_texto .= '~' . $key . ':' . $value;
-            }
+        foreach ($caracteristicas as $key => $value) {
+            if ($caracteristicas_texto == '')
+                $caracteristicas_texto .= $key . ':' . $value;
+            else
+                $caracteristicas_texto .= '~' . $key . ':' . $value;
+        }
         if (CarroCompra::where('id_prod_mod', $this->id_producto_modelo->id)->where('caracteristicas', $caracteristicas_texto)->exists()) {
             $carro = CarroCompra::where('id_prod_mod', $this->id_producto_modelo->id)->where('caracteristicas', $caracteristicas_texto)->first();
             //dd($carro->cant + $this->cant_seleccionada);
