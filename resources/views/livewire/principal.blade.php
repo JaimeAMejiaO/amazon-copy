@@ -117,8 +117,9 @@
         <div class="row row-cols-1 row-cols-md-4 g-4 m-4" style=" ">
             @foreach ($all_productos as $producto)
                 <div class="col" style="height:">
-                    <div class="card h-100" style="background-color:#F2F2F2">
-                        <a wire:click="redirect_det({{ $producto->id }})">
+                    <a wire:click="redirect_det({{ $producto->id }})">
+                        <div class="card h-100" style="background-color:#F2F2F2">
+
                             @if ($producto->id == 1)
                                 <img src="{{ asset('img/15promax.jpg') }}" class="card-img-top" alt="..."
                                     width="120" height="300">
@@ -138,22 +139,24 @@
                                 <img src="{{ asset('img/acer.jpeg') }}" class="card-img-top" alt="..."
                                     width="120" height="300">
                             @endif
-                        </a>
-                        <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                            style="font-size: 120%;font-weight:bold;margin:5%">{{ $producto->nombre }}
-                        </h4>
-                        <div class="" style="">
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        </div>
 
-                        <div style="margin-top:4%">
-                            <p style="font-size: 170%;font-weight:bold;margin-left:5%">$ {{ $producto->precio }}</p>
+                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                style="font-size: 120%;font-weight:bold;margin:5%">{{ $producto->nombre }}
+                            </h4>
+                            <div class="" style="">
+                                <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:5%"></i>
+                                <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                                <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                                <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                                <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                            </div>
+
+                            <div style="margin-top:4%">
+                                <p style="font-size: 170%;font-weight:bold;margin-left:5%">$ {{ $producto->precio }}
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>

@@ -48,7 +48,7 @@
         </div>
         <div class="col-2" style="margin-top:2%;">
             <h1 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                    style="font-size: 240%;font-weight:bold;text-align:center">{{ $id_producto_modelo->nombre }}</h1>
+                style="font-size: 240%;font-weight:bold;text-align:center">{{ $id_producto_modelo->nombre }}</h1>
 
             <div style="margin-top:5%">
                 <i class="fa-solid fa-star fa-2xl" style="color: #FFD43B;margin-left:4%"></i>
@@ -62,9 +62,9 @@
                 {{ $id_producto_modelo->precio }}
             </h3>
             <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                    style="font-size: 200%;font-weight:bold;margin-left: 5%;">
-                    {{ $id_producto_modelo->producto->marca->nombre }}
-                </h2>
+                style="font-size: 200%;font-weight:bold;margin-left: 5%;">
+                {{ $id_producto_modelo->producto->marca->nombre }}
+            </h2>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                 style="font-size: 150%;font-weight:bold;margin-left: 5%;">
                 {{ $id_producto_modelo->producto->categoria->nombre }} </h3>
@@ -74,9 +74,9 @@
                     style="font-size: 150%;font-weight:bold;margin-left: 5%;">{{ $producto_modelo->nombre }}</h3>
             @endforeach
             <div>
-                
+
                 <button wire:click="redirect_nuevo_modelo()">Crear nuevo modelo</button>
-                
+
             </div>
 
 
@@ -135,319 +135,357 @@
             <div class="col-md-6">
                 <div style="margin-left:80%">
                     @foreach ($explode_array_cat as $titulo_caracteristica => $valor_caracteristica)
-                        @if ($loop->index % 2 == 0)
+                        @if ($titulo_caracteristica == 'Color')
+                            <div>
+                                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                    style="font-size: 100%;font-weight:bold;margin-left: 10%;">COLORES:</p>
+                                <div style="margin-left: 10%;">
+                                    @foreach ($colores as $color => $valor)
+                                        <a href="#" wire:click="seleccionar_color('{{ $color }}')"><i
+                                                class="fa-solid fa-circle{{ $valor ? '-check' : '' }} fa-2xl"
+                                                style="color: {{ $color }};"></i></a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @else
                             <p><b>{{ $titulo_caracteristica }}:</b> {{ $valor_caracteristica }}</p>
                         @endif
-                    @endforeach
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div>
-                    @foreach ($explode_array_cat as $titulo_caracteristica => $valor_caracteristica)
-                        @if ($loop->index % 2 != 0)
-                            <p><b>{{ $titulo_caracteristica }}:</b> {{ $valor_caracteristica }}</p>
+
+                        @if ($titulo_caracteristica == 'Talla')
+                            <div class=""style="">
+                                <h4 class="">Tallas:</h4>
+                            </div>
+                            <div class="">
+                                <select wire:model.live="talla_seleccionada" name="talla_seleccionada"
+                                    id="talla_seleccionada">
+                                    @foreach ($tallas as $talla)
+                                        <option value="{{ $talla }}">{{ $talla }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         @endif
-                    @endforeach
+                        <a href="#" class="">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">128 GB</h5>
+                            </div>
+                        </div>
+
+                        </a>
+                        
+                @if ($titulo_caracteristica == 'Almacenamiento')
+                    <div class=""style="">
+                        <h4 class="">Almacenamiento:</h4>
+                    </div>
+                    <div class="">
+                        <select wire:model.live="talla_seleccionada" name="talla_seleccionada"
+                            id="talla_seleccionada">
+                            <option>Seleccione</option>
+                            @foreach ($tallas as $talla)
+                                <option value="{{ $talla }}">{{ $talla }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                @endif
+                @endforeach
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="">
+    <div style="margin-top:3%;margin-left:15%;margin-right:15%;background-color:#F2F2F2">
+        <h3 class="card-title" style="text-align:center;">Descripción</h3>
+        <p class="card-title" style="text-align:center"> {{ $id_producto_modelo->desc_prod }} </p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h1 style="text-align:center">PREGUNTAS</h1>
+    <div class="card mx-5" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);;overflow-y: auto; max-height: 300px;">
+        <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
+            <div class="row">
+                <div class="col-2 text-center">
+                    <div class="rounded-pill px-3 py-1" style="border: 1px solid black;">
+                        JAIME ANDRES MEJIA
+                    </div>
+
+                </div>
+                <div class="col">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis massa augue, ut
+                        lobortis odio volutpat tincidunt. Aenean hendrerit at mi ultrices faucibus. Phasellus
+                        consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci et est auctor
+                        blandit. Phasellus a viverra enim, vitae rhoncus nibh. Maecenas maximus accumsan posuere.
+                        Donec eget tellus orci. Suspendisse dignissim, mauris vitae pharetra congue, lacus nunc
+                        elementum lacus, id lobortis ante tortor vel diam. Aliquam erat volutpat. Donec rutrum</p>
+                </div>
+            </div>
+            <div class="d-flex align-items-center"> <!-- Añadido align-items-center para centrar verticalmente -->
+                <div class="col text-center"style="margin-left:15%;margin-right:1%">
+                    <!-- Añadido align-items-center para centrar verticalmente -->
+                    <div class="rounded-pill px-2 " style="border: 1px solid black;">
+                        RESPUESTA
+                    </div>
+                </div>
+                <div class="col-9">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis massa augue, ut
+                        lobortis odio volutpat tincidunt. Aenean hendrerit at mi ultrices faucibus. Pha</p>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
+            <div class="row">
+                <div class="col-2 text-center">
+                    <div class="rounded-pill px-3 py-1" style=" border: 1px solid black;">
+                        JULIAN STEVAN DAZA
+                    </div>
+                </div>
+                <div class="col">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis massa augue, ut
+                        lobortis odio volutpat tincidunt. Aenean hendrerit at mi ultrices faucibus. Phasellus
+                        consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci et est auctor
+                        blandit. Phasellus </p>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div style="">
-        <div style="margin-top:3%;margin-left:15%;margin-right:15%;background-color:#F2F2F2">
-            <h3 class="card-title" style="text-align:center;">Descripción</h3>
-            <p class="card-title" style="text-align:center"> {{ $id_producto_modelo->desc_prod }} </p>
-        </div>
-        <br>
-        <br>
-        <br>
-        <h1 style="text-align:center">PREGUNTAS</h1>
-        <div class="card mx-5"
-            style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);;overflow-y: auto; max-height: 300px;">
-            <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
-                <div class="row">
-                    <div class="col-2 text-center">
-                        <div class="rounded-pill px-3 py-1" style="border: 1px solid black;">
-                            JAIME ANDRES MEJIA
-                        </div>
+</div>
 
+<div style="">
+    <br>
+    <br>
+
+    <h1 style="text-align:center">OPINIONES</h1>
+    <div class="card mx-5" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);;overflow-y: auto; max-height: 200px;">
+        <div style="">
+            <div class="card-body;">
+                <div class="d-flex" style="text-align:center;margin-top: 20px;">
+                    <div class="col-2" style="">
+                        <p style="border-radius: 8px;border: 2px solid black; margin-left: 5%;">
+                            JAIME
+                            ANDRES MEJIA
+                        </p>
                     </div>
-                    <div class="col">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis massa augue, ut
-                            lobortis odio volutpat tincidunt. Aenean hendrerit at mi ultrices faucibus. Phasellus
-                            consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci et est auctor
-                            blandit. Phasellus a viverra enim, vitae rhoncus nibh. Maecenas maximus accumsan posuere.
-                            Donec eget tellus orci. Suspendisse dignissim, mauris vitae pharetra congue, lacus nunc
-                            elementum lacus, id lobortis ante tortor vel diam. Aliquam erat volutpat. Donec rutrum</p>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center"> <!-- Añadido align-items-center para centrar verticalmente -->
-                    <div class="col text-center"style="margin-left:15%;margin-right:1%">
-                        <!-- Añadido align-items-center para centrar verticalmente -->
-                        <div class="rounded-pill px-2 " style="border: 1px solid black;">
-                            RESPUESTA
-                        </div>
-                    </div>
-                    <div class="col-9">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis massa augue, ut
-                            lobortis odio volutpat tincidunt. Aenean hendrerit at mi ultrices faucibus. Pha</p>
+
+                    <div style="">
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
                     </div>
                 </div>
 
+                <p class="col;" style="margin-left: 20px;margin-top: 5px;">Lorem ipsum dolor sit amet,
+                    consectetur adipiscing
+                    elit. Morbi mollis massa augue, ut lobortis odio volutpat tincidunt. Aenean hendrerit at mi
+                    ultrices
+                    faucibus. Phasellus consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci
+                    et
+                    est auctor blandit. Phasellus a viverra enim, vitae rhoncus nibh. Maecenas maximus accumsan
+                    posuere.
+                    Donec eget tellus orci. Suspendisse dignissim, mauris vitae pharetra congue, lacus nunc
+                    elementum
+                    lacus, id lobortis ante tortor vel diam. Aliquam erat volutpat. Donec rutrum </p>
 
             </div>
 
-
-
-
-            <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
-                <div class="row">
-                    <div class="col-2 text-center">
-                        <div class="rounded-pill px-3 py-1" style=" border: 1px solid black;">
-                            JULIAN STEVAN DAZA
-                        </div>
-                    </div>
-                    <div class="col">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis massa augue, ut
-                            lobortis odio volutpat tincidunt. Aenean hendrerit at mi ultrices faucibus. Phasellus
-                            consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci et est auctor
-                            blandit. Phasellus </p>
-                    </div>
-                </div>
-            </div>
         </div>
 
+
+
+        <div style="">
+            <div class="card-body;">
+                <div class="d-flex" style="text-align:center;margin-top: 20px;">
+                    <div class="col-2" style="">
+                        <p style="border-radius: 8px;border: 2px solid black; margin-left: 5%;">
+                            JAIME
+                            ANDRES MEJIA
+                        </p>
+                    </div>
+
+                    <div style="">
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                    </div>
+                </div>
+
+                <p class="col;" style="margin-left: 20px;margin-top: 5px;">Lorem ipsum dolor sit amet,
+                    consectetur adipiscing
+                    elit. Morbi mollis massa augue, ut lobortis odio volutpat tincidunt. Aenean hendrerit at mi
+                    ultrices
+                    faucibus. Phasellus consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci
+                    et
+                    est auctor blandit. Phasellus a viverra enim, vitae rhoncus nibh. Maecenas maximus accumsan
+                    posuere.
+                    Donec eget tellus orci. Suspendisse dignissim, mauris vitae pharetra congue, lacus nunc
+                    elementum
+                    lacus, id lobortis ante tortor vel diam. Aliquam erat volutpat. Donec rutrum </p>
+
+            </div>
+
+        </div>
+
+
+        <div style="">
+            <div class="card-body;">
+                <div class="d-flex" style="text-align:center;margin-top: 20px;">
+                    <div class="col-2" style="">
+                        <p style="border-radius: 8px;border: 2px solid black; margin-left: 5%;">
+                            JAIME
+                            ANDRES MEJIA
+                        </p>
+                    </div>
+
+                    <div style="">
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                    </div>
+                </div>
+
+                <p class="col;" style="margin-left: 20px;margin-top: 5px;">Lorem ipsum dolor sit amet,
+                    consectetur adipiscing
+                    elit. Morbi mollis massa augue, ut lobortis odio volutpat tincidunt. Aenean hendrerit at mi
+                    ultrices
+                    faucibus. Phasellus consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci
+                    et
+                    est auctor blandit. Phasellus a viverra enim, vitae rhoncus nibh. Maecenas maximus accumsan
+                    posuere.
+                    Donec eget tellus orci. Suspendisse dignissim, mauris vitae pharetra congue, lacus nunc
+                    elementum
+                    lacus, id lobortis ante tortor vel diam. Aliquam erat volutpat. Donec rutrum </p>
+
+            </div>
+
+        </div>
+
+
+        <div style="">
+            <div class="card-body;">
+                <div class="d-flex" style="text-align:center;margin-top: 20px;">
+                    <div class="col-2" style="">
+                        <p style="border-radius: 8px;border: 2px solid black; margin-left: 5%;">
+                            JAIME
+                            ANDRES MEJIA
+                        </p>
+                    </div>
+
+                    <div style="">
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                        <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
+                    </div>
+                </div>
+
+                <p class="col;" style="margin-left: 20px;margin-top: 5px;">Lorem ipsum dolor sit amet,
+                    consectetur adipiscing
+                    elit. Morbi mollis massa augue, ut lobortis odio volutpat tincidunt. Aenean hendrerit at mi
+                    ultrices
+                    faucibus. Phasellus consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci
+                    et
+                    est auctor blandit. Phasellus a viverra enim, vitae rhoncus nibh. Maecenas maximus accumsan
+                    posuere.
+                    Donec eget tellus orci. Suspendisse dignissim, mauris vitae pharetra congue, lacus nunc
+                    elementum
+                    lacus, id lobortis ante tortor vel diam. Aliquam erat volutpat. Donec rutrum </p>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <div style="">
-        <br>
-        <br>
 
-        <h1 style="text-align:center">OPINIONES</h1>
-        <div class="card mx-5"
-            style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);;overflow-y: auto; max-height: 200px;">
-            <div style="">
-                <div class="card-body;">
-                    <div class="d-flex" style="text-align:center;margin-top: 20px;">
-                        <div class="col-2" style="">
-                            <p style="border-radius: 8px;border: 2px solid black; margin-left: 5%;">
-                                JAIME
-                                ANDRES MEJIA
-                            </p>
-                        </div>
-
-                        <div style="">
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        </div>
+    <div class="container my-5">
+        <h4 class="mb-4">Los clientes que vieron este producto también vieron</h4>
+        <div class="row row-cols-1 row-cols-md-6 g-4">
+            <!-- Producto 1 -->
+            <div class="col">
+                <a href="#">
+                    <div class="card h-100">
+                        <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
+                        <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                            style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
+                            hombre
+                        </h4>
                     </div>
-
-                    <p class="col;" style="margin-left: 20px;margin-top: 5px;">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing
-                        elit. Morbi mollis massa augue, ut lobortis odio volutpat tincidunt. Aenean hendrerit at mi
-                        ultrices
-                        faucibus. Phasellus consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci
-                        et
-                        est auctor blandit. Phasellus a viverra enim, vitae rhoncus nibh. Maecenas maximus accumsan
-                        posuere.
-                        Donec eget tellus orci. Suspendisse dignissim, mauris vitae pharetra congue, lacus nunc
-                        elementum
-                        lacus, id lobortis ante tortor vel diam. Aliquam erat volutpat. Donec rutrum </p>
-
-                </div>
-
+                </a>
             </div>
 
-
-
-            <div style="">
-                <div class="card-body;">
-                    <div class="d-flex" style="text-align:center;margin-top: 20px;">
-                        <div class="col-2" style="">
-                            <p style="border-radius: 8px;border: 2px solid black; margin-left: 5%;">
-                                JAIME
-                                ANDRES MEJIA
-                            </p>
-                        </div>
-
-                        <div style="">
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        </div>
+            <div class="col">
+                <a href="#">
+                    <div class="card h-100">
+                        <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
+                        <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                            style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
+                            hombre
+                        </h4>
                     </div>
-
-                    <p class="col;" style="margin-left: 20px;margin-top: 5px;">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing
-                        elit. Morbi mollis massa augue, ut lobortis odio volutpat tincidunt. Aenean hendrerit at mi
-                        ultrices
-                        faucibus. Phasellus consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci
-                        et
-                        est auctor blandit. Phasellus a viverra enim, vitae rhoncus nibh. Maecenas maximus accumsan
-                        posuere.
-                        Donec eget tellus orci. Suspendisse dignissim, mauris vitae pharetra congue, lacus nunc
-                        elementum
-                        lacus, id lobortis ante tortor vel diam. Aliquam erat volutpat. Donec rutrum </p>
-
-                </div>
-
+                </a>
             </div>
-
-
-            <div style="">
-                <div class="card-body;">
-                    <div class="d-flex" style="text-align:center;margin-top: 20px;">
-                        <div class="col-2" style="">
-                            <p style="border-radius: 8px;border: 2px solid black; margin-left: 5%;">
-                                JAIME
-                                ANDRES MEJIA
-                            </p>
-                        </div>
-
-                        <div style="">
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        </div>
+            <div class="col">
+                <a href="#">
+                    <div class="card h-100">
+                        <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
+                        <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                            style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
+                            hombre
+                        </h4>
                     </div>
-
-                    <p class="col;" style="margin-left: 20px;margin-top: 5px;">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing
-                        elit. Morbi mollis massa augue, ut lobortis odio volutpat tincidunt. Aenean hendrerit at mi
-                        ultrices
-                        faucibus. Phasellus consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci
-                        et
-                        est auctor blandit. Phasellus a viverra enim, vitae rhoncus nibh. Maecenas maximus accumsan
-                        posuere.
-                        Donec eget tellus orci. Suspendisse dignissim, mauris vitae pharetra congue, lacus nunc
-                        elementum
-                        lacus, id lobortis ante tortor vel diam. Aliquam erat volutpat. Donec rutrum </p>
-
-                </div>
-
+                </a>
             </div>
-
-
-            <div style="">
-                <div class="card-body;">
-                    <div class="d-flex" style="text-align:center;margin-top: 20px;">
-                        <div class="col-2" style="">
-                            <p style="border-radius: 8px;border: 2px solid black; margin-left: 5%;">
-                                JAIME
-                                ANDRES MEJIA
-                            </p>
-                        </div>
-
-                        <div style="">
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #FFD43B;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                            <i class="fa-solid fa-star fa-xl" style="color: #787878;margin-left:-1%"></i>
-                        </div>
+            <div class="col">
+                <a href="#">
+                    <div class="card h-100">
+                        <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
+                        <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                            style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
+                            hombre
+                        </h4>
                     </div>
-
-                    <p class="col;" style="margin-left: 20px;margin-top: 5px;">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing
-                        elit. Morbi mollis massa augue, ut lobortis odio volutpat tincidunt. Aenean hendrerit at mi
-                        ultrices
-                        faucibus. Phasellus consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci
-                        et
-                        est auctor blandit. Phasellus a viverra enim, vitae rhoncus nibh. Maecenas maximus accumsan
-                        posuere.
-                        Donec eget tellus orci. Suspendisse dignissim, mauris vitae pharetra congue, lacus nunc
-                        elementum
-                        lacus, id lobortis ante tortor vel diam. Aliquam erat volutpat. Donec rutrum </p>
-
-                </div>
-
+                </a>
             </div>
-
-        </div>
-
-
-        <div class="container my-5">
-            <h4 class="mb-4">Los clientes que vieron este producto también vieron</h4>
-            <div class="row row-cols-1 row-cols-md-6 g-4">
-                <!-- Producto 1 -->
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
+            <div class="col">
+                <a href="#">
+                    <div class="card h-100">
+                        <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
+                        <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                            style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
+                            hombre
+                        </h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#">
+                    <div class="card h-100">
+                        <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
+                        <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                            style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
+                            hombre
+                        </h4>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
-    @include('livewire.ver-productos.modal_ver-productos')
+</div>
+@include('livewire.ver-productos.modal_ver-productos')
 </div>

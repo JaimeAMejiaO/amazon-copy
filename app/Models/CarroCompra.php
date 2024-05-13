@@ -19,6 +19,7 @@ class CarroCompra extends Model
         'valor_total',
         'id_usuario',
         'id_prod_mod',
+        'caracteristicas'
     ];
 
     public function user() :BelongsTo

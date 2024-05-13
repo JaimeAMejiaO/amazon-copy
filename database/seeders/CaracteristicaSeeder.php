@@ -15,8 +15,8 @@ class CaracteristicaSeeder extends Seeder
     {
         DB::table('caracteristica_cats')->insert([
             ['id' => 1, 'nombre' => 'CPU', 'caso_especial' => 0],
-            ['id' => 2, 'nombre' => 'RAM', 'caso_especial' => 0],
-            ['id' => 3, 'nombre' => 'Almacenamiento', 'caso_especial' => 0],
+            ['id' => 2, 'nombre' => 'RAM', 'caso_especial' => 4],
+            ['id' => 3, 'nombre' => 'Almacenamiento', 'caso_especial' => 3],
             ['id' => 4, 'nombre' => 'Pantalla', 'caso_especial' => 0],
             ['id' => 5, 'nombre' => 'Tarjeta gráfica', 'caso_especial' => 0],
             ['id' => 6, 'nombre' => 'Sistema operativo', 'caso_especial' => 0],

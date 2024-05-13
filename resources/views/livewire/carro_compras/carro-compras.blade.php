@@ -31,6 +31,11 @@
                                         <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                                             style="font-size: 75%;font-weight:bold;text-align:center">
                                             {{ $producto_modelo->producto_modelo->desc_prod }} </p>
+
+                                            @foreach($caracteristicas_productos[$producto_modelo->id] as $key=>$value)
+                                                <h2>{{$key}}</h2>
+                                                <p>{{$value}}</p>
+                                            @endforeach
                                     </div>
                                     <div class="" style="margin-top: 50px;">
                                         <div class="d-flex" style="">

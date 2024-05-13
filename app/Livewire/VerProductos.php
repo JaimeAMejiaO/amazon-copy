@@ -16,8 +16,14 @@ class VerProductos extends Component
     public $array_cat; //Obtener las caracteristicas de la categoria con su información
     public $explode_array_cat; //Divis 
     public $colores = []; //Obtener los colores de los modelos
-    public $tallas = []; //Obtener las tallas de los modelos
+    public $tallas = [];
+    public $ram = [];
+    public $almacenamiento = []; //Obtener las tallas de los modelos
     public $cant_seleccionada = 1; //Cantidad seleccionada del producto que se quiere enviar al carro
+
+    public $color_anterior;
+
+    public $talla_seleccionada;
 
     public function mount($id)
     {
@@ -29,7 +35,7 @@ class VerProductos extends Component
         $this->id_producto_modelo = ProductoModelo::find($id);
         $this->producto_modelos = ProductoModelo::with('producto')->where('id_producto', $this->id_producto_modelo->id_producto)->get();
         $this->modelo_actual = $this->producto_modelos->first();
-        $this->array_cat = explode('~', $this->modelo_actual->array_cat);
+        $this->array_cat = explode('~', $this->id_producto_modelo->array_cat);
         $this->explode_array_cat = array();
         //dd($this->modelo_actual->producto->categoria->nombre);
 
@@ -41,7 +47,7 @@ class VerProductos extends Component
         }
 
         //Obtener los colores de los modelos
-        if (isset($this->explode_array_cat['Color'])) {
+        /*if (isset($this->explode_array_cat['Color'])) {
             $producto_modelos = $this->producto_modelos->where('id', '!=', $this->modelo_actual->id);
             foreach ($producto_modelos as $modelo) {
                 $array_cat = explode('~', $modelo->array_cat);
@@ -52,9 +58,39 @@ class VerProductos extends Component
                 }
                 $this->colores[] = $explode_array_cat['Color'];
             }
+            dd($this->colores);
+        }*/
+        $indice = 0;
+        //Obtener los colores de los modelos
+        if (isset($this->explode_array_cat['Color'])) {
+            $colores = explode(',', $this->explode_array_cat['Color']);
+            foreach ($colores as $color) {
+                if ($indice == 0) {
+                    $this->colores[$color] = true;
+                    $this->color_anterior = $color;
+                } else {
+                    $this->colores[$color] = false;
+                }
+                $indice++;
+            }
         }
 
-        //Obtener las tallas de los modelos
+
+        if (isset($this->explode_array_cat['Talla'])) {
+            $this->tallas = explode(',', $this->explode_array_cat['Talla']);
+            $this->talla_seleccionada = $this->tallas[0];
+        }
+
+        if (isset($this->explode_array_cat['RAM'])) {
+            $this->ram = explode(',', $this->explode_array_cat['RAM']);
+        }
+
+        if (isset($this->explode_array_cat['Almacenamiento'])) {
+            $this->almacenamiento = explode(',', $this->explode_array_cat['Almacenamiento']);
+        }
+
+
+        /*Obtener las tallas de los modelos
         if (isset($this->explode_array_cat['Talla'])) {
             $producto_modelos = $this->producto_modelos->where('id', '!=', $this->modelo_actual->id);
             foreach ($producto_modelos as $modelo) {
@@ -67,18 +103,65 @@ class VerProductos extends Component
                 $this->tallas[] = $explode_array_cat['Talla'];
             }
         }
-        //dd($this->modelo_actual->stock);
+        dd($this->modelo_actual->stock);*/
     }
+
 
     public function render()
     {
         return view('livewire.ver-productos.ver-productos');
     }
 
+    public function seleccionar_color($color_seleccionado)
+    {
+        if ($this->color_anterior) {
+
+            $this->colores[$this->color_anterior] = false;
+            $this->color_anterior = $color_seleccionado;
+        } else {
+            $this->color_anterior = $color_seleccionado;
+        }
+        $this->colores[$color_seleccionado] = true;
+    }
+
+
     public function send_to_cart()
     {
-        if (CarroCompra::where('id_prod_mod', $this->id_producto_modelo->id)->exists()) {
-            $carro = CarroCompra::where('id_prod_mod', $this->id_producto_modelo->id)->first();
+        $caracteristicas = $this->explode_array_cat;
+
+        if (isset($this->explode_array_cat['Color'])) {
+            foreach ($this->colores as $color => $value) {
+                if ($value = true) {
+                    $caracteristicas['Color'] = $color;
+                }
+            }
+        }
+
+
+        if (isset($this->explode_array_cat['Talla'])) {
+            $caracteristicas['Talla'] = $this->talla_seleccionada;
+
+
+            //dd($caracteristicas);
+
+        }
+
+        if (isset($this->explode_array_cat['RAM'])) {
+            $this->ram = explode(',', $this->explode_array_cat['RAM']);
+        }
+
+        if (isset($this->explode_array_cat['Almacenamiento'])) {
+            $this->almacenamiento = explode(',', $this->explode_array_cat['Almacenamiento']);
+        }
+        $caracteristicas_texto = '';
+            foreach ($caracteristicas as $key => $value) {
+                if ($caracteristicas_texto == '')
+                    $caracteristicas_texto .= $key . ':' . $value;
+                else
+                    $caracteristicas_texto .= '~' . $key . ':' . $value;
+            }
+        if (CarroCompra::where('id_prod_mod', $this->id_producto_modelo->id)->where('caracteristicas', $caracteristicas_texto)->exists()) {
+            $carro = CarroCompra::where('id_prod_mod', $this->id_producto_modelo->id)->where('caracteristicas', $caracteristicas_texto)->first();
             //dd($carro->cant + $this->cant_seleccionada);
             if ($carro->cant + $this->cant_seleccionada > $this->id_producto_modelo->stock) {
                 dump('No hay suficiente stock');
@@ -91,11 +174,11 @@ class VerProductos extends Component
             $rules = [
                 'cant_seleccionada' => 'required',
             ];
-            
+
             $messages = [
                 'cant_seleccionada.required' => 'La cantidad es requerida',
             ];
-            
+
             $this->validate($rules, $messages);
             //dd('entre');
 
@@ -103,9 +186,9 @@ class VerProductos extends Component
                 'cant' => $this->cant_seleccionada,
                 'id_usuario' => auth()->user()->id,
                 'id_prod_mod' => $this->id_producto_modelo->id,
+                'caracteristicas' => $caracteristicas_texto
             ]);
         }
-
     }
 
     public function redirect_nuevo_modelo()
