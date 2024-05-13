@@ -1,7 +1,7 @@
 <div style="background-color:#F2F2F2">
     <div style=" " class="d-flex">
-        <div class="col" style="background-color:red">
-            <div class="d-flex" style="margin-top:5%;margin-left:5%;background-color:red">
+        <div class="col" style="">
+            <div class="d-flex" style="margin-top:5%;margin-left:15%;">
                 <div class="col-3  align-items-center">
                     <!-- Cambiado a flex-column y align-items-center para centrar verticalmente -->
                     <img src="{{ asset('img/1.jpg') }}" class="img-thumbnail mb-1" alt="..." width="110"
@@ -80,13 +80,14 @@
                         style="font-size: 150%;font-weight:bold;">Caracteristicas</h3>
                 </div>
                 <div class="">
-                    <div style="margin-left:1%">
+                    <div style="">
                         @foreach ($explode_array_cat as $titulo_caracteristica => $valor_caracteristica)
                             @if ($titulo_caracteristica == 'Color')
                                 <div>
                                     <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                        style="font-size: 100%;font-weight:bold;margin-left: 10%;">COLORES:</p>
-                                    <div style="margin-left: 1%;">
+                                        style="font-size: 100%;font-weight:bold;margin-left: 5%;margin-top: 2%;">
+                                        COLORES:</p>
+                                    <div style="margin-left: 5%;">
                                         @foreach ($colores as $color => $valor)
                                             <a href="#"
                                                 wire:click="seleccionar_color('{{ $color }}')"><i
@@ -96,21 +97,29 @@
                                     </div>
                                 </div>
                             @elseif ($titulo_caracteristica == 'Talla')
-                                <div class=""style="">
-                                    <h4 class="">Tallas:</h4>
-                                </div>
-                                <div class="">
-                                    <select wire:model.live="talla_seleccionada" name="talla_seleccionada"
-                                        id="talla_seleccionada">
-                                        @foreach ($tallas as $talla)
-                                            <option value="{{ $talla }}">{{ $talla }}</option>
-                                        @endforeach
-                                    </select>
+                                <div style="">
+
+                                    <div class="col"style="">
+                                        <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                            style="font-size: 150%;font-weight:bold;margin-left: 5%;margin-top: 2%;">
+                                            Tallas:</p>
+                                    </div>
+                                    <div class="" style="margin-left: 5%;">
+                                        <select wire:model.live="talla_seleccionada" name="talla_seleccionada"
+                                            id="talla_seleccionada"
+                                            style="padding: 8px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;">
+                                            @foreach ($tallas as $talla)
+                                                <option value="{{ $talla }}">{{ $talla }}</option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
                                 </div>
                             @elseif ($titulo_caracteristica == 'Almacenamiento')
                                 <div>
                                     <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                        style="font-size: 100%;font-weight:bold;margin-left: 5%;">ALMACENAMIENTO:</p>
+                                        style="font-size: 100%;font-weight:bold;margin-left: 5%;margin-top: 2%;">
+                                        ALMACENAMIENTO:</p>
                                     <div class="d-flex"style="margin-left: 5%;">
                                         @foreach ($almacenamiento as $key => $value)
                                             <a href="#"
@@ -125,7 +134,10 @@
                                     </div>
                                 </div>
                             @else
-                                <p><b>{{ $titulo_caracteristica }}:</b> {{ $valor_caracteristica }}</p>
+                                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                    style="font-size: 150%;;margin-left: 5%;margin-top: 2%;">
+                                    <b>{{ $titulo_caracteristica }}:</b> {{ $valor_caracteristica }}
+                                </p>
                             @endif
                         @endforeach
                     </div>
@@ -137,35 +149,40 @@
 
 
         </div>
-        <div class="card mb-3 col-2"
-            style="width: 18rem; border-radius: 8px;border: 2px solid black;margin-top:2%;margin-right:10%">
+        <div class="col-1 card mb-3"
+            style="width: 18rem; border-radius: 8px;border: 2px solid black;margin-top:2%;margin-right:5%;margin-left:2%">
             <div class="card-body">
                 <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                     style="font-size: 200%;font-weight:bold;margin-left: 20px;margin-top:5%;margin-bottom:15%;text-align:center">
                     {{ $id_producto_modelo->precio }}$</h3>
-                <div class="d-flex">
-                    <div class="col-6"style="margin-top: 5px;">
+                <div class="">
+                    <div class=""style="margin-top: 5px;">
                         <h4 class="">Cantidad disponible: {{ $id_producto_modelo->stock }} </h4>
                     </div>
-                    <div class="col-4">
-                        <select wire:model="cant_seleccionada" name="cant_seleccionada" id="cant_seleccionada">
+                    <br>
+                    <br>
+                    <div class="d-flex align-items-center">
+                        <div style="margin-top: 5px;">
+                            <h4 class="">Cantidad: </h4>
+                        </div>
+                        <select wire:model="cant_seleccionada" name="cant_seleccionada" id="cant_seleccionada"
+                            class="form-control form-control-sm" style="width: 70px;">
                             @for ($i = 1; $i <= $id_producto_modelo->stock; $i++)
                                 <option value="{{ $i }}">{{ $i }}</option>
                             @endfor
-                            @error('cant_seleccionada')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </select>
+                        @error('cant_seleccionada')
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
+
                 </div>
                 <br>
                 <div style="text-align:center">
                     <br>
-                    <br>
 
-                    <br>
                     <div>
                         <button class="btn btn-outline-dark text-nowrap" wire:click="send_to_cart"
                             data-bs-toggle="modal" data-bs-target="#modal_producto">AGREGAR AL CARRO</button>
@@ -178,18 +195,9 @@
             </div>
         </div>
     </div>
-    <br>
-    <div>
-
-        <button wire:click="redirect_nuevo_modelo()">Crear nuevo modelo</button>
-
-    </div>
-
-
-
 
     <div style="">
-        <div style="margin-top:3%;margin-left:15%;margin-right:15%;background-color:#F2F2F2">
+        <div style="margin-top:1%;margin-left:15%;margin-right:15%;background-color:#F2F2F2">
             <h3 class="card-title" style="text-align:center;">Descripción</h3>
             <p class="card-title" style="text-align:center"> {{ $id_producto_modelo->desc_prod }} </p>
         </div>
@@ -481,6 +489,10 @@
                     </a>
                 </div>
             </div>
+            <div style="text-align: center;">
+    <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo modelo</button>
+</div>
+
         </div>
     </div>
     @include('livewire.ver-productos.modal_ver-productos')

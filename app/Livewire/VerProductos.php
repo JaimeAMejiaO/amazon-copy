@@ -150,13 +150,9 @@ class VerProductos extends Component
     public function send_to_cart()
     {
         $caracteristicas = $this->explode_array_cat;
-
+        
         if (isset($this->explode_array_cat['Color'])) {
-            foreach ($this->colores as $color => $value) {
-                if ($value = true) {
-                    $caracteristicas['Color'] = $color;
-                }
-            }
+            $caracteristicas['Color'] = $this->color_anterior;
         }
 
 
@@ -168,11 +164,7 @@ class VerProductos extends Component
 
         }
         if (isset($this->explode_array_cat['Almacenamiento'])) {
-            foreach ($this->almacenamiento as $almace => $value) {
-                if ($value = true) {
-                    $caracteristicas['Almacenamiento'] = $almace;
-                }
-            }
+            $caracteristicas['Almacenamiento'] = $this->almacenamiento_seleccionado;
         }
 
         if (isset($this->explode_array_cat['RAM'])) {
