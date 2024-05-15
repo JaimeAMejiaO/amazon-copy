@@ -1,9 +1,8 @@
 <div style="background-color:#F2F2F2">
-<br>
-<br>
+    <br>
+    <br>
     <div class="container" style="background-color:#F2F2F2">
-        <div class="card mx-auto"
-            style="max-width: 600px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+        <div class="card mx-auto" style="max-width: 600px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
             <div>
                 <h3 class="card-title text-center" style="font-size: 2.5rem; font-weight: bold;"style="margin-botom:10%">
                     ¡Hola! Antes que nada
@@ -86,14 +85,34 @@
                 @if ($cat_seleccionada)
                     @foreach ($array_cat as $array => $componente)
                         <div class="container mt-3">
-                            <div class="row">
-                                <div class="col-auto">
-                                    <label for="{{ $componente['nombre'] }}"
-                                        class="card-title text-center mb-2" style="font-size: 1.5rem; font-weight: bold">{{ $componente['nombre'] }}:</label>
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-7">
+                                        @if ($componente['nombre'] == 'Color')
+                                            <div class="text-center">
+                                                <label for="exampleColorInput" class="form-label"
+                                                    style="font-size: 1.5rem; font-weight: bold">Color picker</label>
+                                                <div class="row justify-content-center">
+                                                    <input type="color" class="form-control form-control-color"
+                                                        id="exampleColorInput" value="#563d7c"
+                                                        title="Choose your color">
+                                                </div>
+                                                <div class="row justify-content-center">
+                                                    <p>Solo se puede ingresar numeros en hexadecimal separados por ","</p>
+                                                </div>
+                                        @endif
+                                    </div>
                                 </div>
-                                <!-- TODO: Poner If evaluadores de casos especiales por caracteristica, es decir, si evalua que una
-                    caracteristica es color y dado que es un caso especial, el input no se muestra sino que se muestra un
-                    color-picker, para tallas, se deben marcar que tallas hay disponibles de ese producto -->
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-auto">
+                                    <label for="{{ $componente['nombre'] }}" class="card-title text-center mb-2"
+                                        style="font-size: 1.5rem; font-weight: bold">{{ $componente['nombre'] }}:</label>
+                                </div>
+
+
                                 <div class="col">
                                     <input wire:model.blur="array_cat.{{ $array }}.valor" type="text"
                                         name="{{ $componente['nombre'] }}" id="{{ $componente['nombre'] }}"
@@ -133,8 +152,8 @@
                         style="font-size: 1.5rem; font-weight: bold;">Cantidad disponible:</label>
                 </div>
                 <div class="col">
-                    <input type="text" name="cantidad" id="cantidad" wire:model.blur="stock" placeholder="Ej.: 10 "
-                        class="form-control">
+                    <input type="text" name="cantidad" id="cantidad" wire:model.blur="stock"
+                        placeholder="Ej.: 10 " class="form-control">
                 </div>
             </div>
         </div>
@@ -151,4 +170,3 @@
 
     </div>
 </div>
-

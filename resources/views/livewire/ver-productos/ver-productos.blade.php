@@ -4,16 +4,36 @@
             <div class="d-flex" style="margin-top:5%;margin-left:15%;">
                 <div class="col-3  align-items-center">
                     <!-- Cambiado a flex-column y align-items-center para centrar verticalmente -->
-                    <img src="{{ asset('img/1.jpg') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110"> <!-- Añadida la clase img-thumbnail para bordes redondeados y sombra -->
-                    <img src="{{ asset('img/2.webp') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110"> <!-- Añadida la clase img-thumbnail para bordes redondeados y sombra -->
-                    <img src="{{ asset('img/3.jpeg') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110"> <!-- Añadida la clase img-thumbnail para bordes redondeados y sombra -->
-                    <img src="{{ asset('img/1.jpg') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110"> <!-- Añadida la clase img-thumbnail para bordes redondeados y sombra -->
-                    <img src="{{ asset('img/2.webp') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110"> <!-- Añadida la clase img-thumbnail para bordes redondeados y sombra -->
+
+                    @if ($id_producto_modelo->id == 1)
+                        <img src="{{ asset('img/15promax.jpg') }}" class="img-thumbnail mb-1" alt="..." width="110"
+                        height="110">>
+                    @elseif ($id_producto_modelo->id == 3)
+                        <img src="{{ asset('img/tecnologia.jpeg') }}" class="img-thumbnail mb-1" alt="..." width="110"
+                        height="110">>
+                    @elseif ($id_producto_modelo->id == 4)
+                        <img src="{{ asset('img/juguetes.webp') }}" class="img-thumbnail mb-1" alt="..." width="110"
+                        height="110">>
+                    @elseif ($id_producto_modelo->id == 5)
+                        <img src="{{ asset('img/j10.jpeg') }}" class="img-thumbnail mb-1" alt="..." width="110"
+                        height="110">>
+                    @elseif ($id_producto_modelo->id == 6)
+                        <img src="{{ asset('img/acer.jpeg') }}" class="img-thumbnail mb-1" alt="..." width="110"
+                        height="110">>
+                    @elseif ($id_producto_modelo->id == 7)
+                        <img src="{{ asset('img/11.jpeg') }}" class="img-thumbnail mb-1" alt="..." width="110"
+                        height="110">>
+                    @elseif ($id_producto_modelo->id == 8)
+                        <img src="{{ asset('img/adidascamisa.webp') }}" class="img-thumbnail mb-1" alt="..." width="110"
+                        height="110">>
+                    @elseif ($id_producto_modelo->id == 9)
+                        <img src="{{ asset('img/alien.webp') }}" cclass="img-thumbnail mb-1" alt="..." width="110"
+                        height="110">>
+                    @elseif ($id_producto_modelo->id == 10)
+                        <img src="{{ asset('img/cocina.webp') }}" class="img-thumbnail mb-1" alt="..." width="110"
+                        height="110">
+                    @endif
+
                 </div>
                 <div class="col-7" style="">
                     <div id="carouselExampleAutoplaying" class="carousel slide border border-dark rounded"
@@ -21,7 +41,7 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="{{ asset('img/1.jpg') }}" class="d-block w-100" alt="..."
-                                    style="height: 425px;">
+                                    style="height: 425px;width:425px;">
                             </div>
                             <div class="carousel-item">
                                 <img src="{{ asset('img/2.webp') }}" class="d-block w-100" alt="..."
@@ -122,7 +142,7 @@
                                         ALMACENAMIENTO:</p>
                                     <div class="d-flex"style="margin-left: 5%;">
                                         @foreach ($almacenamiento as $key => $value)
-                                            <a href="#"
+                                            <a href="#"style="text-decoration: none"
                                                 class="col-md-4 mx-1 "wire:click="seleccionar_almacenamiento('{{ $key }}')">
                                                 <div class="card {{ $value ? 'border border-dark' : '' }}">
                                                     <div class="card-body text-center">
@@ -490,8 +510,8 @@
                 </div>
             </div>
             <div style="text-align: center;">
-    <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo modelo</button>
-</div>
+                <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo modelo</button>
+            </div>
 
         </div>
     </div>
