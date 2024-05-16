@@ -20,6 +20,7 @@ class ProductoModelo extends Model
         'array_cat',
         'precio',
         'stock',
+        'img',
         'id_producto',
     ];
 
@@ -28,14 +29,14 @@ class ProductoModelo extends Model
         return $this->belongsTo(Producto::class, 'id_producto');
     }
 
-    public function producto_imagenes(): HasMany
-    {
-        return $this->hasMany(ProductoImagenes::class, 'id_prod_mod');
-    }
-
     public function calificacion(): HasMany
     {
         return $this->hasMany(Calificacion::class, 'id_prod_mod');
+    }
+
+    public function producto_imagenes(): HasMany
+    {
+        return $this->hasMany(ProductoImagenes::class, 'id_prod_mod');
     }
 
     public function carro_compra(): HasMany

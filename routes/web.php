@@ -55,3 +55,5 @@ Route::get('/editar_perfil', EditarPerfil::class)->name('editar_perfil');
 
 Route::get('/tarjeta-regalo', TarjetaRegalo::class)->name('tarjeta-regalo');
 
+Route::get('/crear_pedido', CrearPedido::class)->name('crear-pedido');
+

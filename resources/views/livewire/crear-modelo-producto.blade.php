@@ -111,25 +111,25 @@
             @enderror
 
             <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title text-center mb-4">Subir Imágenes</h4>
-                        <form action="#" method="post" enctype="multipart/form-data">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title text-center mb-4">Subir Imágenes</h4>
                             <div class="form-group">
                                 <label for="imagenes">Selecciona Imágenes:</label>
-                                <input type="file" class="form-control-file" id="imagenes" name="imagenes[]" multiple>
+                                <input type="file" wire:model="images" multiple>
                             </div>
-                            <div class="text-center" style="margin-top:2%">
-                                <button type="submit" class="btn btn-warning">Subir Imágenes</button>
-                            </div>
-                        </form>
+                            @error('images')
+                                <span class="text-danger">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
             <div class="text-center">
                 <button wire:click="store" class="btn btn-warning btn-lg font-weight-bold"

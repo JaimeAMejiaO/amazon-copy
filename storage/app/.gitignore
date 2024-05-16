@@ -1,3 +1,5 @@
-*
-!public/
+livewire-tmp
+debugbar
+framework
+logs
 !.gitignore

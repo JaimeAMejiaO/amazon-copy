@@ -4,45 +4,16 @@
             <div class="d-flex" style="margin-top:5%;margin-left:15%;">
                 <div class="col-3  align-items-center">
                     <!-- Cambiado a flex-column y align-items-center para centrar verticalmente -->
-                    <img src="{{ asset('img/1.jpg') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110"> <!-- Añadida la clase img-thumbnail para bordes redondeados y sombra -->
-                    <img src="{{ asset('img/2.webp') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110"> <!-- Añadida la clase img-thumbnail para bordes redondeados y sombra -->
-                    <img src="{{ asset('img/3.jpeg') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110"> <!-- Añadida la clase img-thumbnail para bordes redondeados y sombra -->
-                    <img src="{{ asset('img/1.jpg') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110"> <!-- Añadida la clase img-thumbnail para bordes redondeados y sombra -->
-                    <img src="{{ asset('img/2.webp') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110"> <!-- Añadida la clase img-thumbnail para bordes redondeados y sombra -->
+
+                    @foreach ($images as $imagen)
+                        <img src="{{ asset('storage/' . $imagen) }}" class="img-thumbnail mb-1 clickable-image" alt="..."
+                            width="110" height="110">
+                    @endforeach
                 </div>
-                <div class="col-7" style="">
-                    <div id="carouselExampleAutoplaying" class="carousel slide border border-dark rounded"
-                        data-bs-ride="carousel" style="max-width: 400px;">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ asset('img/1.jpg') }}" class="d-block w-100" alt="..."
-                                    style="height: 425px;">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('img/2.webp') }}" class="d-block w-100" alt="..."
-                                    style="height: 425px;">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('img/1.jpg') }}" class="d-block w-100" alt="..."
-                                    style="height: 425px;">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button"
-                            data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button"
-                            data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+                <div class="col-4" style="margin-top:2%;">
+                    <img id="main-image" src="{{ asset('storage/' . $images[0]) }}" alt="..."
+                        width="500" height="500">
+                    <!-- Resto de tu código... -->
                 </div>
             </div>
         </div>
@@ -122,7 +93,7 @@
                                         ALMACENAMIENTO:</p>
                                     <div class="d-flex"style="margin-left: 5%;">
                                         @foreach ($almacenamiento as $key => $value)
-                                            <a href="#"
+                                            <a href="#"style="text-decoration: none"
                                                 class="col-md-4 mx-1 "wire:click="seleccionar_almacenamiento('{{ $key }}')">
                                                 <div class="card {{ $value ? 'border border-dark' : '' }}">
                                                     <div class="card-body text-center">
@@ -490,10 +461,22 @@
                 </div>
             </div>
             <div style="text-align: center;">
-    <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo modelo</button>
-</div>
+                <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo modelo</button>
+            </div>
 
         </div>
     </div>
     @include('livewire.ver-productos.modal_ver-productos')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var images = document.querySelectorAll('.clickable-image');
+            var mainImage = document.getElementById('main-image');
+    
+            images.forEach(function(image) {
+                image.addEventListener('click', function() {
+                    mainImage.src = image.src;
+                });
+            });
+        });
+    </script>
 </div>

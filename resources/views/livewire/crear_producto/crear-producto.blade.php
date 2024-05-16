@@ -1,9 +1,8 @@
 <div style="background-color:#F2F2F2">
-<br>
-<br>
+    <br>
+    <br>
     <div class="container" style="background-color:#F2F2F2">
-        <div class="card mx-auto"
-            style="max-width: 600px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+        <div class="card mx-auto" style="max-width: 600px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
             <div>
                 <h3 class="card-title text-center" style="font-size: 2.5rem; font-weight: bold;"style="margin-botom:10%">
                     ¡Hola! Antes que nada
@@ -88,8 +87,8 @@
                         <div class="container mt-3">
                             <div class="row">
                                 <div class="col-auto">
-                                    <label for="{{ $componente['nombre'] }}"
-                                        class="card-title text-center mb-2" style="font-size: 1.5rem; font-weight: bold">{{ $componente['nombre'] }}:</label>
+                                    <label for="{{ $componente['nombre'] }}" class="card-title text-center mb-2"
+                                        style="font-size: 1.5rem; font-weight: bold">{{ $componente['nombre'] }}:</label>
                                 </div>
                                 <!-- TODO: Poner If evaluadores de casos especiales por caracteristica, es decir, si evalua que una
                     caracteristica es color y dado que es un caso especial, el input no se muestra sino que se muestra un
@@ -143,6 +142,29 @@
                 {{ $message }}
             </span>
         @enderror
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title text-center mb-4">Subir Imágenes</h4>
+                            <div class="form-group">
+                                <label for="imagenes">Selecciona Imágenes:</label>
+                                <input type="file" wire:model="images" multiple>
+                            </div>
+                            @error('images')
+                                <span class="text-danger">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="text-center">
             <button wire:click="store" class="btn btn-warning btn-lg font-weight-bold"
                 style="margin-top:10%;margin-bottom:5%">Crear producto</button>
@@ -151,4 +173,3 @@
 
     </div>
 </div>
-

@@ -89,7 +89,7 @@
                     <br>
 
                     <div>
-                        <a class="btn btn-outline-dark text-nowrap" wire:click="hacer_pedido">Proceder al pedido</a>
+                        <a class="btn btn-outline-dark text-nowrap" href="{{ route('crear-pedido') }}">Proceder al pedido</a>
                     </div>
 
 

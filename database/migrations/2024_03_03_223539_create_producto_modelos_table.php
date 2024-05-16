@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('array_cat');
             $table->integer('precio');
             $table->integer('stock');
+            $table->text('img');
             $table->unsignedBigInteger('id_producto');
 
             $table->foreign('id_producto')->references('id')->on('productos');

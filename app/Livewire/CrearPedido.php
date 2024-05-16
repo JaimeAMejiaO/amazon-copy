@@ -18,6 +18,7 @@ class CrearPedido extends Component
     public $carro;
     public $carro_usuario;
     public $productos_carro;
+    public $total_pedido = 0;
 
     public function mount()
     {
@@ -26,6 +27,7 @@ class CrearPedido extends Component
         $this->carro_usuario = CarroCompra::where('id_usuario', Auth::user()->id)->get();
         $this->carro = CarroCompra::where('id_usuario', Auth::user()->id)->get('id_prod_mod');
         $this->productos_carro = ProductoModelo::whereIn('id', $this->carro)->get();
+        //dd($this->carro_usuario);
     }
 
 
@@ -33,6 +35,10 @@ class CrearPedido extends Component
     {
         $this->metodo_pago = MetodoPago::where('id_usuario', Auth::user()->id)->first();
         $this->direccion = Direccion::where('id_usuario', Auth::user()->id)->first();
+        foreach ($this->carro_usuario as $producto){
+            $this->total_pedido += $producto->valor_total;
+        }
+        //dd($this->total_pedido);
         //dd($this->metodo_pago);
         //dd($this->productos_carro);
         //dd($this->carro_usuario[0]->cant);

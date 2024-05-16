@@ -10,9 +10,10 @@ class ProductoImagenes extends Model
 {
     use HasFactory;
 
-    protected $fillale = [
+    protected $table = 'producto_imagenes';
+
+    protected $fillable = [
         'id',
-        'img_principal',
         'img',
         'id_prod_mod',
     ];

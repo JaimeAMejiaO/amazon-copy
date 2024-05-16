@@ -119,26 +119,13 @@
                 <div class="col" style="height:">
                     <a wire:click="redirect_det({{ $producto->id }})">
                         <div class="card h-100" style="background-color:#F2F2F2">
-
-                            @if ($producto->id == 1)
-                                <img src="{{ asset('img/15promax.jpg') }}" class="card-img-top" alt="..."
-                                    width="120" height="300">
-                            @elseif ($producto->id == 2)
-                                <img src="{{ asset('img/adidascamisa.webp') }}" class="card-img-top" alt="..."
-                                    width="120" height="300">
-                            @elseif ($producto->id == 3)
-                                <img src="{{ asset('img/j1.jpeg') }}" class="card-img-top" alt="..."
-                                    width="120" height="300">
-                            @elseif ($producto->id == 8)
-                                <img src="{{ asset('img/alien.webp') }}" class="card-img-top" alt="..."
-                                    width="120" height="300">
-                            @elseif ($producto->id == 11)
-                                <img src="{{ asset('img/11.jpeg') }}" class="card-img-top" alt="..."
-                                    width="120" height="300">
-                            @elseif ($producto->id == 10)
-                                <img src="{{ asset('img/acer.jpeg') }}" class="card-img-top" alt="..."
-                                    width="120" height="300">
-                            @endif
+                            <?php
+                                $producto->img = explode(',', $producto->img);
+                                $imagen = $producto->img[0];
+                            ?>
+                            
+                            <img src="{{ asset('storage/'. $imagen) }}" class="card-img-top"
+                                alt="..." width="120" height="300">
 
                             <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                                 style="font-size: 120%;font-weight:bold;margin:5%">{{ $producto->nombre }}
