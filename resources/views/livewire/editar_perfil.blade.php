@@ -1,4 +1,4 @@
-<div ">
+<div >
     <br>
     <br>
     <div class="container">
@@ -16,7 +16,7 @@
                             style="font-size: 1.5rem; font-weight: bold;">Nombres</label>
                     </div>
                     <div class="col">
-                        <input wire:model="name" type="text" class="form-control" placeholder="Ingrese su nombre acá" value="{{ $usuario->name }}" required>
+                        <input wire:model="" type="text" class="form-control" placeholder="Ingrese su nombre acá" >
                     </div>
                 </div>
 

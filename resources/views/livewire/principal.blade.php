@@ -117,7 +117,7 @@
         <div class="row row-cols-1 row-cols-md-4 g-4 m-4" style=" ">
             @foreach ($all_productos as $producto)
                 <div class="col" style="height:">
-                    <a wire:click="redirect_det({{ $producto->id }})">
+                    <a wire:click="redirect_det({{ $producto->id }})" href="#" style="text-decoration: none">
                         <div class="card h-100" style="background-color:#F2F2F2">
                             <?php
                                 $producto->img = explode(',', $producto->img);
