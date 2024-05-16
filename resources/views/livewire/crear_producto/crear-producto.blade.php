@@ -1,6 +1,8 @@
 <div style="background-color:#F2F2F2">
     <br>
     <br>
+    <br>
+    <br>
     <div class="container" style="background-color:#F2F2F2">
         <div class="card mx-auto" style="max-width: 600px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
             <div>
@@ -162,6 +164,29 @@
                 {{ $message }}
             </span>
         @enderror
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title text-center mb-4">Subir Imágenes</h4>
+                            <div class="form-group">
+                                <label for="imagenes">Selecciona Imágenes:</label>
+                                <input type="file" wire:model="images" multiple>
+                            </div>
+                            @error('images')
+                                <span class="text-danger">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="text-center">
             <button wire:click="store" class="btn btn-warning btn-lg font-weight-bold"
                 style="margin-top:10%;margin-bottom:5%">Crear producto</button>

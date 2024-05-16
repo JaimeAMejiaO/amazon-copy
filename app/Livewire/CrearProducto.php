@@ -5,12 +5,16 @@ namespace App\Livewire;
 use App\Models\CatProductos;
 use App\Models\Marca;
 use App\Models\Producto;
+use App\Models\ProductoImagenes;
 use App\Models\ProductoModelo;
 use Illuminate\Database\Console\DumpCommand;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CrearProducto extends Component
 {
+    use WithFileUploads;
+    
     public $array_cat;
     public $categorias;
     public $cat_seleccionada = 0;
@@ -21,6 +25,7 @@ class CrearProducto extends Component
     public $precio;
     public $stock;
     public $cat_anterior; //Indicador de cambio de categoria
+    public $images = [];
 
     public function mount()
     {
@@ -53,6 +58,7 @@ class CrearProducto extends Component
     {   
         //dump($this->precio);
 
+
         $rules = [
             'cat_seleccionada' => 'required',
             'marca_seleccionada' => 'required',
@@ -61,6 +67,7 @@ class CrearProducto extends Component
             'array_cat.*.valor' => 'required',
             'precio' => 'required',
             'stock' => 'required',
+            'images.*' => 'required|image',
         ];
 
         $messages = [
@@ -71,6 +78,8 @@ class CrearProducto extends Component
             'array_cat.*.valor.required' => 'Las características del producto son requeridas',
             'precio.required' => 'El precio del producto es requerido',
             'stock.required' => 'El stock del producto es requerido',
+            'images.*.required' => 'La imagen del producto es requerida',
+            'images.*.image' => 'El archivo debe ser una imagen',
         ];
 
         $this->validate($rules, $messages);
@@ -82,6 +91,14 @@ class CrearProducto extends Component
             else
                 $caracteristicas_to_array .= '~' . $value['nombre'] . ':' . $value['valor'];
         }
+
+        $fileNames = [];
+        foreach ($this->images as $image) {
+            $image->storeAs('public/img', $image->getClientOriginalName());
+            $fileNames[] = $image->getClientOriginalName();
+        }
+
+        $images = implode(',', $fileNames);
 
         $producto = Producto::create([
             'id_categoria' => $this->cat_seleccionada,
@@ -95,6 +112,7 @@ class CrearProducto extends Component
             'array_cat' => $caracteristicas_to_array,
             'precio' => $this->precio,
             'stock' => $this->stock,
+            'img' => $images,
             'id_producto' => $producto->id,
         ]);
 

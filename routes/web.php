@@ -13,6 +13,7 @@ use App\Livewire\MetodoPagos;
 use App\Livewire\Principal;
 use App\Livewire\TarjetaRegalo;
 use App\Livewire\VerProductos;
+use App\Livewire\Preguntas;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,3 +56,6 @@ Route::get('/editar_perfil', EditarPerfil::class)->name('editar_perfil');
 
 Route::get('/tarjeta-regalo', TarjetaRegalo::class)->name('tarjeta-regalo');
 
+Route::get('/crear_pedido', CrearPedido::class)->name('crear-pedido');
+
+Route::get('/preguntas', Preguntas::class)->name('preguntas');

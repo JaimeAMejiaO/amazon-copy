@@ -20,12 +20,10 @@ class VerProductos extends Component
     public $ram = [];
     public $almacenamiento = []; //Obtener las tallas de los modelos
     public $cant_seleccionada = 1; //Cantidad seleccionada del producto que se quiere enviar al carro
-
     public $color_anterior;
-
     public $talla_seleccionada;
-
     public $almacenamiento_seleccionado;
+    public $images;
 
     public function mount($id)
     {
@@ -36,9 +34,12 @@ class VerProductos extends Component
         $this->id_producto = $id;
         $this->id_producto_modelo = ProductoModelo::find($id);
         $this->producto_modelos = ProductoModelo::with('producto')->where('id_producto', $this->id_producto_modelo->id_producto)->get();
-        $this->modelo_actual = $this->producto_modelos->first();
+        $this->modelo_actual = $this->producto_modelos->where('id', $this->id_producto_modelo->id)->first();
+        //dd($this->modelo_actual);
         $this->array_cat = explode('~', $this->id_producto_modelo->array_cat);
         $this->explode_array_cat = array();
+        $this->images = explode(',', $this->modelo_actual->img);
+        //dd($this->modelo_actual);
         //dd($this->modelo_actual->producto->categoria->nombre);
 
         foreach ($this->array_cat as $cat) {

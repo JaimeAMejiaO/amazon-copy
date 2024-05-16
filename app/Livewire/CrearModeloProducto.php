@@ -4,11 +4,15 @@ namespace App\Livewire;
 
 use App\Models\CatProductos;
 use App\Models\Producto;
+use App\Models\ProductoImagenes;
 use App\Models\ProductoModelo;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CrearModeloProducto extends Component
 {
+    use WithFileUploads;
+
     public $array_cat;
     public $nombre_modelo;
     public $cat_raiz;
@@ -17,6 +21,7 @@ class CrearModeloProducto extends Component
     public $precio;
     public $stock;
     public $producto_principal;
+    public $images = [];
     
     public function mount($id)
     {
@@ -75,12 +80,21 @@ class CrearModeloProducto extends Component
                 $caracteristicas_to_array .= '~' . $value['nombre'] . ':' . $value['valor'];
         }
 
+        $fileNames = [];
+        foreach ($this->images as $image) {
+            $image->storeAs('public/img', $image->getClientOriginalName());
+            $fileNames[] = $image->getClientOriginalName();
+        }
+
+        $images = implode(',', $fileNames);
+
         $producto = ProductoModelo::create([
             'nombre' => $this->nombre_modelo,
             'desc_prod' => $this->desc_prod,
             'array_cat' => $caracteristicas_to_array,
             'precio' => $this->precio,
             'stock' => $this->stock,
+            'img' => $images,
             'id_producto' => $this->producto_principal->id,
         ]);
 

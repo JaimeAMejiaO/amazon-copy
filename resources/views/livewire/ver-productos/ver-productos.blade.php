@@ -5,64 +5,15 @@
                 <div class="col-3  align-items-center">
                     <!-- Cambiado a flex-column y align-items-center para centrar verticalmente -->
 
-                    @if ($id_producto_modelo->id == 1)
-                        <img src="{{ asset('img/15promax.jpg') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110">>
-                    @elseif ($id_producto_modelo->id == 3)
-                        <img src="{{ asset('img/tecnologia.jpeg') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110">>
-                    @elseif ($id_producto_modelo->id == 4)
-                        <img src="{{ asset('img/juguetes.webp') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110">>
-                    @elseif ($id_producto_modelo->id == 5)
-                        <img src="{{ asset('img/j10.jpeg') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110">>
-                    @elseif ($id_producto_modelo->id == 6)
-                        <img src="{{ asset('img/acer.jpeg') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110">>
-                    @elseif ($id_producto_modelo->id == 7)
-                        <img src="{{ asset('img/11.jpeg') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110">>
-                    @elseif ($id_producto_modelo->id == 8)
-                        <img src="{{ asset('img/adidascamisa.webp') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110">>
-                    @elseif ($id_producto_modelo->id == 9)
-                        <img src="{{ asset('img/alien.webp') }}" cclass="img-thumbnail mb-1" alt="..." width="110"
-                        height="110">>
-                    @elseif ($id_producto_modelo->id == 10)
-                        <img src="{{ asset('img/cocina.webp') }}" class="img-thumbnail mb-1" alt="..." width="110"
-                        height="110">
-                    @endif
-
+                    @foreach ($images as $imagen)
+                        <img src="{{ asset('storage/' . $imagen) }}" class="img-thumbnail mb-1 clickable-image" alt="..."
+                            width="110" height="110">
+                    @endforeach
                 </div>
-                <div class="col-7" style="">
-                    <div id="carouselExampleAutoplaying" class="carousel slide border border-dark rounded"
-                        data-bs-ride="carousel" style="max-width: 400px;">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ asset('img/1.jpg') }}" class="d-block w-100" alt="..."
-                                    style="height: 425px;width:425px;">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('img/2.webp') }}" class="d-block w-100" alt="..."
-                                    style="height: 425px;">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('img/1.jpg') }}" class="d-block w-100" alt="..."
-                                    style="height: 425px;">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button"
-                            data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button"
-                            data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+                <div class="col-4" style="margin-top:2%;">
+                    <img id="main-image" src="{{ asset('storage/' . $images[0]) }}" alt="..."
+                        width="500" height="500">
+                    <!-- Resto de tu código... -->
                 </div>
             </div>
         </div>
@@ -516,4 +467,16 @@
         </div>
     </div>
     @include('livewire.ver-productos.modal_ver-productos')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var images = document.querySelectorAll('.clickable-image');
+            var mainImage = document.getElementById('main-image');
+    
+            images.forEach(function(image) {
+                image.addEventListener('click', function() {
+                    mainImage.src = image.src;
+                });
+            });
+        });
+    </script>
 </div>
