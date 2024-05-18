@@ -18,10 +18,9 @@ return new class extends Migration
             $table->integer('costo_pedido');
             $table->boolean('success')->default(false);
             $table->unsignedBigInteger('id_usuario');
-            $table->unsignedBigInteger('id_carro');
+            $table->text('productos');
 
             $table->foreign('id_usuario')->references('id')->on('users');
-            $table->foreign('id_carro')->references('id')->on('carro_compras');
         });
     }
 

@@ -59,4 +59,9 @@ class CarroCompras extends Component
     {
         CarroCompra::find($id_producto)->delete();
     }
+
+    public function hacer_pedido()
+    {
+        redirect()->route('crear-pedido');
+    }
 }

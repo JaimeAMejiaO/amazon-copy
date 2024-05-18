@@ -10,13 +10,15 @@ class Pedido extends Model
 {
     use HasFactory;
 
+    protected $table = 'pedidos';
+
     protected $fillable = [
         'id',
         'fecha_pedido',
         'costo_pedido',
         'success',
         'id_usuario',
-        'id_carro',
+        'productos',
     ];
 
     public function user() :BelongsTo
@@ -24,8 +26,4 @@ class Pedido extends Model
         return $this->belongsTo(User::class, 'id_usuario');
     }
 
-    public function carro_compra() :BelongsTo
-    {
-        return $this->belongsTo(CarroCompra::class, 'id_carro');
-    }
 }
