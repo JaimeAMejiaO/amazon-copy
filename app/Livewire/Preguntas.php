@@ -29,7 +29,7 @@ class Preguntas extends Component
 
         if (!$success) {
             throw ValidationException::withMessages([
-                'captcha' => __('Google thinks, you are a bot, please refresh and try again!'),
+                'captcha' => __('Google piensa que eres un bot, refresca la pagina e intentalo otra vez!'),
             ]);
         } else {
             $this->captcha = true;

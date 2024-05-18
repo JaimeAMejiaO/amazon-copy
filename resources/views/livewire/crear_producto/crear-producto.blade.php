@@ -21,7 +21,9 @@
                         <select name="categoria" id="categoria" class="form-select" wire:model.live="cat_seleccionada">
                             <option value="0" selected disabled>Seleccionar categoría</option>
                             @foreach ($categorias as $categoria)
-                                <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                                <option value="{{ $categoria->id }}">{{ $categoria->nombre }} del dpto.
+                                    {{$categoria->departamento->nombre}}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -100,7 +102,8 @@
                                                         title="Choose your color">
                                                 </div>
                                                 <div class="row justify-content-center">
-                                                    <p>Solo se puede ingresar numeros en hexadecimal separados por ","</p>
+                                                    <p>Solo se puede ingresar numeros en hexadecimal separados por ","
+                                                    </p>
                                                 </div>
                                         @endif
                                     </div>
