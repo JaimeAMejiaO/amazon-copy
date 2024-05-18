@@ -6,13 +6,13 @@
                     <!-- Cambiado a flex-column y align-items-center para centrar verticalmente -->
 
                     @foreach ($images as $imagen)
-                        <img src="{{ asset('storage/' . $imagen) }}" class="img-thumbnail mb-1 clickable-image" alt="..."
-                            width="110" height="110">
+                        <img src="{{ asset('storage/' . $imagen) }}" class="img-thumbnail mb-1 clickable-image"
+                            alt="..." width="110" height="110">
                     @endforeach
                 </div>
                 <div class="col-4" style="margin-top:2%;">
-                    <img id="main-image" src="{{ asset('storage/' . $images[0]) }}" alt="..."
-                        width="500" height="500">
+                    <img id="main-image" src="{{ asset('storage/' . $images[0]) }}" alt="..." width="500"
+                        height="500">
                     <!-- Resto de tu código... -->
                 </div>
             </div>
@@ -60,8 +60,7 @@
                                         COLORES:</p>
                                     <div style="margin-left: 5%;">
                                         @foreach ($colores as $color => $valor)
-                                            <a href="#"
-                                                wire:click="seleccionar_color('{{ $color }}')"><i
+                                            <a href="#" wire:click="seleccionar_color('{{ $color }}')"><i
                                                     class="fa-solid fa-circle{{ $valor ? '-check' : '' }} fa-2xl"
                                                     style="color: {{ $color }};"></i></a>
                                         @endforeach
@@ -179,56 +178,82 @@
         <div class="card mx-5"
             style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);;overflow-y: auto; max-height: 300px;">
             <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
-                <div class="row">
-                    <div class="col-2 text-center">
-                        <div class="rounded-pill px-3 py-1" style="border: 1px solid black;">
-                            JAIME ANDRES MEJIA
-                        </div>
+                @foreach ($preguntas_producto as $pregunta)
+                    <div class="row">
+                        <div class="col-2 text-center">
+                            <div class="rounded-pill px-3 py-1" style="border: 1px solid black;">
+                                {{ $pregunta->user->name }}
+                            </div>
 
+                        </div>
+                        <div class="col">
+                            <p>
+                                {{ $pregunta->pregunta }}
+                            </p>
+                        </div>
                     </div>
-                    <div class="col">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis massa augue, ut
-                            lobortis odio volutpat tincidunt. Aenean hendrerit at mi ultrices faucibus. Phasellus
-                            consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci et est auctor
-                            blandit. Phasellus a viverra enim, vitae rhoncus nibh. Maecenas maximus accumsan posuere.
-                            Donec eget tellus orci. Suspendisse dignissim, mauris vitae pharetra congue, lacus nunc
-                            elementum lacus, id lobortis ante tortor vel diam. Aliquam erat volutpat. Donec rutrum</p>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center"> <!-- Añadido align-items-center para centrar verticalmente -->
-                    <div class="col text-center"style="margin-left:15%;margin-right:1%">
+                    <div class="d-flex align-items-center">
                         <!-- Añadido align-items-center para centrar verticalmente -->
-                        <div class="rounded-pill px-2 " style="border: 1px solid black;">
-                            RESPUESTA
+                        <div class="col text-center"style="margin-left:15%;margin-right:1%">
+                            <!-- Añadido align-items-center para centrar verticalmente -->
+                            <div class="rounded-pill px-2 " style="border: 1px solid black;">
+                                RESPUESTA DEL VENDEDOR
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            @if ($pregunta->respuesta != null)
+                                <p>
+                                    {{ $pregunta->respuesta->respuesta }}
+                                </p>
+                            @else
+                                <p>
+                                    <b>
+                                        No existe aun una respuesta
+                                    </b>
+                                </p>
+                                @if (auth()->user()->id == $id_producto_modelo->producto->id_usuario)
+                                    <p>Vendedor, ¿desea responder a esta pregunta?</p>
+                                    <input type="text" wire:model="respuesta" class="form-control">
+                                    <button class="btn btn-outline-dark"
+                                        wire:click="responderPregunta({{ $pregunta->id }})">
+                                        Responder
+                                    </button>
+                                @endif
+                            @endif
                         </div>
                     </div>
-                    <div class="col-9">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis massa augue, ut
-                            lobortis odio volutpat tincidunt. Aenean hendrerit at mi ultrices faucibus. Pha</p>
-                    </div>
-                </div>
-
-
+                @endforeach
             </div>
 
-
-
-
-            <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
-                <div class="row">
-                    <div class="col-2 text-center">
-                        <div class="rounded-pill px-3 py-1" style=" border: 1px solid black;">
-                            JULIAN STEVAN DAZA
-                        </div>
-                    </div>
-                    <div class="col">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis massa augue, ut
-                            lobortis odio volutpat tincidunt. Aenean hendrerit at mi ultrices faucibus. Phasellus
-                            consectetur mattis metus, at pulvinar sem interdum a. Aenean pulvinar orci et est auctor
-                            blandit. Phasellus </p>
-                    </div>
+            <form wire:submit.prevent="realizarPregunta">
+                <div class=" mt-5">
+                    <label class="block uppercase tracking-wide text-grey-darker text-gray-600 text-lg font-bold mb-2"
+                        for="pregunta">
+                        Realice su pregunta sobre el producto
+                    </label>
+                    <input type="text" name="pregunta" wire:model.debounce.365ms="pregunta"
+                        placeholder="Escriba acá"
+                        class="border p-3 rounded form-input focus:outline-none w-full shadow-md focus:shadow-lg transition duration-150 ease-in-out">
+                    @error('pregunta')
+                        <p class="text-red-700 font-semibold mt-2">
+                            {{ $message }}
+                        </p>
+                    @enderror
                 </div>
-            </div>
+
+                <div id="captcha" class="mt-4" wire:ignore></div>
+
+                @error('captcha')
+                    <p class="mt-3 text-sm text-red-600 text-left">
+                        {{ $message }}
+                    </p>
+                @enderror
+
+
+                <button type="submit" class="some-button-style">
+                    Enviar pregunta
+                </button>
+            </form>
         </div>
 
 
@@ -467,11 +492,28 @@
         </div>
     </div>
     @include('livewire.ver-productos.modal_ver-productos')
+
+    <script src="https://www.google.com/recaptcha/api.js?onload=handle&render=explicit" async defer></script>
+
+    <script>
+        var handle = function(e) {
+            widget = grecaptcha.render('captcha', {
+                'sitekey': '{{ env('CAPTCHA_SITE_KEY') }}',
+                'theme': 'light', // you could switch between dark and light mode.
+                'callback': verify
+            });
+
+        }
+        var verify = function(response) {
+            @this.set('captcha', response)
+        }
+    </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var images = document.querySelectorAll('.clickable-image');
             var mainImage = document.getElementById('main-image');
-    
+
             images.forEach(function(image) {
                 image.addEventListener('click', function() {
                     mainImage.src = image.src;
