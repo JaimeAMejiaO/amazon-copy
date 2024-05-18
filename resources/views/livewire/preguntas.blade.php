@@ -3,10 +3,10 @@
         <div class=" mt-5">
             <label class="block uppercase tracking-wide text-grey-darker text-gray-600 text-lg font-bold mb-2"
                 for="pregunta">
-                {{ __('Question') }}
+                Realice su pregunta sobre el producto
             </label>
             <input type="text" name="pregunta" wire:model.debounce.365ms="pregunta"
-                placeholder="{{ __('Enter your question about the product') }}"
+                placeholder="Escriba acá"
                 class="border p-3 rounded form-input focus:outline-none w-full shadow-md focus:shadow-lg transition duration-150 ease-in-out">
             @error('pregunta')
                 <p class="text-red-700 font-semibold mt-2">

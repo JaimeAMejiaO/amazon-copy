@@ -3,9 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\CarroCompra;
+use App\Models\Pregunta;
 use App\Models\Producto;
 use App\Models\ProductoModelo;
+use App\Models\Respuesta;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Validation\ValidationException;
 
 class VerProductos extends Component
 {
@@ -24,6 +29,10 @@ class VerProductos extends Component
     public $talla_seleccionada;
     public $almacenamiento_seleccionado;
     public $images;
+    public $captcha = null;
+    public $pregunta;
+    public $preguntas_producto;
+    public $respuesta;
 
     public function mount($id)
     {
@@ -36,11 +45,15 @@ class VerProductos extends Component
         $this->producto_modelos = ProductoModelo::with('producto')->where('id_producto', $this->id_producto_modelo->id_producto)->get();
         $this->modelo_actual = $this->producto_modelos->where('id', $this->id_producto_modelo->id)->first();
         //dd($this->modelo_actual);
+        //dd($this->id_producto_modelo->id);
         $this->array_cat = explode('~', $this->id_producto_modelo->array_cat);
         $this->explode_array_cat = array();
         $this->images = explode(',', $this->modelo_actual->img);
         //dd($this->modelo_actual);
         //dd($this->modelo_actual->producto->categoria->nombre);
+
+        $this->preguntas_producto = Pregunta::with('user', 'respuesta')->where('id_prod_mod', $this->id_producto_modelo->id)->get();
+        //dd($this->preguntas_producto[0]->respuesta->respuesta);
 
         foreach ($this->array_cat as $cat) {
             //Dividir el elemento en key y value usando ":"
@@ -212,6 +225,78 @@ class VerProductos extends Component
         }
     }
 
+    public function updatedCaptcha($token)
+    {
+        $response = Http::post(
+            'https://www.google.com/recaptcha/api/siteverify?secret=' .
+                env('CAPTCHA_SECRET_KEY') .
+                '&response=' . $token
+        );
+
+        $success = $response->json()['success'];
+
+        if (!$success) {
+            throw ValidationException::withMessages([
+                'captcha' => __('Google piensa que eres un bot, refresca la pagina e intentalo otra vez!'),
+            ]);
+        } else {
+            $this->captcha = true;
+        }
+    }
+
+    // validate the captcha rule
+    protected function rules()
+    {
+        return [
+            'captcha' => ['required'],
+            // ...
+        ];
+    }
+
+    public function realizarPregunta(){
+        $rules = [
+            'pregunta' => 'required|max:255',
+            'captcha' => 'required',
+        ];
+
+        $messages = [
+            'pregunta.required' => 'La pregunta es requerida',
+            'pregunta.max' => 'La pregunta no puede tener más de 255 caracteres',
+            'captcha.required' => 'El captcha es requerido',
+        ];
+
+        $this->validate($rules, $messages);
+
+        Pregunta::create([
+            'pregunta' => $this->pregunta,
+            'id_usuario' => Auth::user()->id,
+            'id_prod_mod' => $this->id_producto_modelo->id,
+        ]);
+
+        redirect()->route('ver-productos', ['id' => $this->id_producto_modelo->id_producto]);
+    }
+
+    public function responderPregunta($id_pregunta){
+        $rules = [
+            'respuesta' => 'required|max:255',
+        ];
+
+        $messages = [
+            'respuesta.required' => 'La respuesta es requerida',
+            'respuesta.max' => 'La respuesta no puede tener más de 255 caracteres',
+        ];
+
+        $this->validate($rules, $messages);
+
+        Respuesta::create([
+            'respuesta' => $this->respuesta,
+            'id_usuario' => Auth::user()->id,
+            'id_pregunta' => $id_pregunta,
+        ]);
+
+        redirect()->route('ver-productos', ['id' => $this->id_producto_modelo->id_producto]);
+    }
+    
     public function redirect_nuevo_modelo()
     {
         redirect()->route('crear-modelo-producto', ['id' => $this->id_producto_modelo->id_producto]);

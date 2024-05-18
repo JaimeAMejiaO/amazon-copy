@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\CatProductos;
+use App\Models\DepartamentoCat;
 use App\Models\Marca;
 use App\Models\Producto;
 use App\Models\ProductoImagenes;
@@ -29,7 +30,7 @@ class CrearProducto extends Component
 
     public function mount()
     {
-        $this->categorias = CatProductos::all();
+        $this->categorias = CatProductos::with('departamento')->get();
         $this->marcas = Marca::all();
     }
 
@@ -46,6 +47,7 @@ class CrearProducto extends Component
     public function obtener_caracteristicas()
     {
         $categoria = CatProductos::find($this->cat_seleccionada);
+        
         $array_cat = explode(', ', $categoria->array_cat);
         
         foreach ($array_cat as $key => $value) {
