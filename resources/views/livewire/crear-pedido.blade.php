@@ -63,8 +63,7 @@
                                                         proceder con
                                                         el pedido
                                                     </p>
-                                                    <a href="{{ route('direcciones') }}"
-                                                        class="btn btn-warning">Agregar
+                                                    <a href="{{ route('direcciones') }}" class="btn btn-warning">Agregar
                                                         dirección</a>
                                                 </div>
                                             </div>
@@ -134,26 +133,37 @@
                             <thead>
                                 <tr>
                                     <th>Descripción</th>
-                                    <!--<th>Cantidad</th>-->
+                                    <th>Cantidad</th>
                                     <th>Total</th>
                                 </tr>
                             </thead>
 
 
                     </div>
-
+                    @php
+                        $i = 0;
+                    @endphp
                     <tbody>
                         @foreach ($productos_carro as $producto)
+                            
                             <tr>
                                 <td>{{ $producto->nombre }}</td>
+                                    <td>{{ $carro_usuario[$i]->cant }}</td>
+
                                 <td>${{ $producto->precio }}</td>
                             </tr>
+
+
+                            @php
+                                $i++;
+                            @endphp
                         @endforeach
 
                     </tbody>
                     <tfoot>
                         <tr>
                             <td><strong>Total</strong></td>
+                            <td><strong>-----</strong></td>
                             <td><strong>$....</strong></td>
                         </tr>
 
