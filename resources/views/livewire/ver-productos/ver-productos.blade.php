@@ -10,7 +10,7 @@
                             alt="..." width="110" height="110">
                     @endforeach
                 </div>
-                <div class="col-4" style="margin-top:2%;">
+                <div class="col-8.5 border rounded p-3" style="margin-top:2%;">
                     <img id="main-image" src="{{ asset('storage/' . $images[0]) }}" alt="..." width="500"
                         height="500">
                     <!-- Resto de tu código... -->
@@ -174,39 +174,106 @@
         <br>
         <br>
         <br>
-        <h1 style="text-align:center">PREGUNTAS</h1>
         <div class="card mx-5"
             style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);;overflow-y: auto; max-height: 300px;">
             <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
-                @foreach ($preguntas_producto as $pregunta)
-                    <div class="row">
-                        <div class="col-2 text-center">
-                            <div class="rounded-pill px-3 py-1" style="border: 1px solid black;">
-                                {{ $pregunta->user->name }}
-                            </div>
+                <form wire:submit.prevent="realizarPregunta">
+                    <div class=" mt-2">
+                        <label class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                            style="font-size: 250%;margin-left: %;margin-top: %;" for="pregunta">
+                            <b>Pregúntale al vendedor</b>
+                        </label>
 
+                    </div>
+
+
+
+                    <div class="container-fluid h-100 d-flex align-items-center justify-content-center">
+                        <div class="row w-100">
+                            <div class="col-12" style="height: 100%">
+                                <input type="text" name="pregunta" wire:model.debounce.365ms="pregunta"
+                                    placeholder="Escriba acá"
+                                    style="border-color: #80bdff;box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);outline: none; transition: box-shadow 0.3s ease, border-color 0.3s ease;width: 100%;height: 100%;padding: 12px;box-sizing: border-box;border: 1px solid #ced4da; border-radius: .25rem;" />
+
+                                @error('pregunta')
+                                    <p class="text-red-700 font-semibold mt-2">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+
+                            </div>
                         </div>
-                        <div class="col">
-                            <p>
+                    </div>
+
+
+
+                    <div id="captcha" class="mt-4" wire:ignore></div>
+
+                    @error('captcha')
+                        <p class="mt-3 text-sm text-red-600 text-left">
+                            {{ $message }}
+                        </p>
+                    @enderror
+
+                    <div class="d-flex justify-content-center align-items-center" style="">
+                        <button type="submit" class="btn btn-warning btn-lg font-weight-bold"
+                            style="margin-left:5%">
+                            Enviar pregunta
+                        </button>
+                    </div>
+
+
+
+
+
+                </form>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <h1 style="text-align:center">PREGUNTAS</h1>
+        <div class="card mx-5"
+            style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);;overflow-y: auto; max-height: 700px;">
+            <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
+                @foreach ($preguntas_producto as $pregunta)
+                    <div class="row" style="background-color: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 20px; margin: 10px; ">
+                        <div class="col-2 text-center">
+                            <div class="d-flex justify-content-end align-items-center" style="height: 100%;">
+                                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                    style="font-size: 140%; margin-top: 0;">
+                                    <b>{{ $pregunta->user->name }}:</b>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col" style="margin-top:0.1%">
+                            <p style="font-size: 130%; margin-top: 0;">
                                 {{ $pregunta->pregunta }}
                             </p>
                         </div>
-                    </div>
-                    <div class="d-flex align-items-center">
+
+                        <div class="d-flex align-items-center">
+
                         <!-- Añadido align-items-center para centrar verticalmente -->
                         <div class="col text-center"style="margin-left:15%;margin-right:1%">
                             <!-- Añadido align-items-center para centrar verticalmente -->
-                            <div class="rounded-pill px-2 " style="border: 1px solid black;">
-                                RESPUESTA DEL VENDEDOR
+                            <div class=" " style="background-color:#F2F2F2">
+                                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                    style="font-size: 100%;margin-left: %;margin-top: %;" for="pregunta">
+                                    <b></b>
+                                </p>
                             </div>
                         </div>
-                        <div class="col-9">
+                        <div class="col-10" style=";margin-bottom:%">
                             @if ($pregunta->respuesta != null)
-                                <p>
-                                    {{ $pregunta->respuesta->respuesta }}
+                                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                    style="font-size: 120%;margin-left: %;margin-top: %;">
+                                    <b>VENDEDOR: {{ $pregunta->respuesta->respuesta }}</b>
                                 </p>
                             @else
-                                <p>
+                                <p  style="font-size: 120%">
                                     <b>
                                         No existe aun una respuesta
                                     </b>
@@ -222,38 +289,12 @@
                             @endif
                         </div>
                     </div>
+                    </div>
+                    
                 @endforeach
             </div>
 
-            <form wire:submit.prevent="realizarPregunta">
-                <div class=" mt-5">
-                    <label class="block uppercase tracking-wide text-grey-darker text-gray-600 text-lg font-bold mb-2"
-                        for="pregunta">
-                        Realice su pregunta sobre el producto
-                    </label>
-                    <input type="text" name="pregunta" wire:model.debounce.365ms="pregunta"
-                        placeholder="Escriba acá"
-                        class="border p-3 rounded form-input focus:outline-none w-full shadow-md focus:shadow-lg transition duration-150 ease-in-out">
-                    @error('pregunta')
-                        <p class="text-red-700 font-semibold mt-2">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                </div>
 
-                <div id="captcha" class="mt-4" wire:ignore></div>
-
-                @error('captcha')
-                    <p class="mt-3 text-sm text-red-600 text-left">
-                        {{ $message }}
-                    </p>
-                @enderror
-
-
-                <button type="submit" class="some-button-style">
-                    Enviar pregunta
-                </button>
-            </form>
         </div>
 
 

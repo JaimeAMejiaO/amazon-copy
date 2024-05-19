@@ -256,7 +256,6 @@ class VerProductos extends Component
     public function realizarPregunta(){
         $rules = [
             'pregunta' => 'required|max:255',
-            'captcha' => 'required',
         ];
 
         $messages = [
