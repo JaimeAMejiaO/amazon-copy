@@ -1,6 +1,6 @@
 <div>
     <div class="container">
-        @if ($metodos_pago->count() > 0)
+    
             <div style=";margin-top:2%;">
                 <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                     style="font-size: 280%;font-weight:bold;margin-left: 20px;margin-top:2%;text-align:center">Métodos de
@@ -12,7 +12,7 @@
                     <button class="btn btn-outline-dark " style="width:100%;height:100%" wire:click="abrir_modal_metodo(0 , 2)" class="btn btn-warning">
                         <div class="text-center">
                             <i class="fa-solid fa-plus fa-10x"></i>
-                            <h5 class="card-title text-center">Agregar Direccion</h5>
+                            <h5 class="card-title text-center">Agregar Metodo</h5>
                             <br>
                             <br>
                         </div>
@@ -43,9 +43,7 @@
                     </div>
                 @endforeach
             </div>
-        @else
-            <p>No hay métodos de pago creados.</p>
-        @endif
+
 
     </div>
     @include('livewire.metodo_pagos.metodo_pago_crear')

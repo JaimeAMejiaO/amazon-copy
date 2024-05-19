@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color:#131921 ">
         <div class="container d-flex justify-content-center">
             <a href="{{ route('principal') }}" style="">
-                <img src="{{ asset('storage/logo.png') }}" alt="..." style ='width: 20%;'>
+                <img src="{{ asset('storage/logo.png') }}" alt="..." style ='width: 45%;'>
             </a>
             <div class="input-group" style="background-color:#131921">
 

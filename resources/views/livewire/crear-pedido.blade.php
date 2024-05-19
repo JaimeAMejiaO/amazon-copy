@@ -1,95 +1,206 @@
 <div>
-    <div class="container">
+
+    <div class="container mt-5">
         <div class="row">
-            <div class="col-md-12">
-                <h1>Continuar con el pedido</h1>
-                <div class="">
-                    <div class="row">
-                        <div class="col-md-4">1</div>
-                        <div class="col-md-4">Dirección de envío</div>
-                        @if ($direccion)
-                            <div class="col-md-4">{{ $direccion->nombre_completo }}<br>{{ $direccion->direccion }}<br>
-                                {{ $direccion->especificacion_dir }}<br>
-                                {{ $direccion->ciudad }}, {{ $direccion->departamento }}, {{ $direccion->cod_postal }}
-                            </div>
-                        @else
-                            <div class="col-md-4">
-                                <div>
-                                    <p>No hay direcciones guardadas, debes tener una dirección creada para
-                                        proceder con el pedido</p>
-
-                                    <a href="{{ route('direcciones') }}" class="btn btn-primary">Agregar dirección</a>
-                                </div>
-                            </div>
-                        @endif
+            <!-- Detalles del Cliente -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        Detalles del Cliente
                     </div>
-                    <hr>
+                    <div class="card-body">
+                        <p></p>
+                        <form>
+                            <div>
+                                <h1 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                    style="font-size: 120%;font-weight:bold;text-align:center;margin-top:3%;margin-bottom:3%">
+                                    Direccion de entrega</h1>
+                            </div>
+                            @if ($direccion)
+                                <div class="form-group">
+                                    <label for="company">Nombre de quien recibe</label>
+                                    <input type="text" class="form-control" id="company"
+                                        value="{{ $direccion->nombre_completo }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Dirección</label>
+                                    <input type="text" class="form-control" value="{{ $direccion->direccion }}"
+                                        readonly>
+                                </div>
 
-                    <div class="row">
-                        <div class="col-md-4">2</div>
-                        <div class="col-md-4">Metodo de pago</div>
-                        @if ($metodo_pago)
-                            <div class="col-md-4"><b>Pagando con
-                                </b>{{ $metodo_pago->num_tarjeta }}<br>{{ $metodo_pago->nombre_tarjeta }}<br>
+                                <div class="form-group">
+                                    <label for="address">Especificaciones direccion</label>
+                                    <input type="text" class="form-control"
+                                        value="{{ $direccion->especificacion_dir }}" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="address">Ciudad</label>
+                                    <input type="text" class="form-control" value="{{ $direccion->ciudad }}"
+                                        readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="address">Departamento</label>
+                                    <input type="text" class="form-control" value="{{ $direccion->departamento }}"
+                                        readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="address">Codigo postal</label>
+                                    <input type="text" class="form-control" value="{{ $direccion->cod_postal }}"
+                                        readonly>
+                                </div>
+                            @else
+                                <div class="d-flex row justify-content-center">
+                                    <div class="container">
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-4 d-flex flex-column align-items-center">
+                                                <div class="text-center">
+                                                    <p>
+                                                        No hay direcciones guardadas, debes tener una dirección creada
+                                                        para
+                                                        proceder con
+                                                        el pedido
+                                                    </p>
+                                                    <a href="{{ route('direcciones') }}"
+                                                        class="btn btn-warning">Agregar
+                                                        dirección</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            <div>
+                                <h1 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                    style="font-size: 120%;font-weight:bold;text-align:center;margin-top:3%;margin-bottom:3%">
+                                    Metodo de pago</h1>
+                            </div>
+                            @if ($metodo_pago)
+                                <div class="form-group">
+                                    <label for="company">Numero de tarjeta</label>
+                                    <input type="text" class="form-control" id="company"
+                                        value="{{ $metodo_pago->num_tarjeta }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Nombre del propietario</label>
+                                    <input type="text" class="form-control"
+                                        value="{{ $metodo_pago->nombre_tarjeta }}" readonly>
+                                </div>
                                 @if ($direccion)
-                                    Dirección de la tarjeta {{ $direccion->direccion }}<br>
+                                    <div class="form-group">
+                                        <label for="address">Direccion de la tarjeta</label>
+                                        <input type="text" class="form-control" value="{{ $direccion->direccion }}"
+                                            readonly>
+                                    </div>
                                 @else
-                                    Dirección de la tarjeta no disponible<br>
-                                    <a href="{{ route('direcciones') }}" class="btn btn-primary">Agregar dirección</a>
+                                    <div>
+                                        Dirección de la tarjeta no disponible<br>
+                                        <a href="{{ route('direcciones') }}" class="btn btn-primary">Agregar
+                                            dirección</a>
+                                    </div>
                                 @endif
-                            </div>
-                        @else
-                            <div class="col-md-4">
-                                <div>
-                                    <p>
-                                        No hay metodos de pago guardados, debes tener un metodo de pago creado
-                                        para proceder con el pedido
-                                    </p>
-                                    <a href="{{ route('metodos-pago') }}" class="btn btn-primary">Agregar
-                                        metodo de pago</a>
+                            @else
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-4 d-flex flex-column align-items-center">
+                                            <div class="text-center">
+                                                <p>
+                                                    No hay métodos de pago guardados, debes tener un método de pago
+                                                    creado
+                                                    para proceder con el pedido.
+                                                </p>
+                                                <a href="{{ route('metodo-pagos') }}" class="btn btn-warning">Agregar
+                                                    método</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
+                        </form>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-4">3</div>
-                        <div class="col-md-4">Productos del carrito</div>
-                        <div class="row">
-                            @foreach ($productos_carro as $producto)
-                                <div class="col-md-4">{{ $producto->nombre }}<br>
-                                    Precio c/u: ${{ $producto->precio }}<br>
-                                </div>
-                            @endforeach
-                        </div>
-                        @for ($i = 0; $i < $carro_usuario->count(); $i++)
-                            <div class="col-md-4">Cantidad: {{ $carro_usuario[$i]->cant }}
-                            </div>
-                        @endfor
+                </div>
+            </div>
+
+            <!-- Pedido Resumen -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        Pedido Resumen
                     </div>
-                    <hr>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <!--<th>Cantidad</th>-->
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+
+
+                    </div>
+
+                    <tbody>
+                        @foreach ($productos_carro as $producto)
+                            <tr>
+                                <td>{{ $producto->nombre }}</td>
+                                <td>${{ $producto->precio }}</td>
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>$....</strong></td>
+                        </tr>
+
+
+                    </tfoot>
+                    </table>
                     <div class="d-flex justify-content-center">
                         @if ($direccion && $metodo_pago)
                             <div class="d-flex row justify-content-center">
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary" wire:click="crearPedido">Realizar pedido</button>
+                                    <button class="btn btn-warning" wire:click="crearPedido">Realizar pedido</button>
                                 </div>
                             </div>
                         @elseif (!$direccion)
                             <div class="d-flex row justify-content-center">
-                                <div class="col-md-12">
-                                    <p>No hay direcciones guardadas, debes tener una dirección creada para proceder con
-                                        el pedido</p>
-                                    <a href="{{ route('direcciones') }}" class="btn btn-primary">Agregar dirección</a>
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-4 d-flex flex-column align-items-center">
+                                            <div class="text-center">
+                                                <p>
+                                                    No hay direcciones guardadas, debes tener una dirección creada para
+                                                    proceder con
+                                                    el pedido
+                                                </p>
+                                                <a href="{{ route('direcciones') }}" class="btn btn-warning">Agregar
+                                                    dirección</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         @elseif (!$metodo_pago)
                             <div class="d-flex row justify-content-center">
-                                <div class="col-md-12">
-                                    <p>No hay metodos de pago guardados, debes tener un metodo de pago creado para
-                                        proceder con el pedido</p>
-                                    <a href="{{ route('metodos-pago') }}" class="btn btn-primary">Agregar metodo de
-                                        pago</a>
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-4 d-flex flex-column align-items-center">
+                                            <div class="text-center">
+                                                <p>
+                                                    No hay métodos de pago guardados, debes tener un método de pago
+                                                    creado
+                                                    para proceder con el pedido.
+                                                </p>
+                                                <a href="{{ route('metodo-pagos') }}" class="btn btn-warning">Agregar
+                                                    método</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         @endif
@@ -98,4 +209,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
