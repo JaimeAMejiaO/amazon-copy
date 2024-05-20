@@ -21,8 +21,8 @@
                                         $imagen = explode(',', $producto_modelo->producto_modelo->img);
                                         $imagen = $imagen[1];
                                     @endphp
-                                    <img src="{{ asset('storage/'. $imagen) }}" class="" alt="..." width="150"
-                                        height="150"
+                                    <img src="{{ asset('storage/' . $imagen) }}" class="" alt="..."
+                                        width="150" height="150"
                                         style="border-radius: 8px;border: 2px solid black;margin-bottom: 10px">
                                 </div>
                                 <div class="col-9" style="">
@@ -79,29 +79,39 @@
                 @endif
             </div>
         </div>
-
-        <div class="col-3" style="width: 18rem; border-radius: 8px;border: 2px solid black;background-color:#F2F2F2">
-            <div class="card-body">
-                <br>
-                <br>
-                <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                    style="font-size: 200%;font-weight:bold;text-align:center">PRODUCTO</h2>
-                @if ($array_productos->count() > 0)
+        <div>
+            <div class="col-3"
+                style="width: 18rem; border-radius: 8px;border: 2px solid black;background-color:#F2F2F2">
+                <div class="card-body">
+                    <br>
+                    <br>
                     <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                        style="font-size: 200%;font-weight:bold;text-align:center">{{ $valor_total }}$</h2>
-                    <div style="text-align:center">
-                        <br>
-                        <br>
-                        <br>
-                        <div>
-                            <a class="btn btn-outline-dark text-nowrap" wire:click="hacer_pedido">Proceder al pedido</a>
+                        style="font-size: 200%;font-weight:bold;text-align:center">PRODUCTO</h2>
+                    @if ($array_productos->count() > 0)
+                        <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                            style="font-size: 200%;font-weight:bold;text-align:center">{{ $valor_total }}$</h2>
+                        <div style="text-align:center">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div>
+                                <a class="btn btn-outline-dark text-nowrap" wire:click="hacer_pedido">Proceder al
+                                    pedido</a>
+                            </div>
+                            
                         </div>
-                    </div>
-                @endif
-                <br>
-                <br>
+                        
+                    @endif
+                    <br>
+                    <br>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>

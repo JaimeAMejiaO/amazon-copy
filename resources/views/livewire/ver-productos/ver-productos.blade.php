@@ -1,25 +1,28 @@
 <div style="background-color:#F2F2F2">
     <div style=" " class="d-flex">
         <div class="col" style="">
-            <div class="d-flex" style="margin-top:5%;margin-left:15%;">
-                <div class="col-3  align-items-center">
+            <div class="d-flex" style="margin-top:5%;margin-left:5%;">
+                <div class="col-2  align-items-center" style="">
                     <!-- Cambiado a flex-column y align-items-center para centrar verticalmente -->
 
                     @foreach ($images as $imagen)
                         <img src="{{ asset('storage/' . $imagen) }}" class="img-thumbnail mb-1 clickable-image"
-                            alt="..." width="110" height="110">
+                            alt="..." width="100" height="50" style="object-fit: cover;">
                     @endforeach
                 </div>
                 <div class="col-8.5 border rounded p-3" style="margin-top:2%;">
-                    <img id="main-image" src="{{ asset('storage/' . $images[0]) }}" alt="..." width="500"
-                        height="500">
-                    <!-- Resto de tu código... -->
+                    <div>
+                        <img id="main-image" src="{{ asset('storage/' . $images[0]) }}" alt="..." width="500"
+                            height="700">
+                        <!-- Resto de tu código... -->
+                    </div>
+
                 </div>
             </div>
         </div>
-        <div class="col-4" style="margin-top:2%;">
+        <div class="col-5" style="margin-top:2%;margin-right:2%;">
             <h1 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 240%;font-weight:bold;text-align:center">{{ $id_producto_modelo->nombre }}</h1>
+                style="font-size: 210%;font-weight:bold;text-align:center">{{ $id_producto_modelo->nombre }}</h1>
 
             <div style="margin-top:5%">
                 <i class="fa-solid fa-star fa-2xl" style="color: #FFD43B;margin-left:4%"></i>
@@ -29,11 +32,11 @@
                 <i class="fa-solid fa-star fa-2xl" style="color: #787878;margin-left:-0.5%"></i>
             </div>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 200%;font-weight:bold;margin-left: 20px;margin-top:2%">$
+                style="font-size: 180%;font-weight:bold;margin-left: 5%;margin-top:2%">$
                 {{ $id_producto_modelo->precio }}
             </h3>
             <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 200%;font-weight:bold;margin-left: 5%;">
+                style="font-size: 180%;font-weight:bold;margin-left: 5%;">
                 {{ $id_producto_modelo->producto->marca->nombre }}
             </h2>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
@@ -104,62 +107,70 @@
                                     </div>
                                 </div>
                             @else
-                                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                    style="font-size: 150%;;margin-left: 5%;margin-top: 2%;">
-                                    <b>{{ $titulo_caracteristica }}:</b> {{ $valor_caracteristica }}
-                                </p>
+                                <div class="col-md-6 mb-3">
+                                    <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                        style="font-size: 120%; margin-left: 5%; margin-top: 2%;">
+                                        <b>{{ $titulo_caracteristica }}:</b> {{ $valor_caracteristica }}
+                                    </p>
+                                </div>
                             @endif
                         @endforeach
                     </div>
                 </div>
             </div>
-
-
-
-
-
         </div>
-        <div class="col-1 card mb-3"
-            style="width: 18rem; border-radius: 8px;border: 2px solid black;margin-top:2%;margin-right:5%;margin-left:2%">
-            <div class="card-body">
-                <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                    style="font-size: 200%;font-weight:bold;margin-left: 20px;margin-top:5%;margin-bottom:15%;text-align:center">
-                    {{ $id_producto_modelo->precio }}$</h3>
-                <div class="">
-                    <div class=""style="margin-top: 5px;">
-                        <h4 class="">Cantidad disponible: {{ $id_producto_modelo->stock }} </h4>
-                    </div>
+
+        <div style="margin-right:2%;margin-top:2%">
+            <div class="col-1 card mb-3 mh-50"
+                style="width: 18rem;heigth: 18rem; border-radius: 8px;border: 2px solid black;margin-top:2%;margin-right:5%;margin-left:2%">
+                <div class="card-body">
+                    <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                        style="font-size: 200%;font-weight:bold;margin-left: 20px;margin-top:5%;margin-bottom:15%;text-align:center">
+                        {{ $id_producto_modelo->precio }}$</h3>
+                    <div class="">
                     <br>
-                    <br>
-                    <div class="d-flex align-items-center">
-                        <div style="margin-top: 5px;">
-                            <h4 class="">Cantidad: </h4>
+                        <div class=""style="margin-top: 5px;">
+                            <h4 class="">Cantidad disponible: {{ $id_producto_modelo->stock }} </h4>
                         </div>
-                        <select wire:model="cant_seleccionada" name="cant_seleccionada" id="cant_seleccionada"
-                            class="form-control form-control-sm" style="width: 70px;">
-                            @for ($i = 1; $i <= $id_producto_modelo->stock; $i++)
-                                <option value="{{ $i }}">{{ $i }}</option>
-                            @endfor
-                        </select>
-                        @error('cant_seleccionada')
-                            <div class="alert alert-danger mt-2" role="alert">
-                                {{ $message }}
+                        <br>
+                        <br>
+                        <div class="d-flex align-items-center">
+                            <div style="margin-top: 5px;">
+                                <h4 class="">Cantidad: </h4>
                             </div>
-                        @enderror
-                    </div>
+                            <select wire:model="cant_seleccionada" name="cant_seleccionada" id="cant_seleccionada"
+                                class="form-control form-control-sm" style="width: 70px;">
+                                @for ($i = 1; $i <= $id_producto_modelo->stock; $i++)
+                                    <option value="{{ $i }}">{{ $i }}</option>
+                                @endfor
+                            </select>
+                            @error('cant_seleccionada')
+                                <div class="alert alert-danger mt-2" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-                </div>
-                <br>
-                <div style="text-align:center">
-                    <br>
-
-                    <div>
-                        <button class="btn btn-outline-dark text-nowrap" wire:click="send_to_cart"
-                            data-bs-toggle="modal" data-bs-target="#modal_producto">AGREGAR AL CARRO</button>
                     </div>
                     <br>
-                    <div>
-                        <a class="btn btn-outline-dark text-nowrap" href="{{ route('carro-compras') }}">Ver Carro</a>
+                    <div style="text-align:center">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        
+                        <div>
+                            <button class="btn btn-outline-dark text-nowrap" wire:click="send_to_cart"
+                                data-bs-toggle="modal" data-bs-target="#modal_producto">AGREGAR AL CARRO</button>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div>
+                            <a class="btn btn-outline-dark text-nowrap" href="{{ route('carro-compras') }}">Ver
+                                Carro</a>
+                        </div>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -238,7 +249,8 @@
             style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);;overflow-y: auto; max-height: 700px;">
             <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
                 @foreach ($preguntas_producto as $pregunta)
-                    <div class="row" style="background-color: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 20px; margin: 10px; ">
+                    <div class="row"
+                        style="background-color: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 20px; margin: 10px; ">
                         <div class="col-2 text-center">
                             <div class="d-flex justify-content-end align-items-center" style="height: 100%;">
                                 <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
@@ -256,41 +268,40 @@
 
                         <div class="d-flex align-items-center">
 
-                        <!-- Añadido align-items-center para centrar verticalmente -->
-                        <div class="col text-center"style="margin-left:15%;margin-right:1%">
                             <!-- Añadido align-items-center para centrar verticalmente -->
-                            <div class=" " style="background-color:#F2F2F2">
-                                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                    style="font-size: 100%;margin-left: %;margin-top: %;" for="pregunta">
-                                    <b></b>
-                                </p>
+                            <div class="col text-center"style="margin-left:15%;margin-right:1%">
+                                <!-- Añadido align-items-center para centrar verticalmente -->
+                                <div class=" " style="background-color:#F2F2F2">
+                                    <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                        style="font-size: 100%;margin-left: %;margin-top: %;" for="pregunta">
+                                        <b></b>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-10" style=";margin-bottom:%">
+                                @if ($pregunta->respuesta != null)
+                                    <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                        style="font-size: 120%;margin-left: %;margin-top: %;">
+                                        <b>VENDEDOR: {{ $pregunta->respuesta->respuesta }}</b>
+                                    </p>
+                                @else
+                                    <p style="font-size: 120%">
+                                        <b>
+                                            No existe aun una respuesta
+                                        </b>
+                                    </p>
+                                    @if (auth()->user()->id == $id_producto_modelo->producto->id_usuario)
+                                        <p>Vendedor, ¿desea responder a esta pregunta?</p>
+                                        <input type="text" wire:model="respuesta" class="form-control">
+                                        <button class="btn btn-outline-dark"
+                                            wire:click="responderPregunta({{ $pregunta->id }})">
+                                            Responder
+                                        </button>
+                                    @endif
+                                @endif
                             </div>
                         </div>
-                        <div class="col-10" style=";margin-bottom:%">
-                            @if ($pregunta->respuesta != null)
-                                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                    style="font-size: 120%;margin-left: %;margin-top: %;">
-                                    <b>VENDEDOR: {{ $pregunta->respuesta->respuesta }}</b>
-                                </p>
-                            @else
-                                <p  style="font-size: 120%">
-                                    <b>
-                                        No existe aun una respuesta
-                                    </b>
-                                </p>
-                                @if (auth()->user()->id == $id_producto_modelo->producto->id_usuario)
-                                    <p>Vendedor, ¿desea responder a esta pregunta?</p>
-                                    <input type="text" wire:model="respuesta" class="form-control">
-                                    <button class="btn btn-outline-dark"
-                                        wire:click="responderPregunta({{ $pregunta->id }})">
-                                        Responder
-                                    </button>
-                                @endif
-                            @endif
-                        </div>
                     </div>
-                    </div>
-                    
                 @endforeach
             </div>
 
@@ -455,77 +466,7 @@
 
 
         <div class="container my-5">
-            <h4 class="mb-4">Los clientes que vieron este producto también vieron</h4>
-            <div class="row row-cols-1 row-cols-md-6 g-4">
-                <!-- Producto 1 -->
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/j9.jpeg') }}" class="card-img-top" alt="...">
-                            <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                style="font-size: 100%;font-weight:bold;margin:5%"> Jordan Air Jordan 9 Botas para
-                                hombre
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
             <div style="text-align: center;">
                 <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo modelo</button>
             </div>
