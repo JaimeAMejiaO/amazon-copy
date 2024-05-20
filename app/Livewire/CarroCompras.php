@@ -20,10 +20,6 @@ class CarroCompras extends Component
     {
         $this->array_productos = CarroCompra::with('producto_modelo')->where('id_usuario', auth()->user()->id)->get(); //Trae una coleccion todos los productos que agrego el usuario a su carro
         $this->valor_total = 0;
-
-        foreach ($this->array_productos as $producto) {
-            $this->valor_total += $producto->valor_total;
-        }
         
         foreach ($this->array_productos as $producto) {
             $this->valor_total += $producto->valor_total;

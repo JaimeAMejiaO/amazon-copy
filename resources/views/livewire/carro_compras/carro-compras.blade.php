@@ -17,9 +17,11 @@
                             </div>
                             <div class="d-flex col-11" style="margin-top: 20px;">
                                 <div class="col-3" style="">
-
-                                
-                                    <img src="{{ asset('img/1.jpg') }}" class="" alt="..." width="150"
+                                    @php
+                                        $imagen = explode(',', $producto_modelo->producto_modelo->img);
+                                        $imagen = $imagen[1];
+                                    @endphp
+                                    <img src="{{ asset('storage/'. $imagen) }}" class="" alt="..." width="150"
                                         height="150"
                                         style="border-radius: 8px;border: 2px solid black;margin-bottom: 10px">
                                 </div>
@@ -39,7 +41,7 @@
                                                             <i
                                                                 class="fa-solid fa-circle fa-xl"style="color: {{ $value }};"></i>
                                                         @else
-                                                            <span>{{ $value }}</span>   
+                                                            <span>{{ $value }}</span>
                                                         @endif
 
                                                     </div>

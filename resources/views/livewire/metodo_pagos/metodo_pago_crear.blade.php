@@ -40,7 +40,7 @@
         </div>
         <span class="input-group-text">/</span>
         <div class="col-2" style="">
-            <select wire:model.live="anio_actual" class="form-select" aria-label="Default select example">
+            <select wire:model.blur="anio_actual" class="form-select" aria-label="Default select example" required>
                 @for ($i = $anio_actual; $i <= $anio_actual + 20; $i++)
                     <option value="{{ $i }}">{{ $i }}</option>
                 @endfor

@@ -154,7 +154,7 @@
                     <tfoot>
                         <tr>
                             <td><strong>Total</strong></td>
-                            <td><strong>$....</strong></td>
+                            <td><strong>{{ $total_pedido}}</strong></td>
                         </tr>
 
 

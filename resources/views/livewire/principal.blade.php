@@ -121,7 +121,7 @@
                         <div class="card h-100" style="background-color:#F2F2F2">
                             <?php
                                 $producto->img = explode(',', $producto->img);
-                                $imagen = $producto->img[0];
+                                $imagen = $producto->img[1];
                             ?>
                             
                             <img src="{{ asset('storage/'. $imagen) }}" class="card-img-top"
