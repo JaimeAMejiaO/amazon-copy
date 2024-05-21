@@ -238,7 +238,8 @@
             style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);;overflow-y: auto; max-height: 700px;">
             <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
                 @foreach ($preguntas_producto as $pregunta)
-                    <div class="row" style="background-color: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 20px; margin: 10px; ">
+                    <div class="row"
+                        style="background-color: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 20px; margin: 10px; ">
                         <div class="col-2 text-center">
                             <div class="d-flex justify-content-end align-items-center" style="height: 100%;">
                                 <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
@@ -256,41 +257,40 @@
 
                         <div class="d-flex align-items-center">
 
-                        <!-- Añadido align-items-center para centrar verticalmente -->
-                        <div class="col text-center"style="margin-left:15%;margin-right:1%">
                             <!-- Añadido align-items-center para centrar verticalmente -->
-                            <div class=" " style="background-color:#F2F2F2">
-                                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                    style="font-size: 100%;margin-left: %;margin-top: %;" for="pregunta">
-                                    <b></b>
-                                </p>
+                            <div class="col text-center"style="margin-left:15%;margin-right:1%">
+                                <!-- Añadido align-items-center para centrar verticalmente -->
+                                <div class=" " style="background-color:#F2F2F2">
+                                    <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                        style="font-size: 100%;margin-left: %;margin-top: %;" for="pregunta">
+                                        <b></b>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-10" style=";margin-bottom:%">
+                                @if ($pregunta->respuesta != null)
+                                    <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                        style="font-size: 120%;margin-left: %;margin-top: %;">
+                                        <b>VENDEDOR: {{ $pregunta->respuesta->respuesta }}</b>
+                                    </p>
+                                @else
+                                    <p style="font-size: 120%">
+                                        <b>
+                                            No existe aun una respuesta
+                                        </b>
+                                    </p>
+                                    @if (auth()->user()->id == $id_producto_modelo->producto->id_usuario)
+                                        <p>Vendedor, ¿desea responder a esta pregunta?</p>
+                                        <input type="text" wire:model="respuesta" class="form-control">
+                                        <button class="btn btn-outline-dark"
+                                            wire:click="responderPregunta({{ $pregunta->id }})">
+                                            Responder
+                                        </button>
+                                    @endif
+                                @endif
                             </div>
                         </div>
-                        <div class="col-10" style=";margin-bottom:%">
-                            @if ($pregunta->respuesta != null)
-                                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                    style="font-size: 120%;margin-left: %;margin-top: %;">
-                                    <b>VENDEDOR: {{ $pregunta->respuesta->respuesta }}</b>
-                                </p>
-                            @else
-                                <p  style="font-size: 120%">
-                                    <b>
-                                        No existe aun una respuesta
-                                    </b>
-                                </p>
-                                @if (auth()->user()->id == $id_producto_modelo->producto->id_usuario)
-                                    <p>Vendedor, ¿desea responder a esta pregunta?</p>
-                                    <input type="text" wire:model="respuesta" class="form-control">
-                                    <button class="btn btn-outline-dark"
-                                        wire:click="responderPregunta({{ $pregunta->id }})">
-                                        Responder
-                                    </button>
-                                @endif
-                            @endif
-                        </div>
                     </div>
-                    </div>
-                    
                 @endforeach
             </div>
 
@@ -526,10 +526,11 @@
                     </a>
                 </div>
             </div>
-            <div style="text-align: center;">
-                <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo modelo</button>
-            </div>
-
+            @if (auth()->user()->id_rol == 1)
+                <div style="text-align: center;">
+                    <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo modelo</button>
+                </div>
+            @endif
         </div>
     </div>
     @include('livewire.ver-productos.modal_ver-productos')

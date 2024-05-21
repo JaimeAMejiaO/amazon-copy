@@ -100,6 +100,8 @@ class CrearModeloProducto extends Component
 
         //dd($producto);
 
-        redirect()->route('ver-productos', ['id' => $producto->id]);
+        $id_last_prod = ProductoModelo::latest('id')->first()->id;
+
+        redirect()->route('ver-productos', $id_last_prod);
     }
 }

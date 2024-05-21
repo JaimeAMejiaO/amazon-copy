@@ -11,8 +11,10 @@
                     al cliente</a>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit"
                     href="{{ route('tarjeta-regalo') }}">Tarjetas de regalo</a>
-                <a class="btn btn-outline-light text-nowrap ms-1" type="submit"
-                    href="{{ route('crear-producto') }}">Vender</a>
+                @if (auth()->user()->id_rol == 1)
+                    <a class="btn btn-outline-light text-nowrap ms-1" type="submit"
+                        href="{{ route('crear-producto') }}">Vender</a>
+                @endif
                 <!-- Aquí pueden ir más botones si los necesitas -->
             </div>
         </nav>
@@ -120,12 +122,12 @@
                     <a wire:click="redirect_det({{ $producto->id }})" href="#" style="text-decoration: none">
                         <div class="card h-100" style="background-color:#F2F2F2">
                             <?php
-                                $producto->img = explode(',', $producto->img);
-                                $imagen = $producto->img[1];
+                            $producto->img = explode(',', $producto->img);
+                            $imagen = $producto->img[1];
                             ?>
-                            
-                            <img src="{{ asset('storage/'. $imagen) }}" class="card-img-top"
-                                alt="..." width="120" height="300">
+
+                            <img src="{{ asset('storage/' . $imagen) }}" class="card-img-top" alt="..."
+                                width="120" height="300">
 
                             <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                                 style="font-size: 120%;font-weight:bold;margin:5%">{{ $producto->nombre }}
