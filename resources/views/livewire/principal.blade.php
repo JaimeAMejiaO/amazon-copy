@@ -11,9 +11,11 @@
                     al cliente</a>
                 <a class="btn btn-outline-light text-nowrap ms-1" type="submit"
                     href="{{ route('tarjeta-regalo') }}">Tarjetas de regalo</a>
-                @if (auth()->user()->id_rol == 1)
-                    <a class="btn btn-outline-light text-nowrap ms-1" type="submit"
-                        href="{{ route('crear-producto') }}">Vender</a>
+                @if (Auth::check())
+                    @if (auth()->user()->id_rol == 1)
+                        <a class="btn btn-outline-light text-nowrap ms-1" type="submit"
+                            href="{{ route('crear-producto') }}">Vender</a>
+                    @endif
                 @endif
                 <!-- Aquí pueden ir más botones si los necesitas -->
             </div>
