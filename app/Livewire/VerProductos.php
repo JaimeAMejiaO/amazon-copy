@@ -272,7 +272,7 @@ class VerProductos extends Component
             'id_prod_mod' => $this->id_producto_modelo->id,
         ]);
 
-        redirect()->route('ver-productos', ['id' => $this->id_producto_modelo->id_producto]);
+        redirect()->route('ver-productos', ['id' => $this->id_producto_modelo->id]);
     }
 
     public function responderPregunta($id_pregunta){
