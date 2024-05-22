@@ -27,6 +27,7 @@ class User extends Authenticatable
         'fecha_nac',
         'password',
         'fondos',
+        'id_rol',
     ];
 
     /**
