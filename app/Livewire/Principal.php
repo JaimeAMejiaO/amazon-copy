@@ -18,6 +18,7 @@ class Principal extends Component
     public function mount()
     {
         $this-> usuario = Auth::user();
+        $this->all_productos = ProductoModelo::all();
     }
 
     public function render()
@@ -44,4 +45,9 @@ class Principal extends Component
         return redirect()->route('ver-productos', ['id' => $id]);
     }
 
+    public function resetUI()
+    {
+        $this->dpto_seleccionado = null;
+
+    }
 }
