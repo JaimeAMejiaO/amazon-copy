@@ -10,10 +10,10 @@ use Livewire\Component;
 class Principal extends Component
 {
     
-    public $usuario;
-    public $departamentos_cat;
-    public $all_productos;
-    public $dpto_seleccionado;
+    public $usuario = null;
+    public $departamentos_cat = null;
+    public $all_productos = null;
+    public $dpto_seleccionado = null;
 
     public function mount()
     {
