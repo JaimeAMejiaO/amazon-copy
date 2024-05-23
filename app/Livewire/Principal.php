@@ -10,9 +10,9 @@ use Livewire\Component;
 class Principal extends Component
 {
     
-    public $usuario = null;
-    public $departamentos_cat = null;
-    public $all_productos = null;
+    public $usuario = [];
+    public $departamentos_cat = [];
+    public $all_productos = [];
     public $dpto_seleccionado = null;
 
     public function mount()
@@ -25,6 +25,7 @@ class Principal extends Component
     {
         $this -> departamentos_cat = DepartamentoCat::all();
         $dpto = $this->dpto_seleccionado;
+        //dd($dpto);
         $this -> all_productos = ProductoModelo::with('producto.categoria.departamento')->when($dpto, function ($query, $dpto){
             return $query->whereHas('producto.categoria.departamento', function ($query) use ($dpto){
                 $query->where('id', $dpto);
