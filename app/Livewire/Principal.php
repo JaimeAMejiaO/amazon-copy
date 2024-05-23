@@ -32,6 +32,11 @@ class Principal extends Component
             });
         })->get();
 
+        foreach ($this->all_productos as $producto) {
+            $imagenes = explode(',', $producto->img);
+            $producto->img = $imagenes[0];
+        }
+
         //dd($this->all_productos);
         return view('livewire.principal');
     }
