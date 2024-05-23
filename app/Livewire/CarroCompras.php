@@ -37,6 +37,8 @@ class CarroCompras extends Component
             }
             $this->caracteristicas_productos[$producto->id]=$caracteristicas;
 
+            $imagenes = explode(',', $producto->producto_modelo->img);
+            $producto->producto_modelo->img = $imagenes[0];
         }
         return view('livewire.carro_compras.carro-compras');
     }

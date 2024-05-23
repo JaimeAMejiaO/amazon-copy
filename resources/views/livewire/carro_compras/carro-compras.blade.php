@@ -18,11 +18,8 @@
                             </div>
                             <div class="d-flex col-11" style="margin-top: 20px;">
                                 <div class="col-3" style="">
-                                    @php
-                                        $imagen = explode(',', $producto_modelo->producto_modelo->img);
-                                        $imagen = $imagen[1];
-                                    @endphp
-                                    <img src="{{ asset('storage/'. $imagen) }}" class="" alt="..." width="150"
+                                    
+                                    <img src="{{ asset('storage/'. $producto_modelo->producto_modelo->img) }}" class="" alt="..." width="150"
                                         height="150"
                                         style="border-radius: 8px;border: 2px solid black;margin-bottom: 10px">
                                 </div>
