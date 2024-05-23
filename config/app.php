@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://walrus-app-4b6ny.ondigitalocean.app/'),
 
     'asset_url' => env('ASSET_URL', '/'),
 
