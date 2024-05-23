@@ -96,7 +96,7 @@ class CrearProducto extends Component
 
         $fileNames = [];
         foreach ($this->images as $image) {
-            $image->storeAs('public/img', $image->getClientOriginalName());
+            $image->storeAs('/', $image->getClientOriginalName(), 'public');
             $fileNames[] = $image->getClientOriginalName();
         }
 
