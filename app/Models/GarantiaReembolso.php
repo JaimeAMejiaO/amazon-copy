@@ -15,6 +15,7 @@ class GarantiaReembolso extends Model
         'tipo_peticion',
         'motivo',
         'img',
+        'producto_seleccionado',
         'id_usuario',
         'id_pedido',
     ];

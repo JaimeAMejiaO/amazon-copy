@@ -30,4 +30,9 @@ class VerPedidos extends Component
 
         return view('livewire.ver-pedidos');
     }
+
+    public function redirect_garantia($id)
+    {
+        return redirect()->route('garantia-reembolsos', ['id' => $id]);
+    }
 }

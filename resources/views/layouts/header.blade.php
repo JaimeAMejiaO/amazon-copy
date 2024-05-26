@@ -25,7 +25,7 @@
             </div>
 
 
-            <a class="btn btn-outline-light text-nowrap m-1" href="#">Garantias y Reembolsos</a>
+            <a class="btn btn-outline-light text-nowrap m-1" href="{{ route('ver-mis-garantias-reembolsos') }}">Garantias y Reembolsos</a>
             <a class="btn btn-outline-light text-nowrap m-1" href="{{ route('ver-pedidos') }}">Pedidos</a>
             <a class="btn btn-outline-light text-nowrap m-1" href="{{ route('carro-compras') }}">Carrito</a>
 

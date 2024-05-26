@@ -8,12 +8,14 @@ use App\Livewire\CrearProducto;
 use App\Livewire\Direcciones;
 use App\Livewire\EditarPerfil;
 use App\Livewire\FilterByDpto;
+use App\Livewire\GarantiaReembolsos;
 use App\Livewire\Marcas;
 use App\Livewire\MetodoPagos;
 use App\Livewire\Principal;
 use App\Livewire\TarjetaRegalo;
 use App\Livewire\VerProductos;
 use App\Livewire\Preguntas;
+use App\Livewire\VerMisGarantiaReembolsos;
 use App\Livewire\VerPedidos;
 use App\Livewire\VerTodosProductos;
 use App\Livewire\VerTodosUsuarios;
@@ -92,3 +94,7 @@ Route::get('/ver-pedidos', VerPedidos::class)->name('ver-pedidos');
 Route::get('/ver-todos-usuarios', VerTodosUsuarios::class)->name('ver-todos-usuarios');
 
 Route::get('/ver-todos-productos', VerTodosProductos::class)->name('ver-todos-productos');
+
+Route::get('/garantia-reembolsos/{id}', GarantiaReembolsos::class)->name('garantia-reembolsos');
+
+Route::get('/ver-mis-garantias-reembolsos', VerMisGarantiaReembolsos::class)->name('ver-mis-garantias-reembolsos');

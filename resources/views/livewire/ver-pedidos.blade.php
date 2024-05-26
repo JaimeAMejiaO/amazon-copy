@@ -39,10 +39,8 @@
                                 <td>Entregado</td>
                             @endif
                             <td>
-                                <a href="#" class="btn btn-success btn-sm"><i
-                                        class="fa-solid fa-money-bill fa-2xl"></i></a>
-                                <a href="#" class="btn btn-warning btn-sm"><i
-                                        class="fa-solid fa-truck-fast fa-2xl"></i></a>
+                                <a href="#" class="btn btn-success btn-sm"><i class="fa-solid fa-money-bill fa-2xl"
+                                        wire:click="redirect_garantia({{ $pedido->id }})"></i></a>
                             </td>
                         </tr>
                     @endforeach
