@@ -15,6 +15,8 @@ use App\Livewire\TarjetaRegalo;
 use App\Livewire\VerProductos;
 use App\Livewire\Preguntas;
 use App\Livewire\VerPedidos;
+use App\Livewire\VerTodosProductos;
+use App\Livewire\VerTodosUsuarios;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
@@ -86,3 +88,7 @@ Route::get('/crear_pedido', CrearPedido::class)->name('crear-pedido');
 Route::get('/preguntas', Preguntas::class)->name('preguntas');
 
 Route::get('/ver-pedidos', VerPedidos::class)->name('ver-pedidos');
+
+Route::get('/ver-todos-usuarios', VerTodosUsuarios::class)->name('ver-todos-usuarios');
+
+Route::get('/ver-todos-productos', VerTodosProductos::class)->name('ver-todos-productos');

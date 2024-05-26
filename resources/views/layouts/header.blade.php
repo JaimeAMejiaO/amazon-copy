@@ -85,6 +85,12 @@
                                     <a class="dropdown-item" href="{{ route('editar_perfil') }}">
                                         {{ __('Editar Perfil') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('ver-todos-usuarios') }}">
+                                        {{ __('Ver todos los usuarios') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('ver-todos-productos') }}">
+                                        {{ __('Ver todos los productos') }}
+                                    </a>
                                 @else
                                     <a class="dropdown-item" href="{{ route('metodo-pagos') }}">
                                         {{ __('Mis metodos de Pago') }}
