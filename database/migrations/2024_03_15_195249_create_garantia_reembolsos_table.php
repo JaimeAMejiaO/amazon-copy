@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('tipo_peticion', 30);
             $table->text('motivo');
             $table->text('img');
+            $table->string('producto_seleccionado', 100);
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_pedido');
 
