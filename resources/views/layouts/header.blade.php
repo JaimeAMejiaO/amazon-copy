@@ -49,6 +49,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" style="color:white" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color:white" href="/google-auth/redirect">Iniciar por Google</a>
+                            </li>
                         @endif
 
                         @if (Route::has('register'))

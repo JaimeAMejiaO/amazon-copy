@@ -28,6 +28,7 @@ class User extends Authenticatable
         'password',
         'fondos',
         'id_rol',
+        'google_id',
     ];
 
     /**
