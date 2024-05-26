@@ -42,5 +42,56 @@ class MarcaSeeder extends Seeder
         $marca->id = 6;
         $marca->nombre = 'Alienware';
         $marca->save();
+
+        $marca = new Marca();
+        $marca->id = 7;
+        $marca->nombre = 'Asus';
+        $marca->save();
+
+        $marca = new Marca();
+        $marca->id = 8;
+        $marca->nombre = 'Lenovo';
+        $marca->save();
+
+        $marca = new Marca();
+        $marca->id = 9;
+        $marca->nombre = 'Dell';
+        $marca->save();
+
+        $marca = new Marca();
+        $marca->id = 10;
+        $marca->nombre = 'Sony';
+        $marca->save();
+
+        $marca = new Marca();
+        $marca->id = 11;
+        $marca->nombre = 'Samsung';
+        $marca->save();
+
+        $marca = new Marca();
+        $marca->id = 12;
+        $marca->nombre = 'LG';
+        $marca->save();
+
+        $marca = new Marca();
+        $marca->id = 13;
+        $marca->nombre = 'Apple';
+        $marca->save();
+
+        $marca = new Marca();
+        $marca->id = 14;
+        $marca->nombre = 'Xiaomi';
+        $marca->save();
+
+        $marca = new Marca();
+        $marca->id = 15;
+        $marca->nombre = 'Huawei';
+        $marca->save();
+
+        $marca = new Marca();
+        $marca->id = 16;
+        $marca->nombre = 'Motorola';
+        $marca->save();
+        
     }
 }

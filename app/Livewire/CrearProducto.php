@@ -96,7 +96,7 @@ class CrearProducto extends Component
 
         $fileNames = [];
         foreach ($this->images as $image) {
-            $image->storeAs('public/img', $image->getClientOriginalName());
+            $image->storeAs('/', $image->getClientOriginalName(), 'public');
             $fileNames[] = $image->getClientOriginalName();
         }
 
@@ -118,7 +118,9 @@ class CrearProducto extends Component
             'id_producto' => $producto->id,
         ]);
 
-        redirect()->route('ver-productos', ['id' => $producto->id]);
+        $id_last_prod = ProductoModelo::latest('id')->first()->id;
+
+        redirect()->route('ver-productos', ['id' => $id_last_prod]);
     }
 
     public function resetUI()

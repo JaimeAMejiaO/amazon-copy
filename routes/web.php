@@ -15,7 +15,13 @@ use App\Livewire\TarjetaRegalo;
 use App\Livewire\VerProductos;
 use App\Livewire\Preguntas;
 use App\Livewire\VerPedidos;
+use App\Livewire\VerTodosProductos;
+use App\Livewire\VerTodosUsuarios;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +35,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('principal');
+});
+
+Route::get('/google-auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/google-auth/callback', function () {
+    $user_google = Socialite::driver('google')->stateless()->user();
+    
+    $user = User::updateOrCreate([
+        'google_id' => $user_google->id,
+    ],[
+        'name' => $user_google->name,
+        'email' => $user_google->email,
+    ]);
+
+    Auth::login($user);
+
+    return redirect('/principal');
+
 });
 
 Auth::routes();
@@ -62,3 +88,7 @@ Route::get('/crear_pedido', CrearPedido::class)->name('crear-pedido');
 Route::get('/preguntas', Preguntas::class)->name('preguntas');
 
 Route::get('/ver-pedidos', VerPedidos::class)->name('ver-pedidos');
+
+Route::get('/ver-todos-usuarios', VerTodosUsuarios::class)->name('ver-todos-usuarios');
+
+Route::get('/ver-todos-productos', VerTodosProductos::class)->name('ver-todos-productos');

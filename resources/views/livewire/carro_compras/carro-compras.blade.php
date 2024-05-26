@@ -1,4 +1,5 @@
 <div style="">
+    @if (Auth::check())
     <div class="d-flex" style="margin-top:5%;">
         <div class="card col-9"
             style="margin-left: 4%;margin-right: 10px;border-radius: 8px;border: 2px solid black;background-color:#F2F2F2">
@@ -17,12 +18,9 @@
                             </div>
                             <div class="d-flex col-11" style="margin-top: 20px;">
                                 <div class="col-3" style="">
-                                    @php
-                                        $imagen = explode(',', $producto_modelo->producto_modelo->img);
-                                        $imagen = $imagen[1];
-                                    @endphp
-                                    <img src="{{ asset('storage/' . $imagen) }}" class="" alt="..."
-                                        width="150" height="150"
+                                    
+                                    <img src="{{ asset('storage/'. $producto_modelo->producto_modelo->img) }}" class="" alt="..." width="150"
+                                        height="150"
                                         style="border-radius: 8px;border: 2px solid black;margin-bottom: 10px">
                                 </div>
                                 <div class="col-9" style="">
@@ -112,6 +110,15 @@
                 </div>
             </div>
 
-        </div>
     </div>
+    @else
+    <div class="d-flex" style="margin-top:5%;">
+        <div class="card col-9"
+            style="margin-left: 4%;margin-right: 10px;border-radius: 8px;border: 2px solid black;background-color:#F2F2F2">
+            <h1 style="text-align:center">Carrito de compras</h1>
+            <div style="border-radius: 8px;border: 2px solid black;margin: 20px;margin-bottom: 80px;">
+                <h2 style="text-align:center">Debe iniciar sesion para ver el carrito</h2>
+            </div>
+        </div>
+    @endif
 </div>

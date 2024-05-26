@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
         $user->apell = 'Mejia Osorio';
         $user->email = 'jandri20001@gmail.com';
         $user->password = bcrypt('Contrasena123');
+        $user->id_rol = 1;
         $user->save();
 
         $user1 = new User();
@@ -25,6 +26,7 @@ class UserSeeder extends Seeder
         $user1->apell = 'Daza Tobon';
         $user1->email = 'julian.daza@utp.edu.co';
         $user1->password = bcrypt('Contrasena123');
+        $user1->id_rol = 1;
         $user1->save();
 
         $user2 = new User();
@@ -32,6 +34,7 @@ class UserSeeder extends Seeder
         $user2->apell = 'Ruiz';
         $user2->email = 'juanmanuel.ruiz1@utp.edu.co';
         $user2->password = bcrypt('Contrasena123');
+        $user2->id_rol = 1;
         $user2->save();
 
         $user3 = new User();
@@ -39,6 +42,7 @@ class UserSeeder extends Seeder
         $user3->apell = 'Bejarano Gonzalez';
         $user3->email = 'albegonz@utp.edu.co';
         $user3->password = bcrypt('Contrasena123');
+        $user3->id_rol = 1;
         $user3->save();
 
         $user4 = new User();
@@ -46,6 +50,23 @@ class UserSeeder extends Seeder
         $user4->apell = 'Potes';
         $user4->email = 's.potes@utp.edu.co';
         $user4->password = bcrypt('Contrasena123');
+        $user4->id_rol = 1;
         $user4->save();
+
+        $user5 = new User();
+        $user5->name = 'SuperUsuario';
+        $user5->apell = 'Admin';
+        $user5->email = 'superusuario@gmail.com';
+        $user5->password = bcrypt('Contrasena123');
+        $user5->id_rol = 1;
+        $user5->save();
+
+        $user6 = new User();
+        $user6->name = 'Guillermo';
+        $user6->apell = 'Solarte';
+        $user6->email = 'roberto@utp.edu.co';
+        $user6->password = bcrypt('Contrasena123');
+        $user6->id_rol = 2;
+        $user6->save();
     }
 }

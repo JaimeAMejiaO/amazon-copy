@@ -8,13 +8,12 @@
             <div class="input-group" style="background-color:#131921">
 
                 <li class="nav-item dropdown btn btn-outline-light ms-4 ">
-                    
-                    <a class="nav-link"  role="button"
-                        aria-expanded="false">
+
+                    <a class="nav-link" role="button" aria-expanded="false">
                         Todos
                     </a>
                     <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Nombre dpto</a></li>
+                        <li><a class="dropdown-item" href="#">Nombre dpto</a></li>
                     </ul>
                 </li>
 
@@ -50,6 +49,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" style="color:white" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color:white" href="/google-auth/redirect">Iniciar por Google</a>
+                            </li>
                         @endif
 
                         @if (Route::has('register'))
@@ -66,27 +68,40 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-                                <a class="dropdown-item" href="{{ route('metodo-pagos') }}">
-                                    {{ __('Metodos de Pago') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('direcciones') }}">
-                                    {{ __('Direcciones') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('categorias') }}">
-                                    {{ __('categorias') }}
-                                </a>
-                                </a>
-                                <a class="dropdown-item" href="{{ route('editar_perfil') }}">
-                                    {{ __('Editar Perfil') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('marcas') }}">
-                                    {{ __('Marcas') }}
-                                </a>
-
-                                <a class="dropdown-item" href="{{ route('preguntas') }}">
-                                    {{ __('Preguntas') }}
-                                </a>
+                                @if (auth()->user()->id_rol == 1)
+                                    <a class="dropdown-item" href="{{ route('metodo-pagos') }}">
+                                        {{ __('Mis metodos de Pago') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('direcciones') }}">
+                                        {{ __('Mis direcciones') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('categorias') }}">
+                                        {{ __('Categorias de productos') }}
+                                    </a>
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('marcas') }}">
+                                        {{ __('Marcas') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('editar_perfil') }}">
+                                        {{ __('Editar Perfil') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('ver-todos-usuarios') }}">
+                                        {{ __('Ver todos los usuarios') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('ver-todos-productos') }}">
+                                        {{ __('Ver todos los productos') }}
+                                    </a>
+                                @else
+                                    <a class="dropdown-item" href="{{ route('metodo-pagos') }}">
+                                        {{ __('Mis metodos de Pago') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('direcciones') }}">
+                                        {{ __('Mis direcciones') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('editar_perfil') }}">
+                                        {{ __('Editar Perfil') }}
+                                    </a>
+                                @endif
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();

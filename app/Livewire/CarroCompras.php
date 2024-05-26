@@ -18,7 +18,11 @@ class CarroCompras extends Component
 
     public function render()
     {
-        $this->array_productos = CarroCompra::with('producto_modelo')->where('id_usuario', auth()->user()->id)->get(); //Trae una coleccion todos los productos que agrego el usuario a su carro
+        if (auth()->user() == null) {
+            $this->array_productos = [];
+        }else{
+            $this->array_productos = CarroCompra::with('producto_modelo')->where('id_usuario', auth()->user()->id)->get(); //Trae una coleccion todos los productos que agrego el usuario a su carro
+        }
         $this->valor_total = 0;
         
         foreach ($this->array_productos as $producto) {
@@ -33,6 +37,8 @@ class CarroCompras extends Component
             }
             $this->caracteristicas_productos[$producto->id]=$caracteristicas;
 
+            $imagenes = explode(',', $producto->producto_modelo->img);
+            $producto->producto_modelo->img = $imagenes[0];
         }
         return view('livewire.carro_compras.carro-compras');
     }

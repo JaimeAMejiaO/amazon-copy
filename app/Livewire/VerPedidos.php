@@ -14,7 +14,11 @@ class VerPedidos extends Component
 
     public function render()
     {
-        $this->pedidos = Pedido::where('id_usuario', Auth::user()->id)->get();
+        if (Auth::user() == null) {
+            $this->pedidos = [];
+        }else{
+            $this->pedidos = Pedido::where('id_usuario', Auth::user()->id)->get();
+        }
         //dd($this->pedidos);
         //$this->productos = $this->pedidos[0]->productos;
         //dd($this->productos);

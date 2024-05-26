@@ -10,25 +10,32 @@ use Livewire\Component;
 class Principal extends Component
 {
     
-    public $usuario;
-    public $departamentos_cat;
-    public $all_productos;
-    public $dpto_seleccionado;
+    public $usuario = [];
+    public $departamentos_cat = [];
+    public $all_productos = [];
+    public $dpto_seleccionado = null;
 
     public function mount()
     {
         $this-> usuario = Auth::user();
+        $this->all_productos = ProductoModelo::all();
     }
 
     public function render()
     {
         $this -> departamentos_cat = DepartamentoCat::all();
         $dpto = $this->dpto_seleccionado;
+        //dd($dpto);
         $this -> all_productos = ProductoModelo::with('producto.categoria.departamento')->when($dpto, function ($query, $dpto){
             return $query->whereHas('producto.categoria.departamento', function ($query) use ($dpto){
                 $query->where('id', $dpto);
             });
         })->get();
+
+        foreach ($this->all_productos as $producto) {
+            $imagenes = explode(',', $producto->img);
+            $producto->img = $imagenes[0];
+        }
 
         //dd($this->all_productos);
         return view('livewire.principal');
@@ -44,4 +51,9 @@ class Principal extends Component
         return redirect()->route('ver-productos', ['id' => $id]);
     }
 
+    public function resetUI()
+    {
+        $this->dpto_seleccionado = null;
+
+    }
 }

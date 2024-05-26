@@ -199,44 +199,42 @@
 
 
 
-                    <div class="container-fluid h-100 d-flex align-items-center justify-content-center">
-                        <div class="row w-100">
-                            <div class="col-12" style="height: 100%">
-                                <input type="text" name="pregunta" wire:model.debounce.365ms="pregunta"
-                                    placeholder="Escriba acá"
-                                    style="border-color: #80bdff;box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);outline: none; transition: box-shadow 0.3s ease, border-color 0.3s ease;width: 100%;height: 100%;padding: 12px;box-sizing: border-box;border: 1px solid #ced4da; border-radius: .25rem;" />
 
-                                @error('pregunta')
-                                    <p class="text-red-700 font-semibold mt-2">
-                                        {{ $message }}
-                                    </p>
-                                @enderror
+                    @if (Auth::check())
+                        <div class="container-fluid h-100 d-flex align-items-center justify-content-center">
+                            <div class="row w-100">
+                                <div class="col-12" style="height: 100%">
+                                    <input type="text" name="pregunta" wire:model.debounce.365ms="pregunta"
+                                        placeholder="Escriba acá"
+                                        style="border-color: #80bdff;box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);outline: none; transition: box-shadow 0.3s ease, border-color 0.3s ease;width: 100%;height: 100%;padding: 12px;box-sizing: border-box;border: 1px solid #ced4da; border-radius: .25rem;" />
 
+                                    @error('pregunta')
+                                        <p class="text-red-700 font-semibold mt-2">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div id="captcha" class="mt-4" wire:ignore></div>
 
-
-
-                    <div id="captcha" class="mt-4" wire:ignore></div>
-
-                    @error('captcha')
-                        <p class="mt-3 text-sm text-red-600 text-left">
-                            {{ $message }}
-                        </p>
-                    @enderror
-
-                    <div class="d-flex justify-content-center align-items-center" style="">
-                        <button type="submit" class="btn btn-warning btn-lg font-weight-bold"
-                            style="margin-left:5%">
-                            Enviar pregunta
-                        </button>
-                    </div>
-
-
-
-
-
+                        @error('captcha')
+                            <p class="mt-3 text-sm text-red-600 text-left">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                        <div class="d-flex justify-content-center align-items-center" style="">
+                            <button type="submit" class="btn btn-warning btn-lg font-weight-bold"
+                                style="margin-left:5%">
+                                Enviar pregunta
+                            </button>
+                        </div>
+                    @else
+                        <div class="d-flex justify-content-center align-items-center" style="">
+                            <h1>Debes iniciar sesion</h1>
+                        </div>
+                    @endif
                 </form>
             </div>
         </div>
@@ -248,67 +246,71 @@
         <div class="card mx-5"
             style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);;overflow-y: auto; max-height: 700px;">
             <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
-                @foreach ($preguntas_producto as $pregunta)
-                    <div class="row"
-                        style="background-color: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 20px; margin: 10px; ">
-                        <div class="col-2 text-center">
-                            <div class="d-flex justify-content-end align-items-center" style="height: 100%;">
-                                <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                    style="font-size: 140%; margin-top: 0;">
-                                    <b>{{ $pregunta->user->name }}:</b>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col" style="margin-top:0.1%">
-                            <p style="font-size: 130%; margin-top: 0;">
-                                {{ $pregunta->pregunta }}
-                            </p>
-                        </div>
-
-                        <div class="d-flex align-items-center">
-
-                            <!-- Añadido align-items-center para centrar verticalmente -->
-                            <div class="col text-center"style="margin-left:15%;margin-right:1%">
-                                <!-- Añadido align-items-center para centrar verticalmente -->
-                                <div class=" " style="background-color:#F2F2F2">
+                @if ($preguntas_producto->count() == 0)
+                    <p style="font-size: 120%">
+                        <b>
+                            No hay preguntas
+                        </b>
+                    </p>
+                @else
+                    @foreach ($preguntas_producto as $pregunta)
+                        <div class="row"
+                            style="background-color: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 20px; margin: 10px; ">
+                            <div class="col-2 text-center">
+                                <div class="d-flex justify-content-end align-items-center" style="height: 100%;">
                                     <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                        style="font-size: 100%;margin-left: %;margin-top: %;" for="pregunta">
-                                        <b></b>
+                                        style="font-size: 140%; margin-top: 0;">
+                                        <b>{{ $pregunta->user->name }}:</b>
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-10" style=";margin-bottom:%">
-                                @if ($pregunta->respuesta != null)
-                                    <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                        style="font-size: 120%;margin-left: %;margin-top: %;">
-                                        <b>VENDEDOR: {{ $pregunta->respuesta->respuesta }}</b>
-                                    </p>
-                                @else
-                                    <p style="font-size: 120%">
-                                        <b>
-                                            No existe aun una respuesta
-                                        </b>
-                                    </p>
-                                    @if (auth()->user()->id == $id_producto_modelo->producto->id_usuario)
-                                        <p>Vendedor, ¿desea responder a esta pregunta?</p>
-                                        <input type="text" wire:model="respuesta" class="form-control">
-                                        <button class="btn btn-outline-dark"
-                                            wire:click="responderPregunta({{ $pregunta->id }})">
-                                            Responder
-                                        </button>
+
+                            <div class="col" style="margin-top:0.1%">
+                                <p style="font-size: 130%; margin-top: 0;">
+                                    {{ $pregunta->pregunta }}
+                                </p>
+                            </div>
+
+                            <div class="d-flex align-items-center">
+
+                                <!-- Añadido align-items-center para centrar verticalmente -->
+                                <div class="col text-center"style="margin-left:15%;margin-right:1%">
+                                    <!-- Añadido align-items-center para centrar verticalmente -->
+                                    <div class=" " style="background-color:#F2F2F2">
+                                        <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                            style="font-size: 100%;margin-left: %;margin-top: %;" for="pregunta">
+                                            <b></b>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-10" style=";margin-bottom:%">
+                                    @if ($pregunta->respuesta != null)
+                                        <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
+                                            style="font-size: 120%;margin-left: %;margin-top: %;">
+                                            <b>VENDEDOR: {{ $pregunta->respuesta->respuesta }}</b>
+                                        </p>
+                                    @else
+                                        <p style="font-size: 120%">
+                                            <b>
+                                                No existe aun una respuesta
+                                            </b>
+                                        </p>
+                                        @if (auth()->user()->id == $id_producto_modelo->producto->id_usuario)
+                                            <p>Vendedor, ¿desea responder a esta pregunta?</p>
+                                            <input type="text" wire:model="respuesta" class="form-control">
+                                            <button class="btn btn-outline-dark"
+                                                wire:click="responderPregunta({{ $pregunta->id }})">
+                                                Responder
+                                            </button>
+                                        @endif
                                     @endif
-                                @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
             </div>
-
-
         </div>
-
-
     </div>
 
     <div style="">
@@ -391,7 +393,7 @@
             </div>
 
 
-            <div style="">
+            <div style="" class="mb-3">
                 <div class="card-body;">
                     <div class="d-flex" style="text-align:center;margin-top: 20px;">
                         <div class="col-2" style="">
@@ -465,13 +467,16 @@
         </div>
 
 
-        <div class="container my-5">
 
-            <div style="text-align: center;">
-                <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo modelo</button>
-            </div>
-
-        </div>
+        @if (Auth::check())
+            @if (auth()->user()->id_rol == 1)
+            <br>
+                <div style="text-align: center;">
+                    <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo
+                        modelo</button>
+                </div>
+            @endif
+        @endif
     </div>
     @include('livewire.ver-productos.modal_ver-productos')
 
