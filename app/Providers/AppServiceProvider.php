@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        view()->composer('*', function ($view) {
+            if(auth()->user())
+            {
+                $usuario_actual = User::with('rol')->find(auth()->user()->id);
+                $view->with('usuario_actual', $usuario_actual);
+            }
+        });
     }
 }

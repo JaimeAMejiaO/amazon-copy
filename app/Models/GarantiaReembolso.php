@@ -12,6 +12,7 @@ class GarantiaReembolso extends Model
 
     protected $fillable = [
         'id',
+        'referencia',
         'tipo_peticion',
         'motivo',
         'img',

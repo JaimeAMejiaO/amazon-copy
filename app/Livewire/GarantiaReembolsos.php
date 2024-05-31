@@ -50,13 +50,17 @@ class GarantiaReembolsos extends Component
         ];
 
         $this->validate($rules, $messages);
+
+        $referencia = 'Ref' . date('Y-m-d') . '-' . $this->pedido->id . '-' . $this->producto_seleccionado;
         
-        $this->img->storeAs('/', $this->img->getClientOriginalName(), 'public');
+        $nombreImagen = $this->img->getClientOriginalName();
+        $this->img->storeAs('/', $nombreImagen, 'public');
 
         GarantiaReembolso::create([
+            'referencia' => $referencia,
             'tipo_peticion' => $this->tipo_peticion,
             'motivo' => $this->motivo,
-            'img' => $this->img,
+            'img' => $nombreImagen,
             'producto_seleccionado' => $this->producto_seleccionado,
             'id_usuario' => auth()->id(),
             'id_pedido' => $this->pedido->id,

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('garantia_reembolsos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('referencia', 50);
             $table->string('tipo_peticion', 30);
             $table->text('motivo');
             $table->text('img');

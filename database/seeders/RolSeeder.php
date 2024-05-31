@@ -15,12 +15,17 @@ class RolSeeder extends Seeder
     {
         $rol = new RolUsuario();
         $rol->id = 1;
-        $rol->nombre_rol = 'superusuario';
+        $rol->nombre_rol = 'SuperUsuario';
         $rol->save();
 
         $rol = new RolUsuario();
         $rol->id = 2;
-        $rol->nombre_rol = 'comprador';
+        $rol->nombre_rol = 'Comprador';
+        $rol->save();
+
+        $rol = new RolUsuario();
+        $rol->id = 3;
+        $rol->nombre_rol = 'Vendedor';
         $rol->save();
     }
 }

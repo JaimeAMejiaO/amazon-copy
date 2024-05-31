@@ -74,4 +74,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(CarroCompra::class, 'id_usuario');
     }
+
+    public function rol():HasOne
+    {
+        return $this->hasOne(RolUsuario::class, 'id', 'id_rol');
+    }
 }
