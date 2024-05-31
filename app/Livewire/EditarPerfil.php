@@ -3,9 +3,12 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class EditarPerfil extends Component
 {
+    use LivewireAlert;
+
     public $usuario;
     public $name;
     public $apell;
@@ -63,6 +66,7 @@ class EditarPerfil extends Component
 
     public function resetUI()
     {
-        return redirect()->route('editar_perfil');
+        $this->flash('success', 'Haz editado tu perfil', [], 'editar_perfil');
+
     }
 }

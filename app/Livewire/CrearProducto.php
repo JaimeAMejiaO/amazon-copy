@@ -9,12 +9,14 @@ use App\Models\Producto;
 use App\Models\ProductoImagenes;
 use App\Models\ProductoModelo;
 use Illuminate\Database\Console\DumpCommand;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class CrearProducto extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
     
     public $array_cat;
     public $categorias;
@@ -120,7 +122,8 @@ class CrearProducto extends Component
 
         $id_last_prod = ProductoModelo::latest('id')->first()->id;
 
-        redirect()->route('ver-productos', ['id' => $id_last_prod]);
+
+        $this->flash('success', 'Creaste un nuevo producto correctamente', [], 'ver-productos/'. $id_last_prod);
     }
 
     public function resetUI()

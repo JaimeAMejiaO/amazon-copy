@@ -8,10 +8,13 @@ use App\Models\MetodoPago;
 use App\Models\Pedido;
 use App\Models\ProductoModelo;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class CrearPedido extends Component
 {
+    use LivewireAlert;
+
     public $metodos_pago;
     public $direcciones;
     public $metodo_pago;
@@ -83,6 +86,6 @@ class CrearPedido extends Component
 
         CarroCompra::where('id_usuario', Auth::user()->id)->delete();
 
-        return redirect()->route('principal');
+        $this->flash('success', 'Pedido realizado!', [], 'principal');
     }
 }

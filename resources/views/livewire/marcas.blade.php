@@ -29,7 +29,7 @@
                                     </button>
                                     <button type="button" class="btn btn-sm btn-outline-danger"
                                         wire:click="delete({{ $marca->id }})"
-                                        onclick="return confirm('¿Está seguro que desea eliminar esta marca?')">
+                                        wire:confirm="Está seguro de querer eliminar esta marca?">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </div>
