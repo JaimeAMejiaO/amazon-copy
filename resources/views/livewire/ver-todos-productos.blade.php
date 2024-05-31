@@ -6,7 +6,7 @@
                     <div class="card h-100" style="background-color:#F2F2F2">
                         
                         <img src="{{ asset('storage/' . $producto->img) }}" class="card-img-top" alt="..."
-                            width="120" height="300">
+                            height="500">
 
                         <h4 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                             style="font-size: 120%;font-weight:bold;margin:5%">{{ $producto->nombre }}

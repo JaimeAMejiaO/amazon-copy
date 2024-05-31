@@ -120,11 +120,6 @@
                                 <label for="imagenes">Selecciona Imágenes:</label>
                                 <input type="file" wire:model="images" multiple>
                             </div>
-                            @error('images')
-                                <span class="text-danger">
-                                    {{ $message }}
-                                </span>
-                            @enderror
                         </div>
                     </div>
                 </div>
