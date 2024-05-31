@@ -11,6 +11,7 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Tipo de petición</th>
                         <th>Pedido</th>
                         <th>Producto</th>
@@ -22,6 +23,7 @@
                 <tbody>
                     @foreach ($garantias_reembolsos as $garantia_reembolso)
                         <tr>
+                            <th>{{ $garantia_reembolso->referencia }}</th>
                             <th>{{ $garantia_reembolso->tipo_peticion }}</th>
                             <td>{{ $garantia_reembolso->pedido->id }}</td>
                             <td>{{ $garantia_reembolso->producto_seleccionado }}</td>

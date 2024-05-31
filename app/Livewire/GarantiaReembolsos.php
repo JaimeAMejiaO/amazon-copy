@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\GarantiaReembolso;
 use App\Models\Pedido;
 use App\Models\ProductoModelo;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -12,6 +13,7 @@ use Livewire\WithFileUploads;
 class GarantiaReembolsos extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
 
     public $tipo_peticion;
     public $motivo;
@@ -50,13 +52,17 @@ class GarantiaReembolsos extends Component
         ];
 
         $this->validate($rules, $messages);
+
+        $referencia = 'Ref' . date('Y-m-d') . '-' . $this->pedido->id . '-' . $this->producto_seleccionado;
         
-        $this->img->storeAs('/', $this->img->getClientOriginalName(), 'public');
+        $nombreImagen = $this->img->getClientOriginalName();
+        $this->img->storeAs('/', $nombreImagen, 'public');
 
         GarantiaReembolso::create([
+            'referencia' => $referencia,
             'tipo_peticion' => $this->tipo_peticion,
             'motivo' => $this->motivo,
-            'img' => $this->img,
+            'img' => $nombreImagen,
             'producto_seleccionado' => $this->producto_seleccionado,
             'id_usuario' => auth()->id(),
             'id_pedido' => $this->pedido->id,
@@ -64,7 +70,8 @@ class GarantiaReembolsos extends Component
 
         $this->resetUI();
 
-        redirect()->route('ver-pedidos');
+        $this->flash('success', 'Haz realizado una peticion correctamente!', [], 'ver-pedidos');
+
     }
 
     public function resetUI()

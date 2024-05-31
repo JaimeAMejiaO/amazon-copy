@@ -4,11 +4,14 @@ namespace App\Livewire;
 
 use App\Models\CarroCompra;
 use App\Models\Producto;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 
 class CarroCompras extends Component
 {
+    use LivewireAlert;
+
     public $cant_productos;
     public $array_productos;
     public $cant_seleccionada;
@@ -66,6 +69,6 @@ class CarroCompras extends Component
 
     public function hacer_pedido()
     {
-        redirect()->route('crear-pedido');
+        $this->flash('success', 'Procediste a hacer el pedido', [], 'crear_pedido');
     }
 }

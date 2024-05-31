@@ -4,10 +4,13 @@ namespace App\Livewire;
 
 use App\Models\Marca;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class Marcas extends Component
 {
+    use LivewireAlert;
+    
     public $marca_id; 
     public $nombre_marca;
     public $usuario_actual;
@@ -33,6 +36,9 @@ class Marcas extends Component
             'nombre' => $this->nombre_marca,
         ]);
         $this->marcas = Marca::get();
+
+        $this->alert('success', 'Marca agregada!');
+
         $this->resetUI();
     }
 
@@ -52,6 +58,9 @@ class Marcas extends Component
         ]);
         $this->dispatch('Cualquiermensaje');
         $this->marcas = Marca::get();
+
+        $this->alert('success', 'Marca actualizada!');
+
         $this->resetUI();
     }
 

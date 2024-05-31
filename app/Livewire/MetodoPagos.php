@@ -5,9 +5,12 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\MetodoPago;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class MetodoPagos extends Component
 {
+    use LivewireAlert;
+
     public $metodo_pago_id;
     public $num_tarjeta;
     public $nombre_tarjeta;
@@ -78,6 +81,9 @@ class MetodoPagos extends Component
             'id_usuario' => Auth::user()->id,
         ]);
         $this->dispatch('cerrar_modal_metodo');
+
+        $this->alert('success', 'Método de pago agregado!');
+
         $this->resetUI();
     }
 
@@ -109,6 +115,9 @@ class MetodoPagos extends Component
         ]);
 
         $this->dispatch('cerrar_modal_metodo');
+
+        $this->alert('success', 'Método de pago actualizado!');
+
         $this->resetUI();
     }
 

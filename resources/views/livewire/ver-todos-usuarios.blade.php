@@ -13,13 +13,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach ($users as $user)
                             <tr>
-                                <td>{{ $user->name }} {{$user->apell}} </td>
+                                <td>{{ $user->name }} {{ $user->apell }} </td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>
-                                    <a wire:click="eliminarUsuario({{$user->id}})" class="btn btn-danger">Eliminar</a>
+                                    <a wire:click="eliminarUsuario({{ $user->id }})"
+                                        wire:confirm="Está seguro de querer eliminar este usuario?"
+                                        class="btn btn-danger">Eliminar</a>
                                 </td>
                             </tr>
                         @endforeach

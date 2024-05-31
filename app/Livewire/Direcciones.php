@@ -5,10 +5,13 @@ namespace App\Livewire;
 use App\Models\Direccion;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class Direcciones extends Component
 {
+    use LivewireAlert;
+
     public $direccion_id;
     public $nombre_completo;
     public $num_tel;
@@ -116,6 +119,9 @@ class Direcciones extends Component
         ]);
 
         $this->dispatch('cerrar_modal_direccion');
+
+        $this->alert('success', 'Direccion agregada!');
+
         $this->resetUI();
     }
 
@@ -144,6 +150,9 @@ class Direcciones extends Component
         ]);
 
         $this->dispatch('cerrar_modal_direccion');
+
+        $this->alert('success', 'Direccion editada!');
+
         $this->resetUI();
     }
 

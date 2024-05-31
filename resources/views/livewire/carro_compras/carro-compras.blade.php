@@ -65,7 +65,8 @@
                                                 </div>
                                                 <div class="col-6 text-right">
                                                     <button class="btn btn-outline-danger text-nowrap" type="submit"
-                                                        wire:click="delete({{ $producto_modelo->id }})">Eliminar</button>
+                                                        wire:click="delete({{ $producto_modelo->id }})"
+                                                        wire:confirm="Está seguro de querer eliminar el producto del carro?">Eliminar</button>
                                                 </div>
                                             </div>
                                         </div>

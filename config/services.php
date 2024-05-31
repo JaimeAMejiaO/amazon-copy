@@ -34,7 +34,7 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'http://amazoncopy.com:8000/google-auth/callback',
+        'redirect' => 'https://walrus-app-4b6ny.ondigitalocean.app/google-auth/callback',
     ],
 
 ];
