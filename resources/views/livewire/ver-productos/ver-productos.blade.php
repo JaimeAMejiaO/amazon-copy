@@ -43,6 +43,7 @@
                 style="font-size: 150%;font-weight:bold;margin-left: 5%;">
                 {{ $id_producto_modelo->producto->categoria->nombre }} </h3>
 
+
             @foreach ($producto_modelos as $producto_modelo)
                 <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
                     style="font-size: 150%;font-weight:bold;margin-left: 5%;">{{ $producto_modelo->nombre }}</h3>
@@ -62,11 +63,25 @@
                                         style="font-size: 100%;font-weight:bold;margin-left: 5%;margin-top: 2%;">
                                         COLORES:</p>
                                     <div style="margin-left: 5%;">
-                                        @foreach ($colores as $color => $valor)
-                                            <a href="#" wire:click="seleccionar_color('{{ $color }}')"><i
-                                                    class="fa-solid fa-circle{{ $valor ? '-check' : '' }} fa-2xl"
-                                                    style="color: {{ $color }};"></i></a>
+
+
+
+
+
+
+
+
+                                        @foreach ($colores_cambio as $index => $color2)
+                                            <a href="#"
+                                                wire:click="redirectToProduct({{ $ids_colores[$index] }})">
+                                                <i class="fa-solid fa-circle{{ $ids_colores[$index] == $id_producto_modelo->id ? '-check' : '' }} fa-2xl"
+                                                    style="color: {{ $color2 }};"></i>
+                                            </a>
                                         @endforeach
+
+
+
+
                                     </div>
                                 </div>
                             @elseif ($titulo_caracteristica == 'Talla')
@@ -94,16 +109,26 @@
                                         style="font-size: 100%;font-weight:bold;margin-left: 5%;margin-top: 2%;">
                                         ALMACENAMIENTO:</p>
                                     <div class="d-flex"style="margin-left: 5%;">
-                                        @foreach ($almacenamiento as $key => $value)
-                                            <a href="#"style="text-decoration: none"
-                                                class="col-md-4 mx-1 "wire:click="seleccionar_almacenamiento('{{ $key }}')">
-                                                <div class="card {{ $value ? 'border border-dark' : '' }}">
+
+                                        @foreach ($almacenamiento_cambio as $index => $almacenamiento2)
+                                            <a href="#"
+                                                wire:click="redirectToProduct('{{ $ids_almacenamiento[$index] }}')">
+                            
+
+                                                <div
+                                                    class="card {{ $ids_almacenamiento[$index] == $id_producto_modelo->id ? 'border border-dark' : '' }}">
                                                     <div class="card-body text-center">
-                                                        <h5 class="card-title">{{ $key }}</h5>
+                                                        <h5 class="card-title">{{ $almacenamiento2 }}</h5>
                                                     </div>
                                                 </div>
                                             </a>
                                         @endforeach
+
+
+
+
+
+
                                     </div>
                                 </div>
                             @else
@@ -117,6 +142,19 @@
                         @endforeach
                     </div>
                 </div>
+                <div style="margin-top:1%;margin-left:15%;margin-right:15%;background-color:#F2F2F2">
+                    <h3 class="card-title" style="text-align:center;font-size: 150%;font-weight:bold;">Descripción</h3>
+                    <p class="card-title" style="text-align:center"> {{ $id_producto_modelo->desc_prod }} </p>
+
+
+
+
+
+
+
+
+
+                </div>
             </div>
         </div>
 
@@ -128,7 +166,7 @@
                         style="font-size: 200%;font-weight:bold;margin-left: 20px;margin-top:5%;margin-bottom:15%;text-align:center">
                         {{ $id_producto_modelo->precio }}$</h3>
                     <div class="">
-                    <br>
+                        <br>
                         <div class=""style="margin-top: 5px;">
                             <h4 class="">Cantidad disponible: {{ $id_producto_modelo->stock }} </h4>
                         </div>
@@ -158,16 +196,16 @@
                         <br>
                         <br>
                         <br>
-                        
+
                         <div>
-                            <button class="btn btn-outline-dark text-nowrap" wire:click="send_to_cart"
+                            <button class="btn btn-warning text-nowrap" wire:click="send_to_cart"
                                 data-bs-toggle="modal" data-bs-target="#modal_producto">AGREGAR AL CARRO</button>
                         </div>
                         <br>
                         <br>
                         <br>
                         <div>
-                            <a class="btn btn-outline-dark text-nowrap" href="{{ route('carro-compras') }}">Ver
+                            <a class="btn btn-dark text-nowrap" href="{{ route('carro-compras') }}">Ver
                                 Carro</a>
                         </div>
                         <br>
@@ -178,10 +216,7 @@
     </div>
 
     <div style="">
-        <div style="margin-top:1%;margin-left:15%;margin-right:15%;background-color:#F2F2F2">
-            <h3 class="card-title" style="text-align:center;">Descripción</h3>
-            <p class="card-title" style="text-align:center"> {{ $id_producto_modelo->desc_prod }} </p>
-        </div>
+
         <br>
         <br>
         <br>
@@ -209,7 +244,7 @@
                                         style="border-color: #80bdff;box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);outline: none; transition: box-shadow 0.3s ease, border-color 0.3s ease;width: 100%;height: 100%;padding: 12px;box-sizing: border-box;border: 1px solid #ced4da; border-radius: .25rem;" />
 
                                     @error('pregunta')
-                                        <p class="text-red-700 font-semibold mt-2">
+                                        <p class="text-red-700 font-semibold mt-2" style="color:red">
                                             {{ $message }}
                                         </p>
                                     @enderror
@@ -217,10 +252,14 @@
                                 </div>
                             </div>
                         </div>
+
                         <div id="captcha" class="mt-4" wire:ignore></div>
 
+
+
+
                         @error('captcha')
-                            <p class="mt-3 text-sm text-red-600 text-left">
+                            <p class="mt-3 text-sm text-red-600 text-left" style="color:red">
                                 {{ $message }}
                             </p>
                         @enderror
@@ -240,6 +279,7 @@
         </div>
         <br>
         <br>
+
         <br>
 
         <h1 style="text-align:center">PREGUNTAS</h1>
@@ -470,7 +510,7 @@
 
         @if (Auth::check())
             @if (auth()->user()->id_rol == 1)
-            <br>
+                <br>
                 <div style="text-align: center;">
                     <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo
                         modelo</button>
@@ -506,6 +546,25 @@
                     mainImage.src = image.src;
                 });
             });
+
+
+            const captcha = document.getElementById('captcha');
+            const captchaContainer = document.querySelector('.captcha-container');
+            const originalPosition = captchaContainer.offsetTop;
+
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY + window.innerHeight;
+
+                // Verificar si el reCAPTCHA ha llegado a su posición original
+                if (scrollPosition >= originalPosition) {
+                    captcha.style.position = 'static';
+                } else {
+                    captcha.style.position = 'fixed';
+                    captcha.style.bottom = '10px';
+                    captcha.style.right = '10px';
+                }
+            });
         });
     </script>
+
 </div>

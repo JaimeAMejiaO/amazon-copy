@@ -17,6 +17,36 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+    <style>
+        /* Estilo inicial para el reCAPTCHA flotante */
+        #captcha {
+            position: fixed;
+            bottom: 10px;
+            left: 100px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+
+        .cart-button {
+            position: relative;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>

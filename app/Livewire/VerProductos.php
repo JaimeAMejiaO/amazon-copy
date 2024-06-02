@@ -34,8 +34,16 @@ class VerProductos extends Component
     public $preguntas_producto;
     public $respuesta;
 
+    public $colores_cambio = [];
+    public $ids_colores = [];
+
+    public $almacenamiento_cambio = [];
+    public $ids_almacenamiento = [];
+
     public function mount($id)
     {
+
+        
         //Obtener el producto padre
         //Producto::where('id', $this->id_producto)->first()->id
         //Obtener el modelo producto que se selecciono
@@ -44,7 +52,7 @@ class VerProductos extends Component
         $this->id_producto_modelo = ProductoModelo::find($id);
         $this->producto_modelos = ProductoModelo::with('producto')->where('id_producto', $this->id_producto_modelo->id_producto)->get();
         $this->modelo_actual = $this->producto_modelos->where('id', $this->id_producto_modelo->id)->first();
-        //dd($this->modelo_actual);
+        //dd($this->modelo_actual); 
         //dd($this->id_producto_modelo->id);
         $this->array_cat = explode('~', $this->id_producto_modelo->array_cat);
         $this->explode_array_cat = array();
@@ -60,6 +68,29 @@ class VerProductos extends Component
             list($key, $value) = explode(':', $cat);
             //Agregar el par clave-valor al nuevo array
             $this->explode_array_cat[trim($key)] = trim($value);
+        }
+
+        foreach ($this->producto_modelos as $producto_modelo) {
+            $atributos = explode('~', $producto_modelo->array_cat);
+            foreach ($atributos as $atributo) {
+                list($key, $value) = explode(':', $atributo);
+                if (trim($key) == 'Color') {
+                    $this->colores_cambio[] = $value;
+                    $this->ids_colores[] = $producto_modelo->id;
+                }
+            }
+        }
+
+
+        foreach ($this->producto_modelos as $producto_modelo) {
+            $atributos = explode('~', $producto_modelo->array_cat);
+            foreach ($atributos as $atributo) {
+                list($key, $value) = explode(':', $atributo);
+                if (trim($key) == 'Almacenamiento') {
+                    $this->almacenamiento_cambio[] = $value;
+                    $this->ids_almacenamiento[] = $producto_modelo->id;
+                }
+            }
         }
 
         //Obtener los colores de los modelos
@@ -127,6 +158,11 @@ class VerProductos extends Component
             }
         }
         dd($this->modelo_actual->stock);*/
+    }
+
+    public function redirectToProduct($id_producto_modelo)
+    {
+        return redirect()->route('ver-productos', ['id' => $id_producto_modelo]);
     }
 
 

@@ -1,5 +1,6 @@
 <div>
 
+
     <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color:#131921 ">
         <div class="container d-flex justify-content-center">
             <a href="{{ route('principal') }}" style="">
@@ -25,9 +26,19 @@
             </div>
 
 
-            <a class="btn btn-outline-light text-nowrap m-1" href="{{ route('ver-mis-garantias-reembolsos') }}">Garantias y Reembolsos</a>
+            <a class="btn btn-outline-light text-nowrap m-1"
+                href="{{ route('ver-mis-garantias-reembolsos') }}">Garantias y Reembolsos</a>
             <a class="btn btn-outline-light text-nowrap m-1" href="{{ route('ver-pedidos') }}">Pedidos</a>
-            <a class="btn btn-outline-light text-nowrap m-1" href="{{ route('carro-compras') }}">Carrito</a>
+
+            <a class="btn btn-outline-light text-nowrap m-1 cart-button" href="{{ route('carro-compras') }}">Carrito
+                <span class="cart-badge">{{$cant_productos_en_carrito}}</span>
+            </a>
+
+
+
+
+
+
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
