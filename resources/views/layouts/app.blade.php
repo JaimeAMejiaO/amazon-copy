@@ -19,14 +19,20 @@
 
     <style>
         /* Estilo inicial para el reCAPTCHA flotante */
-        #captcha {
-            position: fixed;
-            bottom: 10px;
-            left: 100px;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
+.sticky-card {
+    position: sticky;
+    top: 10px; /* Ajusta esta propiedad según tu necesidad */
+}
 
+#captcha {
+    position: fixed;
+    bottom: 0;
+    left:100px;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px;
+    transition: position 0.3s ease, bottom 0.3s ease;
+}
 
         .cart-button {
             position: relative;

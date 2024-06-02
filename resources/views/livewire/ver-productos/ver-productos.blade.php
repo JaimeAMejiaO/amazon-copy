@@ -6,14 +6,17 @@
                     <!-- Cambiado a flex-column y align-items-center para centrar verticalmente -->
 
                     @foreach ($images as $imagen)
-                        <img src="{{ asset('storage/' . $imagen) }}" class="img-thumbnail mb-1 clickable-image"
-                            alt="..." width="100" height="50" style="object-fit: cover;">
+                        <div class="d-flex justify-content-center align-items-center"
+                            style="height: 65px; width: 100px;">
+                            <img src="{{ asset('storage/' . $imagen) }}" class="img-thumbnail mb-1 clickable-image"
+                                alt="..." style="object-fit: cover; height: 100%; width: 100%;">
+                        </div>
                     @endforeach
                 </div>
                 <div class="col-8.5 border rounded p-3" style="margin-top:2%;">
                     <div>
-                        <img id="main-image" src="{{ asset('storage/' . $images[0]) }}" alt="..." width="500"
-                            height="700">
+                        <img id="main-image" src="{{ asset('storage/' . $images[0]) }}" alt="..."
+                            style =""width="500" height="560">
                         <!-- Resto de tu código... -->
                     </div>
 
@@ -22,9 +25,9 @@
         </div>
         <div class="col-5" style="margin-top:2%;margin-right:2%;">
             <h1 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 210%;font-weight:bold;text-align:center">{{ $id_producto_modelo->nombre }}</h1>
+                style="font-size: 190%;font-weight:bold;text-align:center">{{ $id_producto_modelo->nombre }}</h1>
 
-            <div style="margin-top:5%">
+            <div style="margin-top:2%">
                 <i class="fa-solid fa-star fa-2xl" style="color: #FFD43B;margin-left:4%"></i>
                 <i class="fa-solid fa-star fa-2xl" style="color: #FFD43B;margin-left:-0.5%"></i>
                 <i class="fa-solid fa-star fa-2xl" style="color: #FFD43B;margin-left:-0.5%"></i>
@@ -32,15 +35,15 @@
                 <i class="fa-solid fa-star fa-2xl" style="color: #787878;margin-left:-0.5%"></i>
             </div>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 180%;font-weight:bold;margin-left: 5%;margin-top:2%">$
+                style="font-size: 160%;font-weight:bold;margin-left: 5%;margin-top:1%">$
                 {{ $id_producto_modelo->precio }}
             </h3>
             <h2 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 180%;font-weight:bold;margin-left: 5%;">
+                style="font-size: 160%;font-weight:bold;margin-left: 5%;">
                 {{ $id_producto_modelo->producto->marca->nombre }}
             </h2>
             <h3 class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                style="font-size: 150%;font-weight:bold;margin-left: 5%;">
+                style="font-size: 160%;font-weight:bold;margin-left: 5%;">
                 {{ $id_producto_modelo->producto->categoria->nombre }} </h3>
 
 
@@ -60,7 +63,7 @@
                             @if ($titulo_caracteristica == 'Color')
                                 <div>
                                     <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                        style="font-size: 100%;font-weight:bold;margin-left: 5%;margin-top: 2%;">
+                                        style="font-size: 100%;font-weight:bold;margin-left: 5%;margin-top: 1%;">
                                         COLORES:</p>
                                     <div style="margin-left: 5%;">
 
@@ -89,7 +92,7 @@
 
                                     <div class="col"style="">
                                         <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                            style="font-size: 150%;font-weight:bold;margin-left: 5%;margin-top: 2%;">
+                                            style="font-size: 150%;font-weight:bold;margin-left: 5%;margin-top: 1%;">
                                             Tallas:</p>
                                     </div>
                                     <div class="" style="margin-left: 5%;">
@@ -106,14 +109,14 @@
                             @elseif ($titulo_caracteristica == 'Almacenamiento')
                                 <div>
                                     <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                        style="font-size: 100%;font-weight:bold;margin-left: 5%;margin-top: 2%;">
+                                        style="font-size: 100%;font-weight:bold;margin-left: 5%;margin-top: 1%;">
                                         ALMACENAMIENTO:</p>
                                     <div class="d-flex"style="margin-left: 5%;">
 
                                         @foreach ($almacenamiento_cambio as $index => $almacenamiento2)
                                             <a href="#"
                                                 wire:click="redirectToProduct('{{ $ids_almacenamiento[$index] }}')">
-                            
+
 
                                                 <div
                                                     class="card {{ $ids_almacenamiento[$index] == $id_producto_modelo->id ? 'border border-dark' : '' }}">
@@ -134,7 +137,7 @@
                             @else
                                 <div class="col-md-6 mb-3">
                                     <p class="a-size-mini a-spacing-none a-color-base s-line-clamp-4"
-                                        style="font-size: 120%; margin-left: 5%; margin-top: 2%;">
+                                        style="font-size: 120%; margin-left: 5%; margin-top: 1%;">
                                         <b>{{ $titulo_caracteristica }}:</b> {{ $valor_caracteristica }}
                                     </p>
                                 </div>
@@ -218,8 +221,6 @@
     <div style="">
 
         <br>
-        <br>
-        <br>
         <div class="card mx-5"
             style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);;overflow-y: auto; max-height: 300px;">
             <div class="card-body" style=""> <!-- Añadido overflow-y: auto y max-height para el scroll -->
@@ -254,6 +255,7 @@
                         </div>
 
                         <div id="captcha" class="mt-4" wire:ignore></div>
+
 
 
 
@@ -511,7 +513,7 @@
         @if (Auth::check())
             @if (auth()->user()->id_rol == 1)
                 <br>
-                <div style="text-align: center;">
+                <div style="text-align: center;padding-bottom:15%">
                     <button class="btn btn-warning" wire:click="redirect_nuevo_modelo()">Crear nuevo
                         modelo</button>
                 </div>
@@ -552,19 +554,9 @@
             const captchaContainer = document.querySelector('.captcha-container');
             const originalPosition = captchaContainer.offsetTop;
 
-            window.addEventListener('scroll', function() {
-                const scrollPosition = window.scrollY + window.innerHeight;
-
-                // Verificar si el reCAPTCHA ha llegado a su posición original
-                if (scrollPosition >= originalPosition) {
-                    captcha.style.position = 'static';
-                } else {
-                    captcha.style.position = 'fixed';
-                    captcha.style.bottom = '10px';
-                    captcha.style.right = '10px';
-                }
-            });
         });
     </script>
+
+
 
 </div>
